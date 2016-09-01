@@ -17,14 +17,14 @@ body {
 	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
 	padding:10px;
 }
-.menu-tittle {
+.menu-title {
 	display: inline-block;
     padding-left:25px;
     padding-right: 25px;
 
     color:white;
 }
-.menu-tittle:hover {
+.menu-title:hover {
     color:grey;
 }
 .menu-content{
@@ -44,7 +44,7 @@ body {
 	color:black;
 	padding:5px;
 }
-.menu-tittle:hover .menu-content{
+.menu-title:hover .menu-content{
     display:block;
     
 }
