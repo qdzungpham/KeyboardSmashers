@@ -1,0 +1,71 @@
+/*----------------------------------------footer-styles---------------------------------------*/
+#footer {
+	background-color: #111111;
+	margin: 0;
+	min-height: 122px;
+	padding: 0;
+	width: 100%;
+}
+#footer div {
+	margin: 0 auto;
+	max-width: 940px;
+	overflow: hidden;
+	padding: 47px 10px 42px;
+}
+#footer div p {
+	color: #FFFFFF;
+	float: left;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: normal;
+	line-height: 15px;
+	margin: 0;
+	padding: 5px 0 0;
+	text-align: left;
+	text-transform: none;
+	width: 400px;
+}
+#footer div .connect {
+	display: block;
+	float: right;
+	height: 32px;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	width: 154px;
+}
+#footer div .connect a {
+	background: url(../images/icons.png) no-repeat;
+	display: block;
+	float: left;
+	height: 28px;
+	margin: 0 7px;
+	padding: 0;
+	text-indent: -99999px;
+	width: 28px;
+}
+#footer div .connect a.facebook {
+	background-position: 0 0;
+}
+#footer div .connect a.googleplus {
+	background-position: 0 -30px;
+}
+#footer div .connect a.pinterest {
+	background-position: 0 -60px;
+	margin: 0;
+}
+#footer div .connect a.twitter {
+	background-position: 0 -90px;
+}
+#footer div .connect a.facebook:hover {
+	background-position: -30px 0;
+}
+#footer div .connect a.googleplus:hover {
+	background-position: -30px -30px;
+}
+#footer div .connect a.pinterest:hover {
+	background-position: -30px -60px;
+}
+#footer div .connect a.twitter:hover {
+	background-position: -30px -90px;
+}
