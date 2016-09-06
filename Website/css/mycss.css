@@ -2,6 +2,7 @@ body {
 	background-image:url("image/background.gif") no-repeat;
 	margin:0;
 }
+/*home page*/
 #wrap{
     margin-left: auto;
     margin-right: auto;
@@ -11,8 +12,9 @@ body {
     text-align: center;
     margin-top: -5px;
     background-color: #E1FFE4;
-    height:auto;
-   
+		padding-bottom: 122px;
+    min-height:100%;
+
 }
 #menu{
 	position:relative;
@@ -23,13 +25,15 @@ body {
 	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
 	padding:10px;
 }
-.menu-title {
+.menu-title, .menu-title a{
+	text-decoration: none;
 	display: inline-block;
-    padding-left:25px;
-    padding-right: 25px;
-    color:white;
+  padding-left:25px;
+  padding-right: 25px;
+  color:white;
+
 }
-.menu-title:hover {
+.menu-title:hover,.menu-title a:hover {
     color:lightblue;
 }
 .menu-content{
@@ -41,7 +45,7 @@ body {
     margin-left:5px;
     margin-top:5px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    
+
     z-index: 1;
 }
 .menu-content a{
@@ -51,9 +55,9 @@ body {
 }
 .menu-title:hover .menu-content{
     display:block;
-    
+
 }
-#slider{ 
+#slider{
    padding-top:50px;
    margin-top: -20px;
 }
@@ -64,7 +68,6 @@ body {
 	height:40px;
 	width:150px;
 	border:2px solid white;
-	
 	margin-left:580px;
 	margin-top: -60px;
 }
@@ -79,10 +82,10 @@ body {
 	margin-top: -62px;
 }
 #content{
- height:300px;
- margin-top: 75px;
- text-align: center;
- 
+	height:auto;
+  min-height:340px;
+  margin-top: 75px;
+  text-align: center;
 }
 .coursetype{
 	display: inline-block;
@@ -145,78 +148,57 @@ margin-top:-5px;
 .teacherd{
 	display: inline-block;
 	margin-left: 50px;
-	margin-left: 50px;
 	margin-top: 20px;
-	margin-bottom:20px; 
+	margin-bottom:20px;
 }
-/*----------------------------------------footer-styles---------------------------------------*/
-#footer {
-	background-color: #111111;
-	margin: 0;
-	min-height: 122px;
-	padding: 0;
-	width: 100%;
+/*end home page*/
+/*login page*/
+#login {
+	position: relative;;
+	display: block;
+	border:1px solid #242424;
+	text-align:center;
+	background-color: grey;
+	height:auto;
+	width:400px;
+	margin-left: 483px;
+	margin-top: calc(100%/10);
+	box-shadow: 5px 5px 5px black;
 }
-#footer div {
-	margin: 0 auto;
-	max-width: 940px;
-	overflow: hidden;
-	padding: 47px 10px 42px;
-}
-#footer div p {
-	color: #FFFFFF;
-	float: left;
-	font-family: Arial;
-	font-size: 15px;
-	font-weight: normal;
-	line-height: 15px;
-	margin: 0;
-	padding: 5px 0 0;
+
+.titlebar {
 	text-align: left;
-	text-transform: none;
-	width: 400px;
+	font-size: 18px;
+	width:auto;
+	height:40px;
+	line-height: 40px;
+	background-color: white;
+	margin-bottom: 10px;
 }
-#footer div .connect {
-	display: block;
-	float: right;
-	height: 32px;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	width: 154px;
+
+.loginform{
+	text-align: center;
+	width:300px;
+ margin-left: 50px;
+ margin-bottom: 10px;
 }
-#footer div .connect a {
-	background: url(../image/icons.png) no-repeat;
-	display: block;
-	float: left;
-	height: 28px;
-	margin: 0 7px;
-	padding: 0;
-	text-indent: -99999px;
-	width: 28px;
+.textfield{
+	width:250px;
+	height:25px;
+	padding:2px;
+	border: 2px solid grey;
+	margin-bottom: 10px;
 }
-#footer div .connect a.facebook {
-	background-position: 0 0;
+.button {
+	text-align: left;
+	border:2px solid white;
+  background-color:Transparent;
+	font-size:20px;
+
 }
-#footer div .connect a.googleplus {
-	background-position: 0 -30px;
+.button:hover  {
+	background: white;
+	border:2px solid lightblue;
 }
-#footer div .connect a.pinterest {
-	background-position: 0 -60px;
-	margin: 0;
-}
-#footer div .connect a.twitter {
-	background-position: 0 -90px;
-}
-#footer div .connect a.facebook:hover {
-	background-position: -30px 0;
-}
-#footer div .connect a.googleplus:hover {
-	background-position: -30px -30px;
-}
-#footer div .connect a.pinterest:hover {
-	background-position: -30px -60px;
-}
-#footer div .connect a.twitter:hover {
-	background-position: -30px -90px;
-}
+
+/*end login page*/
