@@ -1,6 +1,7 @@
 body {
 	background-image:url("image/background.gif") no-repeat;
 	margin:0;
+	text-align: center;
 }
 /*home page*/
 #wrap{
