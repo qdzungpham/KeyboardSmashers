@@ -1,11 +1,7 @@
-body {
-	background-image:url("image/background.gif") no-repeat;
-	margin:0;
-	text-align: center;
-}
+
 /*home page*/
 #header{
-	text-align:left;
+	text-align: left;
 }
 #wrap{
     margin-left: auto;
@@ -16,7 +12,7 @@ body {
     text-align: center;
     margin-top: -5px;
     background-color: #E1FFE4;
-		padding-bottom: 122px;
+	padding-bottom: 122px;
     min-height:100%;
 
 }
@@ -37,19 +33,20 @@ body {
   color:white;
 
 }
-.menu-title:hover,.menu-title a:hover {
+.menu-title:hover{
     color:lightblue;
 }
+.menu-title a:hover{
+    color:lightblue;
+	}
 .menu-content{
-	display: none;
+		display: none;
     position: absolute;
     background-color: white;
     color:black;
     min-width: 110px;
     margin-left:5px;
-    margin-top:5px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
     z-index: 1;
 }
 .menu-content a{
@@ -57,6 +54,9 @@ body {
 	color:black;
 	padding:5px;
 }
+.menu-content a:hover{
+    background-color: blue; 
+	}
 .menu-title:hover .menu-content{
     display:block;
 
@@ -87,9 +87,9 @@ body {
 }
 #content{
 	height:auto;
-  min-height:340px;
-  margin-top: 75px;
-  text-align: center;
+    min-height:340px;
+    margin-top: 75px;
+    text-align: center;
 }
 .coursetype{
 	display: inline-block;
@@ -165,7 +165,7 @@ margin-top:-5px;
 	background-color: grey;
 	height:auto;
 	width:400px;
-	margin-left: 483px;
+	margin-left: calc(100%/3);
 	margin-top: calc(100%/10);
 	box-shadow: 5px 5px 5px black;
 }
