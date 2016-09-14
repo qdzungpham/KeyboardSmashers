@@ -1,0 +1,33 @@
+Team 101
+Anneyashan Dey    09534849
+Darian Brandt			09167901
+Hang Su				    09326448
+Huisuk Gyeong			09230424
+Rick Pham			   	09579249
+Ashvin Kanniason	09759522
+Nicholas Martin		08623465
+
+
+
+14 September 2016
+Project: Package Delivery
+Team 2
+
+To Team 2,
+We are writing to provide an overall evaluation of the recent demonstration of the On The Spot Deliveries website by Team 2.  The evaluation has been constructed necessitating the core professional and technical aspects of their presentation, based on which Team 2 can amend and refine the components necessary for the website to perform its main objective without any hindrance. 
+
+Preparedness
+Despite having no place cards or pre-written speech, Team 2’s presentation was succinct and consistent, thereby proving they were adequately prepared. They allowed a member of the client group to test their system by inputting a false name and email address, which was seen to be successfully saved in their database, at least temporarily, when a button was clicked.
+
+Expectations
+The agreed user stories were delivered by Team 2 successfully, albeit they failed to complete the functionalities of two user stories. Upon enquiry, the development team responded that they would complete these by the next sprint but had ran out of time to complete them within the time constraints. However, the product is in accordance with the acceptance criteria and most of the components are almost fully functional. Hence, it can be inferred that the product yields a fairly large business value.
+
+Technical
+Team 2 recognised the stakeholders’ requirements and so focused more on the functionality of the website without paying much heed to its design. The developer team easily explained that the system architecture is a single server hosted on Amazon Web Services (AWS), and this should be sufficient as On The Spot Deliveries is a small business, and AWS is scalable for future growth. No noticeable technical issues occurred in the course of the presentation.
+In terms of product defects, the database and input functionalities seemed to operate well, which was the development team’s major focus for the sprint. However, just for future reference, a few design flaws were noted. There was some evidence of inconsistent typeface and inappropriate placement of footer content (clamped together) which reduced the overall readability of the website, however, the simplicity of the website design is very appropriate. The navigation bar was placed in a conventional location, was responsive and separated from the rest of the content to facilitate effortless browsing. However, the login/register button looks messy and would preferably just be called login, with a register option in that page.
+
+Professionalism of the Presentation
+The presentation was delivered articulately and answers to corresponding questions were given confidently and responsively. Immaculate visual exemplifications were employed to elucidate the existing and proposed functionalities of the website. The presentation appeared to follow a pre-planned structure, going through each facet of the website functionalities and getting the client team involved. It was a smooth presentation with each team member able to help answer any questions the clients had, indicating the involvement of every team member.
+
+Conclusion
+Based on the aforementioned discussion, it can be concluded that a number of existing impediments need to be eliminated to enhance the overall user-friendliness of the website. Nevertheless, Team 2’s ability to accomplish the goals outlined in their first sprint on the schedule have proved their expertise in website development. Their ability to understand the stakeholders’ preferences led to a well-prepared and informative presentation that operated without any jarring difficulties. The development team also fully demonstrated a product that almost met all its expectations.
