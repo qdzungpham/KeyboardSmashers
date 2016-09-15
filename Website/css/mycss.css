@@ -331,7 +331,11 @@ body {
 	font-family: Verdana, sans-serif;
 	font-size: 15px;
 }
-
+.Address
+{
+  width = 300px;
+  
+}
 .options {
 	font-size: 12px;
 }
