@@ -192,13 +192,15 @@ body {
 .button {
 	text-align: left;
 	border:2px solid white;
-    background-color:Transparent;
+        background-color:white;
 	font-size:20px;
+	
 
 }
 .button:hover  {
-	background: white;
+	background: black;
 	border:2px solid lightblue;
+	color: white;
 }
 /*end login page*/
 
