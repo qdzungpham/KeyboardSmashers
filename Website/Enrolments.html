@@ -52,16 +52,29 @@
 	<fieldset>
 	<legend>All Students</legend>
 		First name: *<br>
-		<input type="text" name="firstname">
+		<input type="text" name="firstName">
 		<br><br>
 		Last name: *<br>
-		<input type="text" name="lastname">
+		<input type="text" name="lastName">
 		<br><br>
 		DOB: *<br>
 		<input type="date" name="dob">
 		<br><br>
-		Address: *<br>
-		<input class = "Address" type="text" name="address">
+		<b>Address *</b><br>
+		Unit Number:
+		<input type="text" name="unitNo">
+		<br><br>
+		Street Number:
+		<input type="number" name="streetNo">
+		<br><br>
+		Street Name:
+		<input type="text" name="streetName">
+		<br><br>
+		Suburb:
+		<input type="text" name="suburb">
+		<br><br>
+		Postcode:
+		<input type="number" name="postCode">
 		<br><br>
 		Gender: *<br>
 		<div class ="options">
@@ -71,20 +84,15 @@
 		</div>
 		<br><br>
 		Preferred Phone Number:<br>
-		<input type="text" name="phonenumber">
+		<input type="text" name="phoneNumber">
 		<br><br>
 		Email Address: *<br>
 		<input type="text" name="email">
 		<br><br>
-		Facebook:<br>
-		<input type="text" name="firstname">
-		<br><br>
-		<input type="submit" value="Submit">
-		<br><br>
 	</fieldset>
 	<br>
 	<fieldset>
-	<legend>Under 18</legend>
+	<legend>Under 18s</legend>
 		Parent/Guardian Name:<br>
 		<input type="text" name="guardianname">
 		<br><br>
@@ -95,6 +103,8 @@
 		<input type="text" name="email">
 		<br><br>
 	</fieldset>
+		<br>
+		<input type="submit" value="Submit">
 	</form>
 	
 	<p>Any fields without an asterix * are optional</p>
