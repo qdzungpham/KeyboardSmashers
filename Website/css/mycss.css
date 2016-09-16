@@ -137,7 +137,6 @@ body {
 	width: 150px;
 	border-radius: 50%;
 	border:2px;
-	background:blue;
 }
 .courselink:hover + .coursedescription{
 	margin-top:-5px;
