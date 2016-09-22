@@ -1,39 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Delphic Hymnes</title>
-<link href="css/mycss.css" rel="stylesheet" type="text/css" >
-<link href="css/style.css" rel="stylesheet" type="text/css" >
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pinelands Music School</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  
+  <link href="css/mycss.css" rel="stylesheet" type="text/css" >
+  
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="portal/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="portal/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="portal/dist/css/skins/_all-skins.min.css">
+  
+  <link rel="stylesheet" href="portal/plugins/iCheck/square/blue.css">
+
 </head>
-<body>
- <div id ="header">
-    <a href ="home.html">
-    <img src="image/logo.png">
-    </a>
- </div>
- <div id = "menu">
-    <div class ="menu-title">
-		<a href = "home.html">HOME</a>
-    </div>
-    <div class ="menu-title">
-		<a href ="Enrolments.html">ENROLMENT</a>
-    </div>
-    <div class ="menu-title">
-		<a href ="About Us.html">ABOUT US</a>
-    </div>
-	<div class ="menu-title">
-		<a href ="career.html">CAREERS</a>
-	</div>
-    <div class ="menu-title">
-		<a href ="login.html">LOGIN</a>
-    </div>
-    <form id ="search">
-   <input id = "stext" name="searcht" type="text" placeholder="Search...">  
-   <input id = "sbutton" name="searchb" type="submit" value ="">
-   </form>
-</div>
-  <div id ="wrap">
+
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper">
+
+  <header class="main-header">
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="home.html" class="navbar-brand"><b>Pinelands</b>MusicSchool</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="Enrolments.html">Enrolment</a></li>
+			<li><a href="About us.html">About Us</a></li>
+			<li class="active"><a href="career.html">Careers</a></li>
+          </ul>
+          
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <!-- User Account Menu -->
+            <li class="dropdown user user-menu">
+              <!-- Menu Toggle Button -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="hidden-xs">Login</span>
+              </a>
+              <ul style="width: 370px;"class="dropdown-menu">
+                <div class="login-box">
+  
+                   <div class="login-box-body">
+                       <p class="login-box-msg">Sign in to start your session</p>
+
+                       <form action="portal/index.html" method="post">
+                           <div class="form-group has-feedback">
+                               <input type="email" class="form-control" placeholder="Username">
+                               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                           </div>
+                           <div class="form-group has-feedback">
+                               <input type="password" class="form-control" placeholder="Password">
+                               <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                           </div>
+                           <div class="row">
+                               <div class="col-xs-8">
+                                   <div class="checkbox icheck">
+                                       <label>
+                                           <input type="checkbox"> Remember Me
+                                       </label>
+                                   </div>
+                               </div>
+                               <!-- /.col -->
+                               <div class="col-xs-4">
+                                    <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
+		                            <a href="portal/index.html"class="btn btn-primary btn-block btn-flat">Sign In</a>
+                               </div>
+                               <!-- /.col -->
+                           </div>
+                       </form>
+                       <a href="#">I forgot my password</a><br>
+                   </div>
+                   <!-- /.login-box-body -->
+                </div>
+         
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-custom-menu -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>
+  
+  <div style="background:url('image/back.gif') no-repeat;background-size:100%;"class="content-wrapper">
+    <div id ="wrap">
   		<div id="slider">
   			<img src="image/image1.gif">
   		</div>
@@ -132,18 +204,40 @@
          <input class = "button" name="more" type="button" value="MORE">
        </div>
        </div>
-   
-    <div id="footer">
-     			<div>
-     				<div class="connect">
-     					<a href="https://twitter.com/" class="twitter">twitter</a>
-     					<a href="https://www.facebook.com/" class="facebook">facebook</a>
-     					<a href="https://plus.google.com/" class="googleplus">googleplus</a>
-     					<a href="https://www.pinterest.com/" class="pinterest">pinterest</a>
-     				</div>
-     				<p>&copy; 2023 by KeyboardSmashers. All rights reserved.</p>
-     			</div>
-      </div>
-  </body>
-</html>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="container">
+      
+      <strong>Copyright &copy; 2016 KeyboardSmashers.</strong> All rights
+    reserved.
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+<!-- ./wrapper -->
 
+<!-- jQuery 2.2.3 -->
+<script src="portal/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="portal/bootstrap/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="portal/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="portal/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="portal/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="portal/dist/js/demo.js"></script>
+<script src="portal/plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+</body>
+</html>
