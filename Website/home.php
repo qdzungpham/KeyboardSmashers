@@ -1,3 +1,7 @@
+<?php 
+require "connect.inc";
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +36,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="home.html" class="navbar-brand"><b>Pinelands</b>MusicSchool</a>
+          <a href="home.php" class="navbar-brand"><b>Pinelands</b>MusicSchool</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -41,10 +45,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="Enrolments.html">Enrolment</a></li>
-			<li><a href="About us.html">About Us</a></li>
-			<li class="active"><a href="career.html">Careers</a></li>
+            <li class="active"><a href="home.php">Home</a></li>
+            <li><a href="Enrolments.php">Enrolment</a></li>
+			<li><a href="About us.php">About Us</a></li>
+			<li><a href="career.php">Careers</a></li>
           </ul>
           
         </div>
@@ -56,6 +60,9 @@
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <!-- The user image in the navbar-->
+                
+                <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">Login</span>
               </a>
               <ul style="width: 370px;"class="dropdown-menu">
@@ -64,13 +71,16 @@
                    <div class="login-box-body">
                        <p class="login-box-msg">Sign in to start your session</p>
 
-                       <form action="portal/index.html" method="post">
+                       <form action="login.php" method="post">
                            <div class="form-group has-feedback">
-                               <input type="email" class="form-control" placeholder="Username">
-                               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                               <input type="text" class="form-control" placeholder="Username"
+                               name="username" required>
+
+                               <span class="glyphicon fa fa-user form-control-feedback"></span>
                            </div>
                            <div class="form-group has-feedback">
-                               <input type="password" class="form-control" placeholder="Password">
+                               <input type="password" class="form-control" placeholder="Password"
+                               name="password" required>
                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                            </div>
                            <div class="row">
@@ -84,7 +94,7 @@
                                <!-- /.col -->
                                <div class="col-xs-4">
                                     <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
-		                            <a href="portal/index.html"class="btn btn-primary btn-block btn-flat">Sign In</a>
+                                <input type="submit" class="btn btn-primary btn-block btn-flat" name="login" value ="Sign In">
                                </div>
                                <!-- /.col -->
                            </div>
@@ -103,107 +113,61 @@
       <!-- /.container-fluid -->
     </nav>
   </header>
-  
+  <!-- Full Width Column -->
   <div style="background:url('image/back.gif') no-repeat;background-size:100%;"class="content-wrapper">
     <div id ="wrap">
-  		<div id="slider">
-  			<img src="image/image1.gif">
-  		</div>
-  </div>
-   <div id = "content">
-	<div id = "page-heading">
-		Job Vacancies
+		<div id="slider">
+			<img src="image/image1.gif">
+		</div>
+
+</div>
+	<div id ="content">
+		<div id ="page-heading">
+			Our Courses<br>
+		</div>
+		<div class = "coursetype">
+			<div class= "coursename">
+			Children Course
+			</div>
+			<div class= "courselink">
+			&#9734;
+			</div>
+			<div class= "coursedescription">
+			Pinelands music programs
+			designed for children aged
+			between 3 to 12
+			</div>
+		</div>
+
+		<div class = "coursetype">
+			<div class= "coursename">
+			Children Course
+			</div>
+			<div class= "courselink">
+			 &#9825;
+			</div>
+			<div class= "coursedescription">
+			Pinelands music programs
+			designed for children aged
+			between 3 to 12
+			</div>
+
+		</div>
+			<div class = "coursetype">
+			<div class= "coursename">
+			Children Course
+			</div>
+			<div class= "courselink">
+			&#9813;
+			</div>
+			<div class= "coursedescription">
+			Pinelands music programs
+			designed for children aged
+			between 3 to 12
+			</div>
+
+		</div>
 	</div>
-     <div id ="cname">
- 			<img src="image/line.png">
- 		 </div>
-  </div>
-  <div id="wrapper">
-       <div class="jobs">
-         <div class = "jtitle">
-           IT Services
-         </div>
-         <div class="caption">
-          Job Name:
-         </div>
-           <div class = "jname">
-             Senior PHP Developer
-           </div>
-         <div class="caption">
-         Post Date:
-         </div>
-           <div class = "jtime">
-             26/08/2016
-           </div>
-         <div class="caption">
-         Job Description:
-         </div>
-         <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
-         </div>
-         <input class = "button" name="more" type="button" value="MORE">
-       </div>
-       <div class="jobs">
-         <div class = "jtitle">
-           IT Services
-         </div>
-         <div class="caption">
-          Job Name:
-         </div>
-           <div class = "jname">
-             Senior PHP Developer
-           </div>
-         <div class="caption">
-         Post Date:
-         </div>
-           <div class = "jtime">
-             26/08/2016
-           </div>
-         <div class="caption">
-         Job Description:
-         </div>
-         <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
-         </div>
-         <input class = "button" name="more" type="button" value="MORE">
-       </div>
-       <div class="jobs">
-         <div class = "jtitle">
-           IT Services
-         </div>
-         <div class="caption">
-          Job Name:
-         </div>
-           <div class = "jname">
-             Senior PHP Developer
-           </div>
-         <div class="caption">
-         Post Date:
-         </div>
-           <div class = "jtime">
-             26/08/2016
-           </div>
-         <div class="caption">
-         Job Description:
-         </div>
-         <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
-         </div>
-         <input class = "button" name="more" type="button" value="MORE">
-       </div>
-       </div>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

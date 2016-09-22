@@ -1,3 +1,6 @@
+<?php
+require "../connect.inc";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../home.html" class="logo">
+    <a href="../home.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -58,7 +61,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Keyboard Smasher</span>
+              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -66,7 +69,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Keyboard Smasher
+                  <?php echo $_SESSION["UserID"]; ?>
                   <small>Student</small>
                 </p>
               </li>
@@ -75,10 +78,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../home.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -113,7 +116,7 @@
       <ul class="sidebar-menu">
         
         <li class="">
-          <a href="index.html">
+          <a href="index.php">
             <i class="fa fa-dashboard"></i> <span>Student Portal Home</span>
             <span class="pull-right-container">
               
@@ -121,7 +124,7 @@
           </a>
           
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-graduation-cap"></i>
             <span>Student Study</span>
@@ -130,26 +133,26 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="profile.html"><i class="fa fa-user"></i> My Profile</a></li>
-            <li><a href="timetable.html"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
-            <li><a href="enrolment.html"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
+            <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+            <li><a href="timetable.php"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
+            <li><a href="enrolment.php"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
             
           </ul>
         </li>
         <li>
-          <a href="materials.html">
+          <a href="materials.php">
             <i class="fa fa-file-text"></i> <span>Learning Materials</span>
             
           </a>
         </li>
-		<li>
-          <a href="teachercontact.html">
+		<li class="active">
+          <a href="teachercontact.php">
             <i class="fa fa-phone"></i> <span>Teacher Contacts</span>
             
           </a>
         </li>
 		<li>
-          <a href="tools.html">
+          <a href="tools.php">
             <i class="fa fa-lightbulb-o"></i> <span>Tools</span>
             
           </a>
@@ -169,7 +172,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        My Profile
+        Teacher Contacts
         <small></small>
       </h1>
       
@@ -177,102 +180,59 @@
 
     <!-- Main content -->
     <section class="content">
+	    <div class="row">
+        <div class="col-md-12">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <i class="fa fa-comments"></i>
 
-      <div class="row">
-                <div class="col-lg-12">
-                    <!--Timeline -->
-                    <div style = "" class="panel panel-primary">
-                        <div class="panel-heading">
-                            <i class="fa fa-user"></i> General details
-                        </div>
-
-                        <div class="panel-body">
-						    <div class="panel panel-primary no-boder">
-                        <div style = "background-color:#F2F6F9;"class="panel-body yellow">
-						<div class="col-lg-3">
-                            <img src="dist/img/ena.png" alt="" style="width:150px;height:150px;margin-left:40px;">
-						</div>
-						<div class="col-lg-9">
-						<div class="row">						
-						    <h style="font-size:20px;"><b>Keyboard Smasher</b></h>						
-						</div>
-						<div class="row">												    
-							<h>0123456</h>							
-						</div>
-						<div style="background-color:white;margin-left:-15px;margin-top:15px"class="panel-body yellow">
-                            <div class="row">	
-							
-							<i style="margin-left:10px"class="fa fa-calendar-o"></i>	
-						    <h style="margin-left:5px">was born on</h>	
-                            <h><b>24 Feb 1996</b></h>								
-						</div>
-						<div class="row">	
-							
-							<i style="margin-left:10px"class="fa fa-transgender"></i>	
-						    <h style="margin-left:5px">identifies as a</h>	
-                            <h><b>Female</b></h>									
-						</div>
-						<div class="row">	
-							
-							<i style="margin-left:10px"class="fa fa-globe"></i>	
-						    <h style="margin-left:5px">is an</h>	
-                            <h><b>International student</b></h>								
-						</div>
-                        </div>
-						</div>
-                        </div>
-                        
-                    </div>
-                            
-
-                    </div>
-                    <!--End Timeline -->
-                </div>
+              <h3 class="box-title">Contact details</h3>
             </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+			<div style="padding:20px;border-bottom:1px solid #ddd;"class="row">
+                <div class="col-md-9">
+				    
+				    <h4><b>Mrs Claire Harding</b></h4>
+					<p><b>Email:</b> charding@gmail.com
+					<br><b>Office Location:</b> Room 101
+					<br><b>Office Hours:</b> 9 AM - 4 PM
+					<br><b>Notes:</b> Hello!
+					</p>
+					
+				</div>
+				<div class="col-md-3">
+				    <img src="dist/img/ena.png" alt="" style="width:150px;height:150px;margin-left:40px;">
+				</div>
 			</div>
-			<div class="row">
-		<div class="col-lg-12">
-                    <!-- Donut Example-->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>Contact details
-                        </div>
-                        <div class="panel-body">
-                            <div style="border-bottom-style:dotted;border-width: 1px;"class="box-body">
-                                <dl class="dl-horizontal">
-                                    <dt>Primary contact number:</dt>
-                                    <dd>012345678</dd>
-                                    <dt>Mailing address</dt>
-                                    <dd>00 Rothburn Street</dd>
-                                    <dd>DOLLANDELLA Queensland 4077, Australia</dd>
-                                    <dt>Home address:</dt>
-                                    <dd>00 Rothburn Street</dd>
-									<dd>DOLLANDELLA Queensland 4077, Australia</dd>
-                                    <dt>Email address</dt>
-                                    <dd><a>keyboardsmasher@gmail.com</a>
-                                    </dd>
-                                </dl>
-                            </div>
-							
-                            <div style="margin-left:5px;margin-top:5px"class="row">						
-							    <i style="margin-left:10px"class="fa fa-share"></i>	
-						        <a href="#" style="margin-left:5px">Update contact details</a>										
-						    </div>
-							<div style="margin-left:5px;"class="row">						
-							    <i style="margin-left:10px"class="fa fa-share"></i>	
-						        <a href="#" style="margin-left:5px">Change password</a>										
-						    </div>
-                        </div>
+			<div style="padding:20px;border-bottom:1px solid #ddd;"class="row">
+                <div class="col-md-9">
+				    
+				    <h4><b>Mr Humphrey Mitchum</b></h4>
+					<p><b>Email:</b> hmitchum@gmail.com
+					<br><b>Office Location:</b> Room 101
+					<br><b>Office Hours:</b> 9 AM - 4 PM
+					<br><b>Notes:</b> Hello!
+					</p>
+					
+				</div>
+				<div class="col-md-3">
+				    <img src="dist/img/ena.png" alt="" style="width:150px;height:150px;margin-left:40px;">
+				</div>
+			</div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
 
-                    </div>
-                    <!--End Donut Example-->
-                </div>
-		</div>
+      
 
     </section>
     <!-- /.content -->
   </div>
-  
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">

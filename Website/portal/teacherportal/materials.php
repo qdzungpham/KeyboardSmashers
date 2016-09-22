@@ -1,3 +1,7 @@
+
+<?php
+require "../../connect.inc";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +11,16 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,7 +35,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../home.html" class="logo">
+    <a href="../../home.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -57,17 +61,17 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Keyboard Smasher</span>
+              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Keyboard Smasher
-                  <small>Student</small>
+                  <?php echo $_SESSION["UserID"]; ?>
+                  <small>Teacher</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -75,10 +79,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../home.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -113,8 +117,8 @@
       <ul class="sidebar-menu">
         
         <li class="">
-          <a href="index.html">
-            <i class="fa fa-dashboard"></i> <span>Student Portal Home</span>
+          <a href="index.php">
+            <i class="fa fa-dashboard"></i> <span>Teacher Portal Home</span>
             <span class="pull-right-container">
               
             </span>
@@ -124,32 +128,32 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-graduation-cap"></i>
-            <span>Student Study</span>
+            <span>Teacher Area</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="fa fa-user"></i> My Profile</a></li>
-            <li><a href="timetable.html"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
-            <li><a href="enrolment.html"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
+            <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+            <li><a href="timetable.php"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
+           
             
           </ul>
         </li>
         <li class="active">
-          <a href="materials.html">
+          <a href="materials.php">
             <i class="fa fa-file-text"></i> <span>Learning Materials</span>
             
           </a>
         </li>
 		<li>
-          <a href="teachercontact.html">
-            <i class="fa fa-phone"></i> <span>Teacher Contacts</span>
+          <a href="studentcontact.php">
+            <i class="fa fa-phone"></i> <span>Student Contacts</span>
             
           </a>
         </li>
 		<li>
-          <a href="tools.html">
+          <a href="tools.php">
             <i class="fa fa-lightbulb-o"></i> <span>Tools</span>
             
           </a>
@@ -182,9 +186,9 @@
 			    <!-- Custom Tabs (Pulled to the right) -->
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs pull-right">
-              <li><a href="#tab_1-1" data-toggle="tab">Level 3</a></li>
-              <li><a href="#tab_2-2" data-toggle="tab">Level 2</a></li>
-              <li class="active"><a href="#tab_3-2" data-toggle="tab">Level 1</a></li>
+              <li><a href="#tab_1-1" data-toggle="tab">Class 103</a></li>
+              <li><a href="#tab_2-2" data-toggle="tab">Class 102</a></li>
+              <li class="active"><a href="#tab_3-2" data-toggle="tab">Class 101</a></li>
               
               <li class="pull-left header"><i class="fa  fa-file-text"></i> Learning Documents</li>
             </ul>
@@ -286,7 +290,7 @@
                   <th style="width: 200px">Availablility</th>
                 </tr>
                 <tr>
-                  <td><img src="dist/img/violin.png" alt="" style="width:100px;height:100px"></td>
+                  <td><img src="../dist/img/violin.png" alt="" style="width:100px;height:100px"></td>
                   <td>In good condition</td>
                   <td>
                     <span class="badge bg-yellow">$50</span>
@@ -294,7 +298,7 @@
                   <td><a style="width:100px"class="btn btn-danger btn-xs">Unavailable</a></td>
                 </tr>
                 <tr>
-                  <td><img src="dist/img/saxophone.png" alt="" style="width:100px;height:100px"></td>
+                  <td><img src="../dist/img/saxophone.png" alt="" style="width:100px;height:100px"></td>
                   <td>New</td>
                   <td>
                     <span class="badge bg-yellow">$100</span>
@@ -302,7 +306,7 @@
                   <td><a style="width:100px"class="btn btn-success btn-xs">Available</a></td>
                 </tr>
                 <tr>
-                  <td><img src="dist/img/guitar.png" alt="" style="width:100px;height:100px"></td>
+                  <td><img src="../dist/img/guitar.png" alt="" style="width:100px;height:100px"></td>
                   <td>Excellent condition</td>
                   <td>
                     <span class="badge bg-yellow">$100</span>
@@ -310,7 +314,7 @@
                   <td><a style="width:100px"class="btn btn-success btn-xs">Available</a></td>
                 </tr>
                 <tr>
-                  <td><img src="dist/img/violin.png" alt="" style="width:100px;height:100px"></td>
+                  <td><img src="../dist/img/violin.png" alt="" style="width:100px;height:100px"></td>
                   <td>Repair</td>
                   <td>
                     <span class="badge bg-yellow">$50</span>
@@ -349,16 +353,16 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="plugins/fastclick/fastclick.js"></script>
+<script src="../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../dist/js/demo.js"></script>
 </body>
 </html>

@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+
+<?php
+require "../../connect.inc";
+?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -6,6 +9,7 @@
   <title>Pinelands Music School | Portal</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -17,6 +21,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <!-- piano -->
+  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,7 +37,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../home.html" class="logo">
+    <a href="../../home.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -58,7 +64,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Keyboard Smasher</span>
+              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -66,7 +72,7 @@
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Keyboard Smasher
+                  <?php echo $_SESSION["UserID"]; ?>
                   <small>Teacher</small>
                 </p>
               </li>
@@ -75,10 +81,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../../home.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -113,7 +119,7 @@
       <ul class="sidebar-menu">
         
         <li class="">
-          <a href="index.html">
+          <a href="index.php">
             <i class="fa fa-dashboard"></i> <span>Teacher Portal Home</span>
             <span class="pull-right-container">
               
@@ -121,7 +127,7 @@
           </a>
           
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-graduation-cap"></i>
             <span>Teacher Area</span>
@@ -130,26 +136,26 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="profile.html"><i class="fa fa-user"></i> My Profile</a></li>
-            <li><a href="timetable.html"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
+            <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+            <li><a href="timetable.php"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
             
             
           </ul>
         </li>
         <li>
-          <a href="materials.html">
+          <a href="materials.php">
             <i class="fa fa-file-text"></i> <span>Learning Materials</span>
             
           </a>
         </li>
-		<li>
-          <a href="studentcontact.html">
+		<li class="">
+          <a href="studentcontact.php">
             <i class="fa fa-phone"></i> <span>Student Contacts</span>
             
           </a>
         </li>
-		<li>
-          <a href="tools.html">
+		<li class="active">
+          <a href="tools.php">
             <i class="fa fa-lightbulb-o"></i> <span>Tools</span>
             
           </a>
@@ -169,7 +175,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        My Profile
+        Tools
         <small></small>
       </h1>
       
@@ -177,102 +183,111 @@
 
     <!-- Main content -->
     <section class="content">
+	    <div class="row">
+		    <div class="col-md-12">
+			    <div class="box box-danger">
+                    <div class="box-header with-border">
+                       <h3 class="box-title">Piano</h3>
 
-      <div class="row">
-                <div class="col-lg-12">
-                    <!--Timeline -->
-                    <div style = "" class="panel panel-primary">
-                        <div class="panel-heading">
-                            <i class="fa fa-user"></i> General details
-                        </div>
-
-                        <div class="panel-body">
-						    <div class="panel panel-primary no-boder">
-                        <div style = "background-color:#F2F6F9;"class="panel-body yellow">
-						<div class="col-lg-3">
-                            <img src="../dist/img/ena.png" alt="" style="width:150px;height:150px;margin-left:40px;">
-						</div>
-						<div class="col-lg-9">
-						<div class="row">						
-						    <h style="font-size:20px;"><b>Keyboard Smasher</b></h>						
-						</div>
-						<div class="row">												    
-							<h>0123456</h>							
-						</div>
-						<div style="background-color:white;margin-left:-15px;margin-top:15px"class="panel-body yellow">
-                            <div class="row">	
-							
-							<i style="margin-left:10px"class="fa fa-calendar-o"></i>	
-						    <h style="margin-left:5px">was born on</h>	
-                            <h><b>24 Feb 1996</b></h>								
-						</div>
-						<div class="row">	
-							
-							<i style="margin-left:10px"class="fa fa-transgender"></i>	
-						    <h style="margin-left:5px">identifies as a</h>	
-                            <h><b>Female</b></h>									
-						</div>
-						<div class="row">	
-							
-							<i style="margin-left:10px"class="fa fa-globe"></i>	
-						    <h style="margin-left:5px">is a</h>	
-                            <h><b>Teacher</b></h>								
-						</div>
-                        </div>
-						</div>
-                        </div>
-                        
+                       <div class="box-tools pull-right">
+                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                         </button>
+                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                       </div>
                     </div>
-                            
-
+                    <div class="box-body">
+                        <!-- Piano -->
+  <ul class="piano">
+    <li class="key">
+      <span class="white-key" data-key="20" data-note="1C"></span>
+      <span class="black-key" data-key="81" data-note="1Cs"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="65" data-note="1D"></span>
+      <span class="black-key" data-key="87" data-note="1Ds"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="83" data-note="1E"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="68" data-note="1F"></span>
+      <span class="black-key" data-key="82" data-note="1Fs"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="70" data-note="1G"></span>
+      <span class="black-key" data-key="84" data-note="1Gs"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="71" data-note="2A"></span>
+      <span class="black-key" data-key="89" data-note="2As"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="72" data-note="2B"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="74" data-note="2C"></span>
+      <span class="black-key" data-key="73" data-note="2Cs"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="75" data-note="2D"></span>
+      <span class="black-key" data-key="79" data-note="2Ds"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="76" data-note="2E"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="186" data-note="2F"></span>
+      <span class="black-key" data-key="219" data-note="2Fs"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="222" data-note="2G"></span>
+      <span class="black-key" data-key="221" data-note="2Gs"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="220" data-note="3A"></span>
+      <span class="black-key" data-key="13" data-note="3As"></span>
+    </li>
+    <li class="key">
+      <span class="white-key" data-key="37" data-note="3B"></span>
+    </li>
+  </ul>
+  <!-- End Piano -->
+    
                     </div>
-                    <!--End Timeline -->
+                    <!-- /.box-body -->
                 </div>
-            </div>
+                <!-- /.box -->
+			
 			</div>
-			<div class="row">
-		<div class="col-lg-12">
-                    <!-- Donut Example-->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>Contact details
-                        </div>
-                        <div class="panel-body">
-                            <div style="border-bottom-style:dotted;border-width: 1px;"class="box-body">
-                                <dl class="dl-horizontal">
-                                    <dt>Primary contact number:</dt>
-                                    <dd>012345678</dd>
-                                    <dt>Mailing address</dt>
-                                    <dd>00 Rothburn Street</dd>
-                                    <dd>DOLLANDELLA Queensland 4077, Australia</dd>
-                                    <dt>Home address:</dt>
-                                    <dd>00 Rothburn Street</dd>
-									<dd>DOLLANDELLA Queensland 4077, Australia</dd>
-                                    <dt>Email address</dt>
-                                    <dd><a>keyboardsmasher@gmail.com</a>
-                                    </dd>
-                                </dl>
-                            </div>
-							<div style="margin-left:5px;margin-top:5px"class="row">						
-							    <i style="margin-left:10px"class="fa fa-share"></i>	
-						        <a href="#" style="margin-left:5px">Update contact details</a>										
-						    </div>
-							<div style="margin-left:5px;"class="row">						
-							    <i style="margin-left:10px"class="fa fa-share"></i>	
-						        <a href="#" style="margin-left:5px">Change password</a>										
-						    </div>
-                           
-                        </div>
+			<div class="col-md-6">
+			    <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Online Tutorials</h3>
 
-                    </div>
-                    <!--End Donut Example-->
-                </div>
-		</div>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <iframe width="560" height="315" 
+				src="https://www.youtube.com/embed/QHs_2-pB_6c?list=PLUyDmNalB0rjP2anw_332rs8-oJMapOMU" 
+				frameborder="0" allowfullscreen></iframe>
+				
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+			</div>
+        
+        </div>
+
+      
 
     </section>
     <!-- /.content -->
   </div>
-  
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
@@ -302,5 +317,10 @@
 <script src="../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
+<!-- Scripts -->
+<script type="text/javascript" src="assets/js/scripts.min.js"></script>
+ 
+
+
 </body>
 </html>

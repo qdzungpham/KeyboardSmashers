@@ -1,3 +1,6 @@
+<?php
+require "../connect.inc";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,16 +11,16 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   <!-- piano -->
   
 
@@ -34,7 +37,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../home.html" class="logo">
+    <a href="../home.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -60,17 +63,17 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Keyboard Smasher</span>
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Keyboard Smasher
-                  <small>Teacher</small>
+                  <?php echo $_SESSION["UserID"]; ?>
+                  <small>Student</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -78,10 +81,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../../home.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -116,8 +119,8 @@
       <ul class="sidebar-menu">
         
         <li class="">
-          <a href="index.html">
-            <i class="fa fa-dashboard"></i> <span>Teacher Portal Home</span>
+          <a href="index.php">
+            <i class="fa fa-dashboard"></i> <span>Student Portal Home</span>
             <span class="pull-right-container">
               
             </span>
@@ -127,32 +130,32 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-graduation-cap"></i>
-            <span>Teacher Area</span>
+            <span>Student Study</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="fa fa-user"></i> My Profile</a></li>
-            <li><a href="timetable.html"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
-            
+            <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+            <li><a href="timetable.php"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
+            <li><a href="enrolment.php"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
             
           </ul>
         </li>
         <li>
-          <a href="materials.html">
+          <a href="materials.php">
             <i class="fa fa-file-text"></i> <span>Learning Materials</span>
             
           </a>
         </li>
 		<li class="">
-          <a href="studentcontact.html">
-            <i class="fa fa-phone"></i> <span>Student Contacts</span>
+          <a href="teachercontact.php">
+            <i class="fa fa-phone"></i> <span>Teacher Contacts</span>
             
           </a>
         </li>
 		<li class="active">
-          <a href="tools.html">
+          <a href="tools.php">
             <i class="fa fa-lightbulb-o"></i> <span>Tools</span>
             
           </a>
@@ -303,20 +306,35 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../plugins/fastclick/fastclick.js"></script>
+<script src="plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/app.min.js"></script>
+<script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+<script src="dist/js/demo.js"></script>
 <!-- Scripts -->
-<script type="text/javascript" src="assets/js/scripts.min.js"></script>
- 
+  <script type="text/javascript" src="assets/js/scripts.min.js"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-45159592-1', 'felipefialho.com');
+  ga('send', 'pageview');
+  </script>
 
 
 </body>

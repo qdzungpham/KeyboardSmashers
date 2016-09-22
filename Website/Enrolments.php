@@ -1,3 +1,8 @@
+
+<?php 
+require "connect.inc";
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +37,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="home.html" class="navbar-brand"><b>Pinelands</b>MusicSchool</a>
+          <a href="home.php" class="navbar-brand"><b>Pinelands</b>MusicSchool</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -41,10 +46,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="Enrolments.html">Enrolment</a></li>
-			<li><a href="About us.html">About Us</a></li>
-			<li><a href="career.html">Careers</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li class="active"><a href="Enrolments.php">Enrolment</a></li>
+			<li><a href="About us.php">About Us</a></li>
+			<li><a href="career.php">Careers</a></li>
           </ul>
           
         </div>
@@ -56,9 +61,6 @@
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!-- The user image in the navbar-->
-                
-                <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">Login</span>
               </a>
               <ul style="width: 370px;"class="dropdown-menu">
@@ -67,13 +69,15 @@
                    <div class="login-box-body">
                        <p class="login-box-msg">Sign in to start your session</p>
 
-                       <form action="portal/index.html" method="post">
+                       <form action="login.php" method="post">
                            <div class="form-group has-feedback">
-                               <input type="email" class="form-control" placeholder="Username">
-                               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                               <input type="text" class="form-control" placeholder="Username"
+                               name="username" required>
+                               <span class="glyphicon fa fa-user form-control-feedback"></span>
                            </div>
                            <div class="form-group has-feedback">
-                               <input type="password" class="form-control" placeholder="Password">
+                               <input type="password" class="form-control" placeholder="Password"
+                               name="password" required>
                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                            </div>
                            <div class="row">
@@ -87,7 +91,7 @@
                                <!-- /.col -->
                                <div class="col-xs-4">
                                     <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
-		                            <a href="portal/index.html"class="btn btn-primary btn-block btn-flat">Sign In</a>
+		                            <input type="submit" class="btn btn-primary btn-block btn-flat" name="login" value ="Sign In">
                                </div>
                                <!-- /.col -->
                            </div>
@@ -106,61 +110,84 @@
       <!-- /.container-fluid -->
     </nav>
   </header>
-  <!-- Full Width Column -->
+  
   <div style="background:url('image/back.gif') no-repeat;background-size:100%;"class="content-wrapper">
     <div id ="wrap">
 		<div id="slider">
 			<img src="image/image1.gif">
 		</div>
-
 </div>
-	<div id ="content">
+<div id ="content">
 		<div id ="page-heading">
-			Our Courses<br>
+			Enrolments<br>
 		</div>
-		<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			&#9734;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
+		<div id ="cname">
+			<img src="image/line.png">
 		</div>
+</div>
 
-		<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			 &#9825;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
-
+<div class ="form-wrapper">
+	<form action="" method="post">
+	<fieldset>
+	<legend>All Students</legend>
+		First name: *<br>
+		<input type="text" name="firstName">
+		<br><br>
+		Last name: *<br>
+		<input type="text" name="lastName">
+		<br><br>
+		DOB: *<br>
+		<input type="date" name="dob">
+		<br><br>
+		<b>Address *</b><br>
+		Unit Number:
+		<input type="text" name="unitNo">
+		<br><br>
+		Street Number:
+		<input type="number" name="streetNo">
+		<br><br>
+		Street Name:
+		<input type="text" name="streetName">
+		<br><br>
+		Suburb:
+		<input type="text" name="suburb">
+		<br><br>
+		Postcode:
+		<input type="number" name="postCode">
+		<br><br>
+		Gender: *<br>
+		<div class ="options">
+		<input type="radio" name="gender" value="male">Male<br>
+		<input type="radio" name="gender" value="female">Female<br>
+		<input type="radio" name="gender" value="other">Other<br>
 		</div>
-			<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			&#9813;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
-
-		</div>
-	</div>
+		<br><br>
+		Preferred Phone Number:<br>
+		<input type="text" name="phoneNumber">
+		<br><br>
+		Email Address: *<br>
+		<input type="text" name="email">
+		<br><br>
+	</fieldset>
+	<br>
+	<fieldset>
+	<legend>Under 18s</legend>
+		Parent/Guardian Name:<br>
+		<input type="text" name="guardianname">
+		<br><br>
+		Parent/Guardian Preferred Phone Number:<br>
+		<input type="text" name="phonenumber">
+		<br><br>
+		Parent/Guardian Email Address:<br>
+		<input type="text" name="email">
+		<br><br>
+	</fieldset>
+		<br>
+		<input type="submit" value="Submit">
+	</form>
+	
+	<p>Any fields without an asterix * are optional</p>
+</div>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

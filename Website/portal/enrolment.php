@@ -1,3 +1,6 @@
+<?php
+require "../connect.inc";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../home.html" class="logo">
+    <a href="../home.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -58,7 +61,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Keyboard Smasher</span>
+              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -66,7 +69,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Keyboard Smasher
+                  <?php echo $_SESSION["UserID"]; ?>
                   <small>Student</small>
                 </p>
               </li>
@@ -75,10 +78,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../home.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -113,7 +116,7 @@
       <ul class="sidebar-menu">
         
         <li class="">
-          <a href="index.html">
+          <a href="index.php">
             <i class="fa fa-dashboard"></i> <span>Student Portal Home</span>
             <span class="pull-right-container">
               
@@ -130,26 +133,26 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="fa fa-user"></i> My Profile</a></li>
-            <li><a href="timetable.html"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
-            <li class="active"><a href="enrolment.html"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
+            <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+            <li><a href="timetable.php"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
+            <li class="active"><a href="enrolment.php"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
             
           </ul>
         </li>
         <li>
-          <a href="materials.html">
+          <a href="materials.php">
             <i class="fa fa-file-text"></i> <span>Learning Materials</span>
             
           </a>
         </li>
 		<li>
-          <a href="teachercontact.html">
+          <a href="teachercontact.php">
             <i class="fa fa-phone"></i> <span>Teacher Contacts</span>
             
           </a>
         </li>
 		<li>
-          <a href="tools.html">
+          <a href="tools.php">
             <i class="fa fa-lightbulb-o"></i> <span>Tools</span>
             
           </a>

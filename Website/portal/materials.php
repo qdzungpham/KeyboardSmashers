@@ -1,3 +1,7 @@
+
+<?php
+require "../connect.inc";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +35,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../home.html" class="logo">
+    <a href="../home.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -58,7 +62,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Keyboard Smasher</span>
+              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -66,7 +70,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Keyboard Smasher
+                  <?php echo $_SESSION["UserID"]; ?>
                   <small>Student</small>
                 </p>
               </li>
@@ -75,10 +79,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../home.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -113,7 +117,7 @@
       <ul class="sidebar-menu">
         
         <li class="">
-          <a href="index.html">
+          <a href="index.php">
             <i class="fa fa-dashboard"></i> <span>Student Portal Home</span>
             <span class="pull-right-container">
               
@@ -130,26 +134,26 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="fa fa-user"></i> My Profile</a></li>
-            <li><a href="timetable.html"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
-            <li><a href="enrolment.html"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
+            <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+            <li><a href="timetable.php"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
+            <li><a href="enrolment.php"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
             
           </ul>
         </li>
-        <li>
-          <a href="materials.html">
+        <li class="active">
+          <a href="materials.php">
             <i class="fa fa-file-text"></i> <span>Learning Materials</span>
             
           </a>
         </li>
-		<li class="active">
-          <a href="teachercontact.html">
+		<li>
+          <a href="teachercontact.php">
             <i class="fa fa-phone"></i> <span>Teacher Contacts</span>
             
           </a>
         </li>
 		<li>
-          <a href="tools.html">
+          <a href="tools.php">
             <i class="fa fa-lightbulb-o"></i> <span>Tools</span>
             
           </a>
@@ -169,7 +173,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Teacher Contacts
+        Learning Materials
         <small></small>
       </h1>
       
@@ -178,51 +182,152 @@
     <!-- Main content -->
     <section class="content">
 	    <div class="row">
-        <div class="col-md-12">
-          <div class="box box-default">
-            <div class="box-header with-border">
-              <i class="fa fa-comments"></i>
+            <div class="col-md-12">
+			    <!-- Custom Tabs (Pulled to the right) -->
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+              <li><a href="#tab_1-1" data-toggle="tab">Level 3</a></li>
+              <li><a href="#tab_2-2" data-toggle="tab">Level 2</a></li>
+              <li class="active"><a href="#tab_3-2" data-toggle="tab">Level 1</a></li>
+              
+              <li class="pull-left header"><i class="fa  fa-file-text"></i> Learning Documents</li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane" id="tab_1-1">
+                Twinkle, twinkle, little star,
+                      How I wonder what you are!
+                      Up above the world so high,
+                      Like a diamond in the sky.
 
-              <h3 class="box-title">Contact details</h3>
+                      When the blazing sun is gone,
+                      When he nothing shines upon,
+                      Then you show your little light,
+                      Twinkle, twinkle, all the night.
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2-2">
+                Twinkle, twinkle, little star,
+                      How I wonder what you are!
+                      Up above the world so high,
+                      Like a diamond in the sky.
+
+                      When the blazing sun is gone,
+                      When he nothing shines upon,
+                      Then you show your little light,
+                      Twinkle, twinkle, all the night.
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane active" id="tab_3-2">
+                  <div class="box box-solid">
+                     <div class="box-header with-border">
+                        <h3 class="box-title">Lession 1</h3>
+                     </div>
+                     <!-- /.box-header -->
+                     <div class="box-body">
+					    <p><b>Attached Files:<b><p>
+						<p>
+						<a href="#">MSC101_Lession1 - How to Read Sheet Music.pdf</a><br>
+						<a href="#">MSC101_Lession1 - Your First Lesson on the Piano.pdf</a>
+					    </p>
+                
+                     </div>
+                     <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+				  <div class="box box-solid">
+                     <div class="box-header with-border">
+                        <h3 class="box-title">Lession 2</h3>
+                     </div>
+                     <!-- /.box-header -->
+                     <div class="box-body">
+					    <p><b>Attached Files:<b><p>
+						<p>
+						<a href="#">MSC101_Lession2 - How to Read Music Notes for Piano.pdf</a><br>
+						<a href="#">MSC101_Lession2 - Reading Music Notes on Treble Clef and Bass Clef.pdf</a>
+					    </p>
+                
+                     </div>
+                     <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+				  <div class="box box-solid">
+                     <div class="box-header with-border">
+                        <h3 class="box-title">Lession 3</h3>
+                     </div>
+                     <!-- /.box-header -->
+                     <div class="box-body">
+					    <p><b>Attached Files:<b><p>
+						<p>
+						<a href="#">MSC101_Lession3 - How to Read Sheet Music.pdf</a><br>
+						
+					    </p>
+                
+                     </div>
+                     <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- nav-tabs-custom -->
+			
+		</div>
+		
+		<div class="col-md-12">
+		    <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Music Instruments</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-			<div style="padding:20px;border-bottom:1px solid #ddd;"class="row">
-                <div class="col-md-9">
-				    
-				    <h4><b>Mrs Claire Harding</b></h4>
-					<p><b>Email:</b> charding@gmail.com
-					<br><b>Office Location:</b> Room 101
-					<br><b>Office Hours:</b> 9 AM - 4 PM
-					<br><b>Notes:</b> Hello!
-					</p>
-					
-				</div>
-				<div class="col-md-3">
-				    <img src="dist/img/ena.png" alt="" style="width:150px;height:150px;margin-left:40px;">
-				</div>
-			</div>
-			<div style="padding:20px;border-bottom:1px solid #ddd;"class="row">
-                <div class="col-md-9">
-				    
-				    <h4><b>Mr Humphrey Mitchum</b></h4>
-					<p><b>Email:</b> hmitchum@gmail.com
-					<br><b>Office Location:</b> Room 101
-					<br><b>Office Hours:</b> 9 AM - 4 PM
-					<br><b>Notes:</b> Hello!
-					</p>
-					
-				</div>
-				<div class="col-md-3">
-				    <img src="dist/img/ena.png" alt="" style="width:150px;height:150px;margin-left:40px;">
-				</div>
-			</div>
+            <div class="box-body no-padding">
+              <table class="table">
+                <tr>
+                  <th style="width:150px">Instrument</th>
+                  <th>Description</th>
+                  <th>Rental Cost (per month)</th>
+                  <th style="width: 200px">Availablility</th>
+                </tr>
+                <tr>
+                  <td><img src="dist/img/violin.png" alt="" style="width:100px;height:100px"></td>
+                  <td>In good condition</td>
+                  <td>
+                    <span class="badge bg-yellow">$50</span>
+                  </td>
+                  <td><a style="width:100px"class="btn btn-danger btn-xs">Unavailable</a></td>
+                </tr>
+                <tr>
+                  <td><img src="dist/img/saxophone.png" alt="" style="width:100px;height:100px"></td>
+                  <td>New</td>
+                  <td>
+                    <span class="badge bg-yellow">$100</span>
+                  </td>
+                  <td><a style="width:100px"class="btn btn-success btn-xs">Available</a></td>
+                </tr>
+                <tr>
+                  <td><img src="dist/img/guitar.png" alt="" style="width:100px;height:100px"></td>
+                  <td>Excellent condition</td>
+                  <td>
+                    <span class="badge bg-yellow">$100</span>
+                  </td>
+                  <td><a style="width:100px"class="btn btn-success btn-xs">Available</a></td>
+                </tr>
+                <tr>
+                  <td><img src="dist/img/violin.png" alt="" style="width:100px;height:100px"></td>
+                  <td>Repair</td>
+                  <td>
+                    <span class="badge bg-yellow">$50</span>
+                  </td>
+                  <td><a style="width:100px"class="btn btn-danger btn-xs">Unavailable</a></td>
+                </tr>
+              </table>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-        </div>
-        <!-- /.col -->
+		</div>
+		
       </div>
 
       

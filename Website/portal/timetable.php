@@ -1,3 +1,7 @@
+
+<?php
+require "../connect.inc";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +10,6 @@
   <title>Pinelands Music School | Portal</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -18,9 +21,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <!-- piano -->
-  
-
+  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.print.css" media="print">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -34,7 +36,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../home.html" class="logo">
+    <a href="../home.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -61,7 +63,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Keyboard Smasher</span>
+              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -69,7 +71,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Keyboard Smasher
+                  <?php echo $_SESSION["UserID"]; ?>
                   <small>Student</small>
                 </p>
               </li>
@@ -78,10 +80,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../home.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -116,7 +118,7 @@
       <ul class="sidebar-menu">
         
         <li class="">
-          <a href="index.html">
+          <a href="index.php">
             <i class="fa fa-dashboard"></i> <span>Student Portal Home</span>
             <span class="pull-right-container">
               
@@ -124,7 +126,7 @@
           </a>
           
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="#">
             <i class="fa fa-graduation-cap"></i>
             <span>Student Study</span>
@@ -133,26 +135,26 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="fa fa-user"></i> My Profile</a></li>
-            <li><a href="timetable.html"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
-            <li><a href="enrolment.html"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
+            <li><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+            <li class="active"><a href="timetable.php"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
+            <li><a href="enrolment.php"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
             
           </ul>
         </li>
         <li>
-          <a href="materials.html">
+          <a href="materials.php">
             <i class="fa fa-file-text"></i> <span>Learning Materials</span>
             
           </a>
         </li>
 		<li class="">
-          <a href="teachercontact.html">
+          <a href="teachercontact.php">
             <i class="fa fa-phone"></i> <span>Teacher Contacts</span>
             
           </a>
         </li>
-		<li class="active">
-          <a href="tools.html">
+		<li>
+          <a href="tools.php">
             <i class="fa fa-lightbulb-o"></i> <span>Tools</span>
             
           </a>
@@ -172,7 +174,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tools
+        My Timetable
         <small></small>
       </h1>
       
@@ -181,102 +183,17 @@
     <!-- Main content -->
     <section class="content">
 	    <div class="row">
-		    <div class="col-md-12">
-			    <div class="box box-danger">
-                    <div class="box-header with-border">
-                       <h3 class="box-title">Piano</h3>
-
-                       <div class="box-tools pull-right">
-                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                         </button>
-                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                       </div>
-                    </div>
-                    <div class="box-body">
-                        <!-- Piano -->
-  <ul class="piano">
-    <li class="key">
-      <span class="white-key" data-key="20" data-note="1C"></span>
-      <span class="black-key" data-key="81" data-note="1Cs"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="65" data-note="1D"></span>
-      <span class="black-key" data-key="87" data-note="1Ds"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="83" data-note="1E"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="68" data-note="1F"></span>
-      <span class="black-key" data-key="82" data-note="1Fs"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="70" data-note="1G"></span>
-      <span class="black-key" data-key="84" data-note="1Gs"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="71" data-note="2A"></span>
-      <span class="black-key" data-key="89" data-note="2As"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="72" data-note="2B"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="74" data-note="2C"></span>
-      <span class="black-key" data-key="73" data-note="2Cs"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="75" data-note="2D"></span>
-      <span class="black-key" data-key="79" data-note="2Ds"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="76" data-note="2E"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="186" data-note="2F"></span>
-      <span class="black-key" data-key="219" data-note="2Fs"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="222" data-note="2G"></span>
-      <span class="black-key" data-key="221" data-note="2Gs"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="220" data-note="3A"></span>
-      <span class="black-key" data-key="13" data-note="3As"></span>
-    </li>
-    <li class="key">
-      <span class="white-key" data-key="37" data-note="3B"></span>
-    </li>
-  </ul>
-  <!-- End Piano -->
-    
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-			
-			</div>
-			<div class="col-md-6">
-			    <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Online Tutorials</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-                <iframe width="560" height="315" 
-				src="https://www.youtube.com/embed/QHs_2-pB_6c?list=PLUyDmNalB0rjP2anw_332rs8-oJMapOMU" 
-				frameborder="0" allowfullscreen></iframe>
-				
+		    <div class="col-md-9">
+          <div class="box box-primary">
+            <div class="box-body no-padding">
+              <!-- THE CALENDAR -->
+              <div id="calendar"></div>
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
-			</div>
+          <!-- /. box -->
+        </div>
+		
         
         </div>
 
@@ -314,25 +231,165 @@
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- Scripts -->
-  <script type="text/javascript" src="assets/js/scripts.min.js"></script>
-  <script>
-  (function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function() {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+<!-- fullCalendar 2.2.5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="plugins/fullcalendar/fullcalendar.min.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
 
-  ga('create', 'UA-45159592-1', 'felipefialho.com');
-  ga('send', 'pageview');
-  </script>
+    /* initialize the external events
+     -----------------------------------------------------------------*/
+    function ini_events(ele) {
+      ele.each(function () {
 
+        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+        // it doesn't need to have a start or end
+        var eventObject = {
+          title: $.trim($(this).text()) // use the element's text as the event title
+        };
 
+        // store the Event Object in the DOM element so we can get to it later
+        $(this).data('eventObject', eventObject);
+
+        // make the event draggable using jQuery UI
+        $(this).draggable({
+          zIndex: 1070,
+          revert: true, // will cause the event to go back to its
+          revertDuration: 0  //  original position after the drag
+        });
+
+      });
+    }
+
+    ini_events($('#external-events div.external-event'));
+
+    /* initialize the calendar
+     -----------------------------------------------------------------*/
+    //Date for the calendar events (dummy data)
+    var date = new Date();
+    var d = date.getDate(),
+        m = date.getMonth(),
+        y = date.getFullYear();
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek'
+      },
+      buttonText: {
+        today: 'today',
+        month: 'month',
+        week: 'week',
+        day: 'day'
+      },
+      //Random default events
+      events: [
+        {
+          title: 'Piano',
+          start: new Date(y, m, 1),
+		  allDay: false,
+          backgroundColor: "#f56954", //red
+          borderColor: "#f56954" //red
+        },
+		{
+          title: 'Piano',
+          start: new Date(y, m, 15, 18),
+		  allDay: false,
+          backgroundColor: "#f56954", //red
+          borderColor: "#f56954" //red
+        },
+		{
+          title: 'Piano',
+          start: new Date(y, m, 29),
+		  allDay: false,
+          backgroundColor: "#f56954", //red
+          borderColor: "#f56954" //red
+        },
+        {
+          title: 'Violin',
+          start: new Date(y, m, 6, 11),
+		  allDay: false,
+          backgroundColor: "#f39c12", //yellow
+          borderColor: "#f39c12" //yellow
+        },
+		{
+          title: 'Violin',
+          start: new Date(y, m, d),
+		  allDay: false,
+          backgroundColor: "#f39c12", //yellow
+          borderColor: "#f39c12" //yellow
+        },
+        {
+          title: 'Cello',
+          start: new Date(y, m, 20, 14),
+		  allDay: false,
+          backgroundColor: "#00a65a", //Success (green)
+          borderColor: "#00a65a" //Success (green)
+        },
+        
+      ],
+      editable: true,
+      droppable: true, // this allows things to be dropped onto the calendar !!!
+      drop: function (date, allDay) { // this function is called when something is dropped
+
+        // retrieve the dropped element's stored Event Object
+        var originalEventObject = $(this).data('eventObject');
+
+        // we need to copy it, so that multiple events don't have a reference to the same object
+        var copiedEventObject = $.extend({}, originalEventObject);
+
+        // assign it the date that was reported
+        copiedEventObject.start = date;
+        copiedEventObject.allDay = allDay;
+        copiedEventObject.backgroundColor = $(this).css("background-color");
+        copiedEventObject.borderColor = $(this).css("border-color");
+
+        // render the event on the calendar
+        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+        // is the "remove after drop" checkbox checked?
+        if ($('#drop-remove').is(':checked')) {
+          // if so, remove the element from the "Draggable Events" list
+          $(this).remove();
+        }
+
+      }
+    });
+
+    /* ADDING EVENTS */
+    var currColor = "#3c8dbc"; //Red by default
+    //Color chooser button
+    var colorChooser = $("#color-chooser-btn");
+    $("#color-chooser > li > a").click(function (e) {
+      e.preventDefault();
+      //Save color
+      currColor = $(this).css("color");
+      //Add color effect to button
+      $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
+    });
+    $("#add-new-event").click(function (e) {
+      e.preventDefault();
+      //Get value and make sure it is not null
+      var val = $("#new-event").val();
+      if (val.length == 0) {
+        return;
+      }
+
+      //Create events
+      var event = $("<div />");
+      event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
+      event.html(val);
+      $('#external-events').prepend(event);
+
+      //Add draggable funtionality
+      ini_events(event);
+
+      //Remove event from text input
+      $("#new-event").val("");
+    });
+  });
+</script>
 </body>
 </html>

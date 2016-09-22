@@ -1,3 +1,7 @@
+
+<?php
+require "../connect.inc";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +21,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.min.css">
-  <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.print.css" media="print">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -32,7 +35,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../home.html" class="logo">
+    <a href="../home.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>MS</span>
       <!-- logo for regular state and mobile devices -->
@@ -59,7 +62,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Keyboard Smasher</span>
+              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -67,7 +70,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Keyboard Smasher
+                  <?php echo $_SESSION["UserID"]; ?>
                   <small>Student</small>
                 </p>
               </li>
@@ -76,10 +79,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../home.html" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -114,7 +117,7 @@
       <ul class="sidebar-menu">
         
         <li class="">
-          <a href="index.html">
+          <a href="index.php">
             <i class="fa fa-dashboard"></i> <span>Student Portal Home</span>
             <span class="pull-right-container">
               
@@ -131,26 +134,26 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="fa fa-user"></i> My Profile</a></li>
-            <li class="active"><a href="timetable.html"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
-            <li><a href="enrolment.html"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
+            <li class="active"><a href="profile.php"><i class="fa fa-user"></i> My Profile</a></li>
+            <li><a href="timetable.php"><i class="fa fa-calendar-o"></i> My Timetable</a></li>
+            <li><a href="enrolment.php"><i class="fa fa-bookmark"></i> My Enrolment</a></li>
             
           </ul>
         </li>
         <li>
-          <a href="materials.html">
+          <a href="materials.php">
             <i class="fa fa-file-text"></i> <span>Learning Materials</span>
             
           </a>
         </li>
-		<li class="">
-          <a href="teachercontact.html">
+		<li>
+          <a href="teachercontact.php">
             <i class="fa fa-phone"></i> <span>Teacher Contacts</span>
             
           </a>
         </li>
 		<li>
-          <a href="tools.html">
+          <a href="tools.php">
             <i class="fa fa-lightbulb-o"></i> <span>Tools</span>
             
           </a>
@@ -170,7 +173,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        My Timetable
+        My Profile
         <small></small>
       </h1>
       
@@ -178,26 +181,102 @@
 
     <!-- Main content -->
     <section class="content">
-	    <div class="row">
-		    <div class="col-md-9">
-          <div class="box box-primary">
-            <div class="box-body no-padding">
-              <!-- THE CALENDAR -->
-              <div id="calendar"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /. box -->
-        </div>
-		
-        
-        </div>
 
-      
+      <div class="row">
+                <div class="col-lg-12">
+                    <!--Timeline -->
+                    <div style = "" class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-user"></i> General details
+                        </div>
+
+                        <div class="panel-body">
+						    <div class="panel panel-primary no-boder">
+                        <div style = "background-color:#F2F6F9;"class="panel-body yellow">
+						<div class="col-lg-3">
+                            <img src="dist/img/ena.png" alt="" style="width:150px;height:150px;margin-left:40px;">
+						</div>
+						<div class="col-lg-9">
+						<div class="row">						
+						    <h style="font-size:20px;"><b><?php echo $_SESSION["UserID"]; ?></b></h>						
+						</div>
+						<div class="row">												    
+							<h>0123456</h>							
+						</div>
+						<div style="background-color:white;margin-left:-15px;margin-top:15px"class="panel-body yellow">
+                            <div class="row">	
+							
+							<i style="margin-left:10px"class="fa fa-calendar-o"></i>	
+						    <h style="margin-left:5px">was born on</h>	
+                            <h><b>24 Feb 1996</b></h>								
+						</div>
+						<div class="row">	
+							
+							<i style="margin-left:10px"class="fa fa-transgender"></i>	
+						    <h style="margin-left:5px">identifies as a</h>	
+                            <h><b>Female</b></h>									
+						</div>
+						<div class="row">	
+							
+							<i style="margin-left:10px"class="fa fa-globe"></i>	
+						    <h style="margin-left:5px">is an</h>	
+                            <h><b>International student</b></h>								
+						</div>
+                        </div>
+						</div>
+                        </div>
+                        
+                    </div>
+                            
+
+                    </div>
+                    <!--End Timeline -->
+                </div>
+            </div>
+			</div>
+			<div class="row">
+		<div class="col-lg-12">
+                    <!-- Donut Example-->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i>Contact details
+                        </div>
+                        <div class="panel-body">
+                            <div style="border-bottom-style:dotted;border-width: 1px;"class="box-body">
+                                <dl class="dl-horizontal">
+                                    <dt>Primary contact number:</dt>
+                                    <dd>012345678</dd>
+                                    <dt>Mailing address</dt>
+                                    <dd>00 Rothburn Street</dd>
+                                    <dd>DOLLANDELLA Queensland 4077, Australia</dd>
+                                    <dt>Home address:</dt>
+                                    <dd>00 Rothburn Street</dd>
+									<dd>DOLLANDELLA Queensland 4077, Australia</dd>
+                                    <dt>Email address</dt>
+                                    <dd><a>keyboardsmasher@gmail.com</a>
+                                    </dd>
+                                </dl>
+                            </div>
+							
+                            <div style="margin-left:5px;margin-top:5px"class="row">						
+							    <i style="margin-left:10px"class="fa fa-share"></i>	
+						        <a href="#" style="margin-left:5px">Update contact details</a>										
+						    </div>
+							<div style="margin-left:5px;"class="row">						
+							    <i style="margin-left:10px"class="fa fa-share"></i>	
+						        <a href="#" style="margin-left:5px">Change password</a>										
+						    </div>
+                        </div>
+
+                    </div>
+                    <!--End Donut Example-->
+                </div>
+		</div>
 
     </section>
     <!-- /.content -->
   </div>
+  
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
@@ -227,165 +306,5 @@
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- fullCalendar 2.2.5 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="plugins/fullcalendar/fullcalendar.min.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-
-    /* initialize the external events
-     -----------------------------------------------------------------*/
-    function ini_events(ele) {
-      ele.each(function () {
-
-        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-        // it doesn't need to have a start or end
-        var eventObject = {
-          title: $.trim($(this).text()) // use the element's text as the event title
-        };
-
-        // store the Event Object in the DOM element so we can get to it later
-        $(this).data('eventObject', eventObject);
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-          zIndex: 1070,
-          revert: true, // will cause the event to go back to its
-          revertDuration: 0  //  original position after the drag
-        });
-
-      });
-    }
-
-    ini_events($('#external-events div.external-event'));
-
-    /* initialize the calendar
-     -----------------------------------------------------------------*/
-    //Date for the calendar events (dummy data)
-    var date = new Date();
-    var d = date.getDate(),
-        m = date.getMonth(),
-        y = date.getFullYear();
-    $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek'
-      },
-      buttonText: {
-        today: 'today',
-        month: 'month',
-        week: 'week',
-        day: 'day'
-      },
-      //Random default events
-      events: [
-        {
-          title: 'Piano',
-          start: new Date(y, m, 1),
-		  allDay: false,
-          backgroundColor: "#f56954", //red
-          borderColor: "#f56954" //red
-        },
-		{
-          title: 'Piano',
-          start: new Date(y, m, 15, 18),
-		  allDay: false,
-          backgroundColor: "#f56954", //red
-          borderColor: "#f56954" //red
-        },
-		{
-          title: 'Piano',
-          start: new Date(y, m, 29),
-		  allDay: false,
-          backgroundColor: "#f56954", //red
-          borderColor: "#f56954" //red
-        },
-        {
-          title: 'Violin',
-          start: new Date(y, m, 6, 11),
-		  allDay: false,
-          backgroundColor: "#f39c12", //yellow
-          borderColor: "#f39c12" //yellow
-        },
-		{
-          title: 'Violin',
-          start: new Date(y, m, d),
-		  allDay: false,
-          backgroundColor: "#f39c12", //yellow
-          borderColor: "#f39c12" //yellow
-        },
-        {
-          title: 'Cello',
-          start: new Date(y, m, 20, 14),
-		  allDay: false,
-          backgroundColor: "#00a65a", //Success (green)
-          borderColor: "#00a65a" //Success (green)
-        },
-        
-      ],
-      editable: true,
-      droppable: true, // this allows things to be dropped onto the calendar !!!
-      drop: function (date, allDay) { // this function is called when something is dropped
-
-        // retrieve the dropped element's stored Event Object
-        var originalEventObject = $(this).data('eventObject');
-
-        // we need to copy it, so that multiple events don't have a reference to the same object
-        var copiedEventObject = $.extend({}, originalEventObject);
-
-        // assign it the date that was reported
-        copiedEventObject.start = date;
-        copiedEventObject.allDay = allDay;
-        copiedEventObject.backgroundColor = $(this).css("background-color");
-        copiedEventObject.borderColor = $(this).css("border-color");
-
-        // render the event on the calendar
-        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-        // is the "remove after drop" checkbox checked?
-        if ($('#drop-remove').is(':checked')) {
-          // if so, remove the element from the "Draggable Events" list
-          $(this).remove();
-        }
-
-      }
-    });
-
-    /* ADDING EVENTS */
-    var currColor = "#3c8dbc"; //Red by default
-    //Color chooser button
-    var colorChooser = $("#color-chooser-btn");
-    $("#color-chooser > li > a").click(function (e) {
-      e.preventDefault();
-      //Save color
-      currColor = $(this).css("color");
-      //Add color effect to button
-      $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
-    });
-    $("#add-new-event").click(function (e) {
-      e.preventDefault();
-      //Get value and make sure it is not null
-      var val = $("#new-event").val();
-      if (val.length == 0) {
-        return;
-      }
-
-      //Create events
-      var event = $("<div />");
-      event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
-      event.html(val);
-      $('#external-events').prepend(event);
-
-      //Add draggable funtionality
-      ini_events(event);
-
-      //Remove event from text input
-      $("#new-event").val("");
-    });
-  });
-</script>
 </body>
 </html>

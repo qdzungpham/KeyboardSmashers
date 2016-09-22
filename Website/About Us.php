@@ -1,3 +1,7 @@
+<?php 
+require "connect.inc";
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +36,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="home.html" class="navbar-brand"><b>Pinelands</b>MusicSchool</a>
+          <a href="home.php" class="navbar-brand"><b>Pinelands</b>MusicSchool</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -41,10 +45,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="Enrolments.html">Enrolment</a></li>
-			<li class="active"><a href="About us.html">About Us</a></li>
-			<li><a href="career.html">Careers</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="Enrolments.php">Enrolment</a></li>
+			<li class="active"><a href="About us.php">About Us</a></li>
+			<li><a href="career.php">Careers</a></li>
           </ul>
           
         </div>
@@ -64,13 +68,15 @@
                    <div class="login-box-body">
                        <p class="login-box-msg">Sign in to start your session</p>
 
-                       <form action="portal/index.html" method="post">
+                       <form action="login.php" method="post">
                            <div class="form-group has-feedback">
-                               <input type="email" class="form-control" placeholder="Username">
-                               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                               <input type="text" class="form-control" placeholder="Username"
+                               name="username" required>
+                               <span class="glyphicon fa fa-user form-control-feedback"></span>
                            </div>
                            <div class="form-group has-feedback">
-                               <input type="password" class="form-control" placeholder="Password">
+                               <input type="password" class="form-control" placeholder="Password"
+                               name="password" required>
                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                            </div>
                            <div class="row">
@@ -84,7 +90,7 @@
                                <!-- /.col -->
                                <div class="col-xs-4">
                                     <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
-		                            <a href="portal/index.html"class="btn btn-primary btn-block btn-flat">Sign In</a>
+		                            <input type="submit" class="btn btn-primary btn-block btn-flat" name="login" value ="Sign In">
                                </div>
                                <!-- /.col -->
                            </div>
