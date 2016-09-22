@@ -185,7 +185,32 @@
 			  <i class="fa fa-info-circle"></i>
               <h3 class="box-title">Student's Announments</h3>
 			  <div class="box-tools">
-			    <a class="btn btn-primary btn-md">Make an Announment</a>
+			    <a class="btn btn-primary btn-md" data-toggle="dropdown">Make an Announment</a>
+				<ul style="width: 500px;"class="dropdown-menu">
+				    <div class="box box-solid">
+					    <div class="box-body">
+                            <form role="form">
+							    <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+								<div class="form-group">
+                                    <label>Details</label>
+                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                </div>
+								<div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Students can view
+                                    </label>
+                                </div>
+								<button type="submit" class="btn btn-primary">Submit</button>
+								
+							</form>
+							
+						</div>
+					</div>
+				
+				</ul>
 			  </div>
             </div>
             <!-- /.box-header -->
