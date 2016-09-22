@@ -127,66 +127,104 @@ require "connect.inc";
 </div>
 
 <div class ="form-wrapper">
-	<form action="" method="post">
+	<form method="post" action="studentEnrolment.php">
 	<fieldset>
 	<legend>All Students</legend>
-		First name: *<br>
-		<input type="text" name="firstName">
+		<strong>First name: </strong><br>
+		<input type="text" name="firstName"> *
 		<br><br>
-		Last name: *<br>
-		<input type="text" name="lastName">
+		<strong>Last name: </strong><br>
+		<input type="text" name="lastName"> *
 		<br><br>
-		DOB: *<br>
-		<input type="date" name="dob">
+		<strong>DOB: </strong><br>
+		<input type="date" name="dob"> *
 		<br><br>
-		<b>Address *</b><br>
-		Unit Number:
-		<input type="text" name="unitNo">
-		<br><br>
-		Street Number:
-		<input type="number" name="streetNo">
-		<br><br>
-		Street Name:
-		<input type="text" name="streetName">
-		<br><br>
-		Suburb:
-		<input type="text" name="suburb">
-		<br><br>
-		Postcode:
-		<input type="number" name="postCode">
-		<br><br>
-		Gender: *<br>
-		<div class ="options">
-		<input type="radio" name="gender" value="male">Male<br>
-		<input type="radio" name="gender" value="female">Female<br>
-		<input type="radio" name="gender" value="other">Other<br>
+		<strong>Address</strong><br>
+		<div class = "addressMenu">
+			Street:
+			<br><br>
+			Suburb:
+			<br><br>
+			State:
+			<br><br>
+			Postcode:
+			<br><br>
 		</div>
-		<br><br>
-		Preferred Phone Number:<br>
+		<div class = "addressInputs">
+			<input type="text" name="street"> *
+			<br><br>
+			<input type="text" name="suburb"> *
+			<br><br>
+			<input type="text" name = "state"> *
+			<br><br>
+			<input type="number" name="postCode"> *
+			<br><br>
+		</div>
+		<strong>Gender: </strong>*<br>
+		<div class ="options">
+		<input type="radio" name="gender" value="male"> Male<br>
+		<input type="radio" name="gender" value="female"> Female<br>
+		<input type="radio" name="gender" value="other"> Other<br>
+		</div>
+		<br>
+		<strong>Preferred Phone Number:</strong><br>
 		<input type="text" name="phoneNumber">
 		<br><br>
-		Email Address: *<br>
-		<input type="text" name="email">
+		<strong>Email Address: </strong><br>
+		<input type="text" name="email"> *
 		<br><br>
 	</fieldset>
-	<br>
+	<br><br>
+	<fieldset>
+	<legend>Preferences</legend>
+		<strong>Preferred Lesson Day:</strong><br>
+		<select name = "preferredDay">
+			<option value = "monday">Monday</option>
+			<option value = "tuesday">Tuesday</option>
+			<option value = "wednesday">Wednesday</option>
+			<option value = "thursday">Thursday</option>
+			<option value = "friday">Friday</option>
+		</select>
+		<br><br>
+		<strong>Preferred Lesson Time:</strong><br>
+		<input type="time" name="preferredTime">
+		<br><br>
+		<strong>Preferred Teacher:</strong><br>
+		<input type="text" name="preferredTeacher">
+		<br><br>
+		<strong>Preferred Language Spoken by Teacher:</strong><br>
+		<input type="text" name="preferredLanguage">
+		<br><br>
+		<strong>Preferred Teacher Gender:</strong><br>
+		<div class = "options">
+		<input type="radio" name="preferredGender" value="male"> Male<br>
+		<input type="radio" name="preferredGender" value="female"> Female<br>
+		</div>
+		<br>
+	</fieldset>
+	<br><br>
 	<fieldset>
 	<legend>Under 18s</legend>
-		Parent/Guardian Name:<br>
-		<input type="text" name="guardianname">
+		<strong>Parent/Guardian First Name:</strong><br>
+		<input type="text" name="guardianFirstName"> *
 		<br><br>
-		Parent/Guardian Preferred Phone Number:<br>
+		<strong>Parent/Guardian Last Name:</strong><br>
+		<input type="text" name="guardianLastName"> *
+		<br><br>
+		<strong>Parent/Guardian Preferred Phone Number:</strong><br>
 		<input type="text" name="phonenumber">
 		<br><br>
-		Parent/Guardian Email Address:<br>
-		<input type="text" name="email">
+		<strong>Parent/Guardian Email Address:</strong><br>
+		<input type="text" name="email"> *
 		<br><br>
 	</fieldset>
 		<br>
 		<input type="submit" value="Submit">
+		<input type="reset" value="Reset">
 	</form>
 	
-	<p>Any fields without an asterix * are optional</p>
+	<br>
+	<p>Any fields with an asterix * are essential</p>
 </div>
   </div>
   <!-- /.content-wrapper -->
