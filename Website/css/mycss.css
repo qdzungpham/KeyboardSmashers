@@ -215,14 +215,6 @@ body {
 	margin-bottom: 20px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	/* OLD: Can't put each teacher inline because we 
-	need to put extended description under each one
-	
-	display: inline-block;
-	margin-left: 50px;
-	margin-top: 20px;
-	margin-bottom:20px;
-	*/
 }
 
 #page-heading {
@@ -333,13 +325,22 @@ body {
 	font-family: Verdana, sans-serif;
 	font-size: 15px;
 }
-.Address
-{
-  width: 300px;
-  
+.Address {
+  width: 300px;  
 }
+
+.addressMenu {
+	float: left;
+	text-align: right;
+}
+
+.addressInputs {
+	line-height: 1.2em;
+}
+
 .options {
 	font-size: 12px;
+	line-height: 3em;
 }
 
 /*end enrolments page*/
