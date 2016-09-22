@@ -45,8 +45,8 @@ CREATE TABLE StudentGuardian (
     guardianFirstName VARCHAR(30) NOT NULL,
     guardianLastName VARCHAR(30) NOT NULL,
     guardianEmail VARCHAR(255) NOT NULL,
-	guardianPhoneNumber VARCHAR(11),
-	FOREIGN KEY (studentID) REFERENCES Students(studentID),
+    guardianPhoneNumber VARCHAR(11),
+    FOREIGN KEY (studentID) REFERENCES Students(studentID),
     PRIMARY KEY (guardianID)
     );
     
@@ -66,7 +66,7 @@ CREATE TABLE TeachingContract (
     PRIMARY KEY (contractID)
     );
     
-CREATE TABLE Instruments(
+CREATE TABLE Instruments (
 	instrumentID INT AUTO_INCREMENT NOT NULL,
     instrumentType VARCHAR(30) NOT NULL,
     hireCost DECIMAL(5, 2), 
@@ -75,32 +75,48 @@ CREATE TABLE Instruments(
     PRIMARY KEY (instrumentID)
     );
     
-CREATE TABLE InstrumentHire(
+CREATE TABLE InstrumentHire (
 	hireID INT AUTO_INCREMENT NOT NULL,
     studentID INT NOT NULL,
     instrumentID INT NOT NULL,
     startDate DATE NOT NULL,
     endDate DATE NOT NULL,
-	FOREIGN KEY (studentID) REFERENCES Students(studentID),
+    FOREIGN KEY (studentID) REFERENCES Students(studentID),
     FOREIGN KEY (instrumentID) REFERENCES Instruments(instrumentID),
     PRIMARY KEY (hireID)
     );
     
-CREATE TABLE Classes(
+CREATE TABLE Classes (
 	classID INT AUTO_INCREMENT NOT NULL,
     teacherID INT NOT NULL,
     classDate DATE NOT NULL,
     startTime TIME NOT NULL,
     endTime TIME NOT NULL,
     roomNumber CHAR(4),
-	FOREIGN KEY (teacherID) REFERENCES Teachers(teacherID),
+    FOREIGN KEY (teacherID) REFERENCES Teachers(teacherID),
     PRIMARY KEY (classID)
     );
     
-CREATE TABLE StudentClass(
+CREATE TABLE StudentClass (
 	classID INT NOT NULL,
     studentID INT NOT NULL,
     FOREIGN KEY (classID) REFERENCES Classes(classID),
     FOREIGN KEY (studentID) REFERENCES Students(studentID),
     PRIMARY KEY (classID, studentID)
+    );
+
+CREATE TABLE StudentLogin (
+	studentID INT NOT NULL,	
+    studentUsername CHAR(8) NOT NULL,
+    studentPassword VARCHAR(30) NOT NULL,
+    FOREIGN KEY (studentID) REFERENCES Students(studentID),
+    PRIMARY KEY (studentID)
+    );
+
+CREATE TABLE TeacherLogin (
+	teacherID INT NOT NULL,
+    teacherUsername CHAR(8) NOT NULL,
+    teacherPassword VARCHAR(30) NOT NULL,
+    FOREIGN KEY (teacherID) REFERENCES Teachers(teacherID),
+    PRIMARY KEY (teacherID)
     );
