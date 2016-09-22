@@ -41,8 +41,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="Enrolments.html">Enrolment</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li class="active"><a href="Enrolments.html">Enrolment</a></li>
 			<li><a href="About us.html">About Us</a></li>
 			<li><a href="career.html">Careers</a></li>
           </ul>
@@ -56,9 +56,6 @@
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!-- The user image in the navbar-->
-                
-                <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">Login</span>
               </a>
               <ul style="width: 370px;"class="dropdown-menu">
@@ -106,61 +103,84 @@
       <!-- /.container-fluid -->
     </nav>
   </header>
-  <!-- Full Width Column -->
+  
   <div style="background:url('image/back.gif') no-repeat;background-size:100%;"class="content-wrapper">
     <div id ="wrap">
 		<div id="slider">
 			<img src="image/image1.gif">
 		</div>
-
 </div>
-	<div id ="content">
+<div id ="content">
 		<div id ="page-heading">
-			Our Courses<br>
+			Enrolments<br>
 		</div>
-		<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			&#9734;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
+		<div id ="cname">
+			<img src="image/line.png">
 		</div>
+</div>
 
-		<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			 &#9825;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
-
+<div class ="form-wrapper">
+	<form action="" method="post">
+	<fieldset>
+	<legend>All Students</legend>
+		First name: *<br>
+		<input type="text" name="firstName">
+		<br><br>
+		Last name: *<br>
+		<input type="text" name="lastName">
+		<br><br>
+		DOB: *<br>
+		<input type="date" name="dob">
+		<br><br>
+		<b>Address *</b><br>
+		Unit Number:
+		<input type="text" name="unitNo">
+		<br><br>
+		Street Number:
+		<input type="number" name="streetNo">
+		<br><br>
+		Street Name:
+		<input type="text" name="streetName">
+		<br><br>
+		Suburb:
+		<input type="text" name="suburb">
+		<br><br>
+		Postcode:
+		<input type="number" name="postCode">
+		<br><br>
+		Gender: *<br>
+		<div class ="options">
+		<input type="radio" name="gender" value="male">Male<br>
+		<input type="radio" name="gender" value="female">Female<br>
+		<input type="radio" name="gender" value="other">Other<br>
 		</div>
-			<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			&#9813;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
-
-		</div>
-	</div>
+		<br><br>
+		Preferred Phone Number:<br>
+		<input type="text" name="phoneNumber">
+		<br><br>
+		Email Address: *<br>
+		<input type="text" name="email">
+		<br><br>
+	</fieldset>
+	<br>
+	<fieldset>
+	<legend>Under 18s</legend>
+		Parent/Guardian Name:<br>
+		<input type="text" name="guardianname">
+		<br><br>
+		Parent/Guardian Preferred Phone Number:<br>
+		<input type="text" name="phonenumber">
+		<br><br>
+		Parent/Guardian Email Address:<br>
+		<input type="text" name="email">
+		<br><br>
+	</fieldset>
+		<br>
+		<input type="submit" value="Submit">
+	</form>
+	
+	<p>Any fields without an asterix * are optional</p>
+</div>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
