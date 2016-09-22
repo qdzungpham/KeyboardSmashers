@@ -16,12 +16,6 @@ else if (preg_match("/^n/", $username, $match)){
  }
  else {
   $qurey = "SELECT * FROM `login` WHERE staff_login_id = '$username'";
-  $error="please enter a valid Username";
-  echo 
-  "<script type='text/javascript'>
-		alert('$error');
-		window.history.go(-1);
-  </script>";
  }
 $results = $conn->prepare($qurey);
 $results -> execute();
@@ -53,7 +47,7 @@ if (count($row)==1)
 		}
 	}
 }
-else 
+else if (count($row)==0)
 {
 	 $error="please enter a valid Username or Password";
 	 echo "<script type='text/javascript'>
