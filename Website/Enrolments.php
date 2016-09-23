@@ -31,8 +31,157 @@ require "connect.inc";
 </head>
 
 <body class="hold-transition skin-blue layout-top-nav">
-<div class="wrapper">
 
+
+<!-- Create the php code to handle the enrolment form submission
+// -----------------------------------CURRENTLY DOES NOT DO ANYTHING WITH THE FORM DETAILS EXCEPT STORE IN PHP VARIABLES AND CHECK IF EMPTY---------------------------------- -->
+<?php
+// Define web form results variables and error message variables and set to empty values
+$firstName = $lastName = $dob = $street = $suburb = $state = 
+$postCode = $gender = $phoneNumber = $email = $preferredDay = $preferredTime = 
+$preferredTeacher = $preferredLanguage = $preferredGender = $guardianFirstName = 
+$guardianLastName = $guardianPhonenumber = $guardianEmail = "";
+
+$firstNameErr = $lastNameErr = $dobErr = $streetErr = $suburbErr = $stateErr = 
+$postCodeErr = $genderErr = $emailErr = "";
+
+// Check to see each form value passes the requirements and store
+// them in php variables.
+// ---------CURRENTLY MISSES A LOT OF CHECKS--------------- NEEDS IMPROVEMENT
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	if (empty($_POST["firstName"])) {
+		$firstNameErr = "First name is required";
+	} else {
+		$firstName = test_input($_POST["firstName"]);
+	}
+	
+	if (empty($_POST["lastName"])) {
+		$lastNameErr = "Last name is required";
+	} else {
+		$lastName = test_input($_POST["lastName"]);
+	}
+	
+	if (empty($_POST["dob"])) {
+		$dobErr = "Date of birth is required";
+	} else {
+		$dob = test_input($_POST["dob"]);
+	}
+	
+	if (empty($_POST["street"])) {
+		$streetErr = "Street is required";
+	} else {
+		$street = test_input($_POST["street"]);
+	}
+	
+	if (empty($_POST["suburb"])) {
+		$suburbErr = "Suburb is required";
+	} else {
+		$suburb = test_input($_POST["suburb"]);
+	}
+	
+	if (empty($_POST["state"])) {
+		$stateErr = "State is required";
+	} else {
+		$state = test_input($_POST["state"]);
+	}
+	
+	if (empty($_POST["postCode"])) {
+		$postCodeErr = "Postcode is required";
+	} else {
+		$postCode = test_input($_POST["postCode"]);
+	}
+	
+	if (empty($_POST["gender"])) {
+		$genderErr = "Gender is required";
+	} else {
+		$gender = test_input($_POST["gender"]);
+	}
+	
+	if (empty($_POST["phoneNumber"])) {
+		$phoneNumber = "";
+	} else {
+		$phoneNumber = test_input($_POST["phoneNumber"]);
+	}
+	
+	if (empty($_POST["email"])) {
+		$emailErr = "Email is required";
+	} else {
+		$email = test_input($_POST["email"]);
+	}
+	
+	if (empty($_POST["preferredDay"])) {
+		$preferredDay = "";
+	} else {
+		$preferredDay = test_input($_POST["preferredDay"]);
+	}
+	
+	if (empty($_POST["preferredTime"])) {
+		$preferredTime = "";
+	} else {
+		$preferredTime = test_input($_POST["preferredTime"]);
+	}
+	
+	if (empty($_POST["preferredTeacher"])) {
+		$preferredTeacher = "";
+	} else {
+		$preferredTeacher = test_input($_POST["preferredTeacher"]);
+	}
+	
+	if (empty($_POST["preferredLanguage"])) {
+		$preferredLanguage = "";
+	} else {
+		$preferredLanguage = test_input($_POST["preferredLanguage"]);
+	}
+	
+	if (empty($_POST["preferredGender"])) {
+		$preferredGender = "none";
+	} else {
+		$preferredGender = test_input($_POST["preferredGender"]);
+	}
+	
+	// Guardian details need to be required if dob > 1998
+	// Currently only optional
+	if (empty($_POST["guardianFirstName"])) {
+		$guardianFirstName = "";
+	} else {
+		$guardianFirstName = test_input($_POST["guardianFirstName"]);
+	}
+	
+	if (empty($_POST["guardianLastName"])) {
+		$guardianLastName = "";
+	} else {
+		$guardianLastName = test_input($_POST["guardianLastName"]);
+	}
+	
+	if (empty($_POST["guardianPhonenumber"])) {
+		$guardianPhonenumber = "";
+	} else {
+		$guardianPhonenumber = test_input($_POST["guardianPhonenumber"]);
+	}
+	
+	if (empty($_POST["guardianEmail"])) {
+		$guardianEmail = "";
+	} else {
+		$guardianEmail = test_input($_POST["guardianEmail"]);
+	}
+}
+
+// The test function that removes whitespace and other unnecessary characters,
+//  strips backslashes and prevents xss insertion.
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+// Test it works - will delete later
+echo "$email is your email";
+?>
+
+
+<div class="wrapper">
   <header class="main-header">
     <nav class="navbar navbar-static-top">
       <div class="container">
@@ -126,19 +275,41 @@ require "connect.inc";
 		</div>
 </div>
 
+
+
+<!-- Create the student enrolment web form -->
+<!-- Post the data to self so the php near the start of this file can handle it -->
 <div class ="form-wrapper">
-	<form method="post" action="studentEnrolment.php">
+
+<!-- Foreword -->
+<p>The following form must be filled out by new students. Students can indicate 
+their preferences, but this section of the form is optional. Students aged under 18 must
+fill in their parent or guardian details on this form. Students aged 18 or over do not need
+to complete this section of the form. Fields indicated by an asterix * are essential.</p><br><br>
+	
+	<!-- The error messages are not completely correct yet - need additional checks in the php code.
+	For now, they simply show up if a required field is not filled out -->
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	<fieldset>
 	<legend>All Students</legend>
 		<strong>First name: </strong><br>
 		<input type="text" name="firstName"> *
+		<span class="error"> <?php echo $firstNameErr;?></span>
 		<br><br>
+		
 		<strong>Last name: </strong><br>
 		<input type="text" name="lastName"> *
+		<span class="error"> <?php echo $lastNameErr;?></span>
 		<br><br>
+		
 		<strong>DOB: </strong><br>
 		<input type="date" name="dob"> *
+		<span class="error"> <?php echo $dobErr;?></span>
 		<br><br>
+		
+		<!-- Create two divs - one to store the address titles on the left (which is right aligned),
+		and the second div contains the input forms for the corresponding address title on the right of the first div
+		(and which is left aligned). Having these two divs side by side is purely for formatting. -->
 		<strong>Address</strong><br>
 		<div class = "addressMenu">
 			Street:
@@ -152,29 +323,44 @@ require "connect.inc";
 		</div>
 		<div class = "addressInputs">
 			<input type="text" name="street"> *
+			<span class="error"> <?php echo $streetErr;?></span>
 			<br><br>
+			
 			<input type="text" name="suburb"> *
+			<span class="error"> <?php echo $suburbErr;?></span>
 			<br><br>
+			
 			<input type="text" name = "state"> *
+			<span class="error"> <?php echo $stateErr;?></span>
 			<br><br>
+			
 			<input type="number" name="postCode"> *
+			<span class="error"> <?php echo $postCodeErr;?></span>
 			<br><br>
 		</div>
-		<strong>Gender: </strong>*<br>
+		
+		<strong>Gender: </strong>*
+		<span class="error"> <?php echo $genderErr;?></span>
+		<br>
 		<div class ="options">
 		<input type="radio" name="gender" value="male"> Male<br>
 		<input type="radio" name="gender" value="female"> Female<br>
 		<input type="radio" name="gender" value="other"> Other<br>
 		</div>
 		<br>
+		
 		<strong>Preferred Phone Number:</strong><br>
 		<input type="text" name="phoneNumber">
 		<br><br>
+		
 		<strong>Email Address: </strong><br>
 		<input type="text" name="email"> *
+		<span class="error"> <?php echo $emailErr;?></span>
 		<br><br>
 	</fieldset>
 	<br><br>
+	
+	<!-- Optional student preferences -->
 	<fieldset>
 	<legend>Preferences</legend>
 		<strong>Preferred Lesson Day:</strong><br>
@@ -197,12 +383,15 @@ require "connect.inc";
 		<br><br>
 		<strong>Preferred Teacher Gender:</strong><br>
 		<div class = "options">
+		<input type="radio" name="preferredGender" value="none"> No Preferences<br>
 		<input type="radio" name="preferredGender" value="male"> Male<br>
 		<input type="radio" name="preferredGender" value="female"> Female<br>
 		</div>
 		<br>
 	</fieldset>
 	<br><br>
+	
+	<!-- Parent/Guardian information only required for under 18s -->
 	<fieldset>
 	<legend>Under 18s</legend>
 		<strong>Parent/Guardian First Name:</strong><br>
@@ -212,10 +401,10 @@ require "connect.inc";
 		<input type="text" name="guardianLastName"> *
 		<br><br>
 		<strong>Parent/Guardian Preferred Phone Number:</strong><br>
-		<input type="text" name="phonenumber">
+		<input type="text" name="guardianPhonenumber">
 		<br><br>
 		<strong>Parent/Guardian Email Address:</strong><br>
-		<input type="text" name="email"> *
+		<input type="text" name="guardianEmail"> *
 		<br><br>
 	</fieldset>
 		<br>
@@ -226,6 +415,8 @@ require "connect.inc";
 	<br>
 	<p>Any fields with an asterix * are essential</p>
 </div>
+
+
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
