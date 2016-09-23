@@ -184,7 +184,7 @@ require "../../connect.inc";
               <li><a href="#tab_2-2" data-toggle="tab">Class 102</a></li>
               <li class="active"><a href="#tab_3-2" data-toggle="tab">Class 101</a></li>
               
-              <li class="pull-left header"><i class="fa  fa-file-text"></i> Learning Documents</li>
+              <li class="pull-left header"><i class="fa  fa-file-text"></i> Contact Details </li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane" id="tab_1-1">
