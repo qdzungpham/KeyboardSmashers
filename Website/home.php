@@ -70,7 +70,7 @@ require "connect.inc";
   
                    <div class="login-box-body">
                        <p class="login-box-msg">Sign in to start your session</p>
-
+                        <!-- login form -->
                        <form action="login.php" method="post">
                            <div class="form-group has-feedback">
                                <input type="text" class="form-control" placeholder="Username"
@@ -122,6 +122,7 @@ require "connect.inc";
 
 </div>
 	<div id ="content">
+  <!-- Couser Details, need to be modify with in the future -->
 		<div id ="page-heading">
 			Our Courses<br>
 		</div>

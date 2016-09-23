@@ -66,7 +66,7 @@ require "connect.inc";
   
                    <div class="login-box-body">
                        <p class="login-box-msg">Sign in to start your session</p>
-
+                        <!-- login form -->
                        <form action="login.php" method="post">
                            <div class="form-group has-feedback">
                                <input type="text" class="form-control" placeholder="Username"
@@ -124,6 +124,7 @@ require "connect.inc";
  		 </div>
   </div>
   <div id="wrapper">
+<!-- container for each job -->
        <div class="jobs">
          <div class = "jtitle">
            IT Services
@@ -152,6 +153,7 @@ require "connect.inc";
          </div>
          <input class = "button" name="more" type="button" value="MORE">
        </div>
+<!-- end container -->
        <div class="jobs">
          <div class = "jtitle">
            IT Services

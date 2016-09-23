@@ -67,7 +67,7 @@ require "connect.inc";
   
                    <div class="login-box-body">
                        <p class="login-box-msg">Sign in to start your session</p>
-
+                            <!-- login form -->
                        <form action="login.php" method="post">
                            <div class="form-group has-feedback">
                                <input type="text" class="form-control" placeholder="Username"
@@ -125,8 +125,9 @@ require "connect.inc";
 			
 		</div>
 </div>
-
+<!-- container for content -->
 <div id ="wrapper" >
+<!-- school History -->
 	<div class= "red-heading">
 		Pinelands Music School
 	</div>
@@ -152,6 +153,7 @@ require "connect.inc";
 	<div id= "staff-heading">
 	Our Staff
 	</div>
+	<!-- staff history -->
 	<div class ="teacher" >
 		<div class = "teacherd">
 			<div class ="timage">

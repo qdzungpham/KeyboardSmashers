@@ -18,7 +18,7 @@ require "../connect.inc";
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- skins -->
+  
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   
 </head>
@@ -34,7 +34,7 @@ require "../connect.inc";
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Pinelands</b>MusicSchool</span>
     </a>
-    
+    <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -85,7 +85,7 @@ require "../connect.inc";
 
   <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
-    
+    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       
@@ -100,7 +100,7 @@ require "../connect.inc";
         </div>
       </form>
       <!-- /.search form -->
-      
+      <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         
         <li class="">

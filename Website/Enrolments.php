@@ -1,7 +1,6 @@
 
 <?php 
 require "connect.inc";
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,15 +40,12 @@ $firstName = $lastName = $dob = $street = $suburb = $state =
 $postCode = $gender = $phoneNumber = $email = $preferredDay = $preferredTime = 
 $preferredTeacher = $preferredLanguage = $preferredGender = $guardianFirstName = 
 $guardianLastName = $guardianPhonenumber = $guardianEmail = "";
-
 $firstNameErr = $lastNameErr = $dobErr = $streetErr = $suburbErr = $stateErr = 
 $postCodeErr = $genderErr = $emailErr = "";
-
 // Check to see each form value passes the requirements and store
 // them in php variables.
 // ---------CURRENTLY MISSES A LOT OF CHECKS--------------- NEEDS IMPROVEMENT
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
 	if (empty($_POST["firstName"])) {
 		$firstNameErr = "First name is required";
 	} else {
@@ -166,7 +162,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$guardianEmail = test_input($_POST["guardianEmail"]);
 	}
 }
-
 // The test function that removes whitespace and other unnecessary characters,
 //  strips backslashes and prevents xss insertion.
 function test_input($data) {
@@ -175,7 +170,6 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
-
 // Test it works - will delete later
 echo "$email is your email";
 ?>
