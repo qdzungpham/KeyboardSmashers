@@ -4,56 +4,41 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://54.206.74.97/music_school/home.php" />
-<title>main_student_login</title>
+<title>enrollment_guardian_reset</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">main_student_login</td></tr>
+<tr><td rowspan="1" colspan="3">enrollment_guardian_reset</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/music_school/home.php</td>
+	<td>/music_school/Enrolments.php</td>
 	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=guardianFirstName</td>
+	<td>kim</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=guardianLastName</td>
+	<td>jason</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=guardianPhonenumber</td>
+	<td>0422735855</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=guardianEmail</td>
+	<td>kyungheesuk@nate.com</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Login</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=username</td>
-	<td>df;wlekfj</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=password</td>
-	<td>sefwe</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>name=login</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=span.hidden-xs</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=username</td>
-	<td>n1234567</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=password</td>
-	<td>12</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>name=login</td>
+	<td>css=input[type=&quot;reset&quot;]</td>
 	<td></td>
 </tr>
 
