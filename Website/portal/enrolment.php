@@ -17,7 +17,7 @@ require "../connect.inc";
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
+  <!-- skins -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
 </head>
@@ -33,7 +33,7 @@ require "../connect.inc";
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Pinelands</b>MusicSchool</span>
     </a>
-    <!-- Header Navbar: style can be found in header.less -->
+    
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -42,7 +42,8 @@ require "../connect.inc";
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-
+ 
+      <!-- user menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
         
@@ -99,7 +100,8 @@ require "../connect.inc";
         </div>
       </form>
       <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
+      
+	  <!-- main menu -->
       <ul class="sidebar-menu">
         
         <li class="">
@@ -169,6 +171,8 @@ require "../connect.inc";
     <section class="content">
 	    <div class="row">
 		    <div class="col-md-6">
+			
+		  <!-- My classes -->
           <div class="box box-default">
             <div class="box-header with-border">
               <i class="fa fa-star"></i>
@@ -177,26 +181,18 @@ require "../connect.inc";
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-			    
+			      
+				        <!-- table for classes -->
 					    <table style="width:100%">
   
-  <tr>
-    <td><b>Violin for Beginners</b></td>
-    <td>Wednesday</td>
-    <td>12:00 AM - 14:00 PM</td>
-    <td>Room 101</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
+                           <tr>
+                              <td><b>Violin for Beginners</b></td>
+                              <td>Wednesday</td>
+                              <td>12:00 AM - 14:00 PM</td>
+                              <td>Room 101</td>
+                           </tr>
+                       
+                        </table>
                 
                      
 			
@@ -207,6 +203,8 @@ require "../connect.inc";
           <!-- /.box -->
         </div>
             <div class="col-md-12">
+			
+		  <!-- class registration -->
           <div class="box">
             <div class="box-header">
 			<i class="fa fa-pencil-square-o"></i>
@@ -216,6 +214,8 @@ require "../connect.inc";
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
+			
+			  <!-- table for class list -->
               <table class="table table-hover">
                 <tr>
                   <th>Class Name</th>
@@ -267,7 +267,8 @@ require "../connect.inc";
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+   
+  <!-- footer -->
   <footer class="main-footer">
     
     <strong>Copyright &copy; 2016 KeyboardSmashers.</strong> All rights

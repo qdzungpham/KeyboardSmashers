@@ -35,7 +35,7 @@ require "../connect.inc";
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Pinelands</b>MusicSchool</span>
     </a>
-    <!-- Header Navbar: style can be found in header.less -->
+    
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -45,6 +45,7 @@ require "../connect.inc";
         <span class="icon-bar"></span>
       </a>
 
+	  <!-- user menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           
@@ -63,7 +64,7 @@ require "../connect.inc";
                   <small>Student</small>
                 </p>
               </li>
-              <!-- Menu Body -->
+              
               
               <!-- Menu Footer-->
               <li class="user-footer">
@@ -102,7 +103,8 @@ require "../connect.inc";
         </div>
       </form>
       <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
+      
+	  <!-- main menu -->
       <ul class="sidebar-menu">
         
         <li class="">
@@ -264,6 +266,7 @@ require "../connect.inc";
 			
 		</div>
 		
+		<!-- music instruments -->
 		<div class="col-md-12">
 		    <div class="box">
             <div class="box-header">
@@ -271,6 +274,8 @@ require "../connect.inc";
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
+			
+			  <!-- table for available instruments -->
               <table class="table">
                 <tr>
                   <th style="width:150px">Instrument</th>

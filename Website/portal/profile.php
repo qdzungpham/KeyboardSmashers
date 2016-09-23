@@ -18,7 +18,7 @@ require "../connect.inc";
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
+  <!-- skin -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
   
@@ -35,7 +35,7 @@ require "../connect.inc";
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Pinelands</b>MusicSchool</span>
     </a>
-    <!-- Header Navbar: style can be found in header.less -->
+    
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -45,6 +45,7 @@ require "../connect.inc";
         <span class="icon-bar"></span>
       </a>
 
+	  <!-- user menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           
@@ -90,7 +91,7 @@ require "../connect.inc";
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
+      
       
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
@@ -103,7 +104,8 @@ require "../connect.inc";
         </div>
       </form>
       <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
+      
+	  <!-- main menu -->
       <ul class="sidebar-menu">
         
         <li class="">
@@ -174,7 +176,7 @@ require "../connect.inc";
 
       <div class="row">
                 <div class="col-lg-12">
-                    <!--Timeline -->
+                    <!-- General details -->
                     <div style = "" class="panel panel-primary">
                         <div class="panel-heading">
                             <i class="fa fa-user"></i> General details
@@ -225,8 +227,9 @@ require "../connect.inc";
             </div>
 			</div>
 			<div class="row">
+			
 		<div class="col-lg-12">
-                    <!-- Donut Example-->
+                    <!-- contact details-->
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i>Contact details
@@ -259,7 +262,7 @@ require "../connect.inc";
                         </div>
 
                     </div>
-                    <!--End Donut Example-->
+                    
                 </div>
 		</div>
 

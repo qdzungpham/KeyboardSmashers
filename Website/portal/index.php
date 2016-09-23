@@ -18,7 +18,7 @@ require "../connect.inc";
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
+  <!-- skins -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
   
@@ -35,7 +35,7 @@ require "../connect.inc";
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Pinelands</b>MusicSchool</span>
     </a>
-    <!-- Header Navbar: style can be found in header.less -->
+    
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -44,7 +44,8 @@ require "../connect.inc";
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-
+      
+	  <!-- User menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           
@@ -64,7 +65,7 @@ require "../connect.inc";
                   <small>Student</small>
                 </p>
               </li>
-              <!-- Menu Body -->
+              
               
               <!-- Menu Footer-->
               <li class="user-footer">
@@ -90,7 +91,7 @@ require "../connect.inc";
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
+      
       
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
@@ -103,7 +104,8 @@ require "../connect.inc";
         </div>
       </form>
       <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
+      
+	  <!-- main menu -->
       <ul class="sidebar-menu">
         
         <li class="active">
@@ -174,6 +176,8 @@ require "../connect.inc";
 
       <div class="row">
         <div class="col-md-7">
+		
+		  <!-- my annoucement -->
           <div class="box box-solid">
             <div class="box-header with-border">
 			  <i class="fa fa-info-circle"></i>
@@ -182,7 +186,7 @@ require "../connect.inc";
             <!-- /.box-header -->
             <div class="box-body">
               <div class="box-group" id="accordion">
-                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                
                 <div class="panel box box-primary">
                   <div class="box-header with-border">
                     <h4 class="box-title">
@@ -255,6 +259,8 @@ require "../connect.inc";
 			
           </div>
           <!-- /.box -->
+		  
+		  <!-- callouts -->
 		  <div class="box box-default">
             <div class="box-header with-border">
               <i class="fa fa-bullhorn"></i>
@@ -294,6 +300,8 @@ require "../connect.inc";
 		
 		
         <div class="col-md-5">
+		
+		  <!-- school activities -->
           <div class="box box-solid">
             <div class="box-header with-border">
 			  <i class="fa fa-camera-retro"></i>
@@ -341,6 +349,8 @@ require "../connect.inc";
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+		  
+		  <!-- music box -->
 		  <div class="info-box bg-yellow">
             <span class="info-box-icon"><i class="fa fa-music"></i></span>
 
@@ -353,9 +363,9 @@ require "../connect.inc";
                     </audio>
                 </div>
             </div>
-            <!-- /.info-box-content -->
+            
           </div>
-          <!-- /.info-box -->
+          
 		  
 		  
         </div>
@@ -367,6 +377,7 @@ require "../connect.inc";
   </div>
   <!-- /.content-wrapper -->
 
+  <!-- footer -->
   <footer class="main-footer">
     
     <strong>Copyright &copy; 2016 KeyboardSmashers.</strong> All rights
