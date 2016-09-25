@@ -200,7 +200,7 @@ require "../connect.inc";
 				    
 				    <h4><b>Mr Humphrey Mitchum</b></h4>
 					<h4><b>Mr Humphrey Mitchum</b></h4>
-					<a href="hmitchum@gmail.com" >  <b>Email:</b> hmitchum@gmail.com </a> 
+					<a href="mailto:hmitchum@gmail.com" >  <b>Email:</b> hmitchum@gmail.com </a> 
 					<p> Office Location: Room 101
 					<br><b>Office Hours:</b> 9 AM - 4 PM
 					<br><b>Notes:</b> Hello!
