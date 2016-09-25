@@ -230,7 +230,7 @@ require "../../connect.inc";
                   </td>
                   <td>18 Charlotte St, Brisbane City QLD 4000</td>
                   <td>0123456678</td>
-                  <td>mosesgil@gmail.com</td>
+                  <td><a href="mailto:mosesgil@gmail.com" >  mosesgil@gmail.com </a>  </td>
                 </tr>
                 <tr>
                   <td>0112234</td>
@@ -238,7 +238,7 @@ require "../../connect.inc";
                   </td>
                   <td>51 Jane Street, West End QLD 4101</td>
                   <td>0123123234</td>
-                  <td>tamara@icloud.com</td>
+                  <td><a href="mailto:tamara@icloud.com" >  tamara@icloud.com </a>  </td>
                 </tr>
                 <tr>
                   <td>-</td>
