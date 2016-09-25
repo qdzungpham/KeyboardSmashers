@@ -61,6 +61,37 @@ require "connect.inc";
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="hidden-xs">Login</span>
               </a>
+             <?php
+              if (isset($_SESSION['UserID'])){
+                echo '<ul width: 370px; class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="image/teachers/'.$_SESSION['Name'].'.png " class="img-circle" alt="User Image">
+
+                <p>
+                 '.$_SESSION["UserName"].'
+                  <small>'.$_SESSION["Roll"].'</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">';
+                if ($_SESSION["Roll"]=="teacher"){
+                  echo '<a href="portal/teacherportal/index.php" class="btn btn-default btn-flat">Teacher Portal</a>';
+                }
+                if ($_SESSION["Roll"]=="student"){
+                  echo '<a href="portal/index.php" class="btn btn-default btn-flat">Student Portal</a>';
+                }
+                echo '</div>
+                <div class="pull-right">
+                  <a href="home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>';
+              }
+              else echo'
               <ul style="width: 370px;"class="dropdown-menu">
                 <div class="login-box">
   
@@ -71,6 +102,7 @@ require "connect.inc";
                            <div class="form-group has-feedback">
                                <input type="text" class="form-control" placeholder="Username"
                                name="username" required>
+
                                <span class="glyphicon fa fa-user form-control-feedback"></span>
                            </div>
                            <div class="form-group has-feedback">
@@ -89,7 +121,7 @@ require "connect.inc";
                                <!-- /.col -->
                                <div class="col-xs-4">
                                     <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
-		                             <input type="submit" class="btn btn-primary btn-block btn-flat" name="login" value ="Sign In">
+                                <input type="submit" class="btn btn-primary btn-block btn-flat" name="login" value ="Sign In">
                                </div>
                                <!-- /.col -->
                            </div>
@@ -99,7 +131,8 @@ require "connect.inc";
                    <!-- /.login-box-body -->
                 </div>
          
-              </ul>
+              </ul>';
+              ?>
             </li>
           </ul>
         </div>

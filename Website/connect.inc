@@ -17,4 +17,32 @@ if (isset($_GET['logout'])){
 	session_destroy();
 	exit();
 }
-  ?>
+
+function portal_ckeck()
+{
+  
+  if (!isset($_SESSION["Roll"]))
+  {
+    header('location:../home.php');
+  } else if($_SESSION["Roll"] == "teacher")
+  {
+      header('location:teacherportal/index.php');
+  }
+
+}
+
+function teacherportal_ckeck()
+{
+  
+  if (!isset($_SESSION["Roll"]))
+  {
+    header('location:../../home.php');
+  } else if($_SESSION["Roll"] == "student")
+  {
+      header('location:../index.php');
+  }
+
+}
+
+
+?>
