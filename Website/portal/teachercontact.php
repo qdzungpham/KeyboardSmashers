@@ -184,11 +184,11 @@ require "../connect.inc";
                 <div class="col-md-9">
 				    
 				    <h4><b>Mrs Claire Harding</b></h4>
-					<p><b>Email:</b> charding@gmail.com
-					<br><b>Office Location:</b> Room 101
+					<a href="mailto:charding@gmail.com"> <b>Email:</b> charding@gmail.com </a>
+					<p>Office Location: Room 101
 					<br><b>Office Hours:</b> 9 AM - 4 PM
 					<br><b>Notes:</b> Hello!
-					</p>
+					</p> 
 					
 				</div>
 				<div class="col-md-3">
@@ -199,8 +199,9 @@ require "../connect.inc";
                 <div class="col-md-9">
 				    
 				    <h4><b>Mr Humphrey Mitchum</b></h4>
-					<p><b>Email:</b> hmitchum@gmail.com
-					<br><b>Office Location:</b> Room 101
+					<h4><b>Mr Humphrey Mitchum</b></h4>
+					<a href="hmitchum@gmail.com" >  <b>Email:</b> hmitchum@gmail.com </a> 
+					<p> Office Location: Room 101
 					<br><b>Office Hours:</b> 9 AM - 4 PM
 					<br><b>Notes:</b> Hello!
 					</p>
