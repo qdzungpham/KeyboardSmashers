@@ -7,18 +7,18 @@ require "connect.inc";
 
  if (preg_match("/^t/", $username, $match)){
   $roll = "teacher";
-  $qurey = "SELECT * FROM `teacherlogin` WHERE teacherUsername = '$username'";
+  $qurey = "SELECT * FROM `teacherlogin` WHERE `teacherUsername` = '$username'";
   
  }
 
 else if (preg_match("/^n/", $username, $match)){
   $roll = "student";
-  $qurey = "SELECT * FROM `studentlogin` WHERE studentUsername = '$username'";
+  $qurey = "SELECT * FROM `studentlogin` WHERE `studentUsername` = '$username'";
   
   
  }
  else {
-  $qurey = "SELECT * FROM `teacherlogin` WHERE teacherID = '0'";
+  $qurey = "SELECT * FROM `teacherlogin` WHERE `teacherID` = '0'";
  }
   //check the input then send the correct data to a sql query
 $results = $conn->prepare($qurey);
@@ -33,14 +33,34 @@ if (count($row)==1)
 		{
 			if ($roll == "student")
 			{
-				$_SESSION["UserID"] = $data['studentID'];
+				$id=$data['studentID'];
+				$_SESSION["UserID"] = $id;
 				$_SESSION["UserName"] = $data['studentUsername'];
+				$_SESSION["Roll"] = $roll;
+				$sql = "SELECT * FROM `students` WHERE studentID = '$id'";
+				$rs = $conn->prepare($sql);
+				$rs -> execute();
+				$record = $rs->FetchALL(PDO::FETCH_ASSOC);
+				foreach($record as $info)
+				{				
+					$_SESSION["Name"] = $info['firstName']." ".$info['familyName'];
+				}
 				header('location: portal/index.php');
 		    }
 		 	else if ($roll == "teacher")
 		 	{
+		 		$id=$data['teacherID'];
 				$_SESSION["UserID"] = $data['teacherID'];
 				$_SESSION["UserName"] = $data['teacherUsername'];
+				$_SESSION["Roll"] = $roll;
+				$sql = "SELECT * FROM `teachers` WHERE teacherID = '$id'";
+				$rs = $conn->prepare($sql);
+				$rs -> execute();
+				$record = $rs->FetchALL(PDO::FETCH_ASSOC);
+				foreach($record as $info)
+				{				
+					$_SESSION["Name"] = $info['firstName']." ".$info['familyName'];
+				}
 				header('location: portal/teacherportal/index.php');
 			}
 		}

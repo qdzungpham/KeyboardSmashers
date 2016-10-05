@@ -1,6 +1,7 @@
 
 <?php
 require "../../connect.inc";
+teacherportal_ckeck();
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,7 +58,7 @@ require "../../connect.inc";
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
+              <span class="hidden-xs"><?php echo $_SESSION["Name"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -65,7 +66,7 @@ require "../../connect.inc";
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $_SESSION["UserID"]; ?>
+                  <?php echo $_SESSION["UserName"]; ?>
                   <small>Teacher</small>
                 </p>
               </li>
@@ -230,7 +231,7 @@ require "../../connect.inc";
                   </td>
                   <td>18 Charlotte St, Brisbane City QLD 4000</td>
                   <td>0123456678</td>
-                  <td>mosesgil@gmail.com</td>
+                  <td><a href="mailto:mosesgil@gmail.com" >  mosesgil@gmail.com </a>  </td>
                 </tr>
                 <tr>
                   <td>0112234</td>
@@ -238,7 +239,7 @@ require "../../connect.inc";
                   </td>
                   <td>51 Jane Street, West End QLD 4101</td>
                   <td>0123123234</td>
-                  <td>tamara@icloud.com</td>
+                  <td><a href="mailto:tamara@icloud.com" >  tamara@icloud.com </a>  </td>
                 </tr>
                 <tr>
                   <td>-</td>

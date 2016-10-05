@@ -1,5 +1,6 @@
 <?php
 require "../connect.inc";
+portal_ckeck();
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,7 @@ require "../connect.inc";
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
+              <span class="hidden-xs"><?php echo $_SESSION["Name"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -59,7 +60,7 @@ require "../connect.inc";
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $_SESSION["UserID"]; ?>
+                  <?php echo $_SESSION["UserName"]; ?>
                   <small>Student</small>
                 </p>
               </li>
@@ -184,11 +185,11 @@ require "../connect.inc";
                 <div class="col-md-9">
 				    
 				    <h4><b>Mrs Claire Harding</b></h4>
-					<p><b>Email:</b> charding@gmail.com
-					<br><b>Office Location:</b> Room 101
+					<a href="mailto:charding@gmail.com"> <b>Email:</b> charding@gmail.com </a>
+					<p>Office Location: Room 101
 					<br><b>Office Hours:</b> 9 AM - 4 PM
 					<br><b>Notes:</b> Hello!
-					</p>
+					</p> 
 					
 				</div>
 				<div class="col-md-3">
@@ -199,8 +200,9 @@ require "../connect.inc";
                 <div class="col-md-9">
 				    
 				    <h4><b>Mr Humphrey Mitchum</b></h4>
-					<p><b>Email:</b> hmitchum@gmail.com
-					<br><b>Office Location:</b> Room 101
+					<h4><b>Mr Humphrey Mitchum</b></h4>
+					<a href="mailto:hmitchum@gmail.com" >  <b>Email:</b> hmitchum@gmail.com </a> 
+					<p> Office Location: Room 101
 					<br><b>Office Hours:</b> 9 AM - 4 PM
 					<br><b>Notes:</b> Hello!
 					</p>

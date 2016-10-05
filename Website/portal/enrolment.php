@@ -1,5 +1,6 @@
 <?php
 require "../connect.inc";
+portal_ckeck();
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,10 +47,10 @@ require "../connect.inc";
       <!-- user menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-        
+        <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
+              <span class="hidden-xs"><?php echo $_SESSION["Name"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -57,7 +58,7 @@ require "../connect.inc";
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $_SESSION["UserID"]; ?>
+                  <?php echo $_SESSION["UserName"]; ?>
                   <small>Student</small>
                 </p>
               </li>

@@ -1,6 +1,7 @@
 
 <?php
 require "../../connect.inc";
+teacherportal_ckeck();
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,7 +58,7 @@ require "../../connect.inc";
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $_SESSION["UserID"]; ?></span>
+              <span class="hidden-xs"><?php echo $_SESSION["UserName"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -65,7 +66,7 @@ require "../../connect.inc";
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $_SESSION["UserID"]; ?>
+                  <?php echo $_SESSION["Name"]; ?>
                   <small>Teacher</small>
                 </p>
               </li>
@@ -193,10 +194,10 @@ require "../../connect.inc";
 						</div>
 						<div class="col-lg-9">
 						<div class="row">						
-						    <h style="font-size:20px;"><b><?php echo $_SESSION["UserID"]; ?></b></h>						
+						    <h style="font-size:20px;"><b><?php echo $_SESSION["Name"]; ?></b></h>						
 						</div>
 						<div class="row">												    
-							<h>0123456</h>							
+							<h><?php echo $_SESSION["UserName"]; ?></h>							
 						</div>
 						<div style="background-color:white;margin-left:-15px;margin-top:15px"class="panel-body yellow">
                             <div class="row">	
