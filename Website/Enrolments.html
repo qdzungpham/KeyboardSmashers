@@ -13,6 +13,7 @@ require "connect.inc";
   
   <link href="css/mycss.css" rel="stylesheet" type="text/css" >
   
+  <link rel="stylesheet" href="portal/plugins/iCheck/square/blue.css">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="portal/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -25,7 +26,7 @@ require "connect.inc";
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="portal/dist/css/skins/_all-skins.min.css">
   
-  <link rel="stylesheet" href="portal/plugins/iCheck/square/blue.css">
+  
 
 </head>
 
@@ -316,129 +317,152 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	
 	<!-- The error messages are not completely correct yet - need additional checks in the php code.
 	For now, they simply show up if a required field is not filled out -->
-	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	<fieldset>
+	<div class="box box-primary">
+	<div class="box-header with-border">
+        <h3 class="box-title">Enrolment Form</h3>
+    </div>
+	
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>
+	<div class="box-body">
+	<div class="col-md-6">
 	<legend>All Students</legend>
-		<strong>First name: </strong><br>
-		<input type="text" name="firstName"> *
+	<div class="form-group">
+		<label>First name * </label>
+		<input class="form-control" type="text" name="firstName"> 
 		<span class="error"> <?php echo $firstNameErr;?></span>
-		<br><br>
 		
-		<strong>Last name: </strong><br>
-		<input type="text" name="lastName"> *
+	</div>
+	<div class="form-group">
+		<label>Last name * </label>
+		<input class="form-control"type="text" name="lastName"> 
 		<span class="error"> <?php echo $lastNameErr;?></span>
-		<br><br>
 		
-		<strong>DOB: </strong><br>
-		<input type="date" name="dob"> *
+	</div>
+	
+	<div class="form-group">
+		<label>Date Of Birth * </label><br>
+		<input class="form-control" type="date" name="dob"> 
 		<span class="error"> <?php echo $dobErr;?></span>
-		<br><br>
 		
+	</div>	
 		<!-- Create two divs - one to store the address titles on the left (which is right aligned),
 		and the second div contains the input forms for the corresponding address title on the right of the first div
 		(and which is left aligned). Having these two divs side by side is purely for formatting. -->
-		<strong>Address</strong><br>
-		<div class = "addressMenu">
-			Street:
-			<br><br>
-			Suburb:
-			<br><br>
-			State:
-			<br><br>
-			Postcode:
-			<br><br>
-		</div>
-		<div class = "addressInputs">
-			<input type="text" name="street"> *
-			<span class="error"> <?php echo $streetErr;?></span>
-			<br><br>
-			
-			<input type="text" name="suburb"> *
-			<span class="error"> <?php echo $suburbErr;?></span>
-			<br><br>
-			
-			<input type="text" name = "state"> *
-			<span class="error"> <?php echo $stateErr;?></span>
-			<br><br>
-			
-			<input type="number" name="postCode"> *
-			<span class="error"> <?php echo $postCodeErr;?></span>
-			<br><br>
-		</div>
+	<div class="form-group">
+		<label>Address *</label><br>
+	
 		
-		<strong>Gender: </strong>*
+			<input class="form-control"type="text" name="street" placeholder="Street"> 
+			<span class="error"> <?php echo $streetErr;?></span>
+			<br>
+			
+			<input class="form-control"type="text" name="suburb" placeholder="Suburb"> 
+			<span class="error"> <?php echo $suburbErr;?></span>
+			<br>
+			
+			<input class="form-control"type="text" name = "state" placeholder="State"> 
+			<span class="error"> <?php echo $stateErr;?></span>
+			<br>
+			
+			<input class="form-control"type="number" name="postCode" placeholder="Post Code"> 
+			<span class="error"> <?php echo $postCodeErr;?></span>
+			
+		
+	</div>
+	
+	<div class="form-group">
+		<label>Gender * </label>
 		<span class="error"> <?php echo $genderErr;?></span>
 		<br>
-		<div class ="options">
-		<input type="radio" name="gender" value="male"> Male<br>
-		<input type="radio" name="gender" value="female"> Female<br>
-		<input type="radio" name="gender" value="other"> Other<br>
-		</div>
+		
+		<input type="radio" name="gender" value="male"> Male
+		<input type="radio" name="gender" value="female"> Female
+		<input type="radio" name="gender" value="other"> Other
+	    
 		<br>
+	</div>	
+	<div class="form-group">
+		<label>Preferred Phone Number</label>
+		<input class="form-control"type="text" name="phoneNumber">
 		
-		<strong>Preferred Phone Number:</strong><br>
-		<input type="text" name="phoneNumber">
-		<br><br>
-		
-		<strong>Email Address: </strong><br>
-		<input type="text" name="email"> *
+	</div>	
+	<div class="form-group">
+		<label>Email Address </label>
+		<input class="form-control"type="text" name="email"> 
 		<span class="error"> <?php echo $emailErr;?></span>
-		<br><br>
-	</fieldset>
-	<br><br>
+		
+	</div>
+	</div>
+	
 	
 	<!-- Optional student preferences -->
-	<fieldset>
+	<fieldset class="col-md-6">
 	<legend>Preferences</legend>
-		<strong>Preferred Lesson Day:</strong><br>
-		<select name = "preferredDay">
+	<div class="form-group">
+		<label>Preferred Lesson Day</label>
+		<select class="form-control"name = "preferredDay">
 			<option value = "monday">Monday</option>
 			<option value = "tuesday">Tuesday</option>
 			<option value = "wednesday">Wednesday</option>
 			<option value = "thursday">Thursday</option>
 			<option value = "friday">Friday</option>
 		</select>
-		<br><br>
-		<strong>Preferred Lesson Time:</strong><br>
-		<input type="time" name="preferredTime">
-		<br><br>
-		<strong>Preferred Teacher:</strong><br>
-		<input type="text" name="preferredTeacher">
-		<br><br>
-		<strong>Preferred Language Spoken by Teacher:</strong><br>
-		<input type="text" name="preferredLanguage">
-		<br><br>
-		<strong>Preferred Teacher Gender:</strong><br>
+	</div>
+	<div class="form-group">
+		<label>Preferred Lesson Time</label>
+		<input class="form-control"type="time" name="preferredTime">
+	</div>
+    <div class="form-group">
+		<label>Preferred Teacher:</label>
+		<input class="form-control"type="text" name="preferredTeacher">
+    </div>
+	<div class="form-group">
+		<label>Preferred Language Spoken by Teacher</label>
+		<input class="form-control"type="text" name="preferredLanguage">
+	</div>
+	<div class="form-group">
+		<label>Preferred Teacher Gender</label><br>
 		<div class = "options">
-		<input type="radio" name="preferredGender" value="none"> No Preferences<br>
-		<input type="radio" name="preferredGender" value="male"> Male<br>
-		<input type="radio" name="preferredGender" value="female"> Female<br>
+		<input type="radio" name="preferredGender" value="none"> No Preferences
+		<input type="radio" name="preferredGender" value="male"> Male
+		<input type="radio" name="preferredGender" value="female"> Female
 		</div>
-		<br>
+		
+	</div>
 	</fieldset>
-	<br><br>
+	
 	
 	<!-- Parent/Guardian information only required for under 18s -->
-	<fieldset>
+	<div class="col-md-6">
 	<legend>Under 18s</legend>
-		<strong>Parent/Guardian First Name:</strong><br>
-		<input type="text" name="guardianFirstName"> *
-		<br><br>
-		<strong>Parent/Guardian Last Name:</strong><br>
-		<input type="text" name="guardianLastName"> *
-		<br><br>
-		<strong>Parent/Guardian Preferred Phone Number:</strong><br>
-		<input type="text" name="guardianPhonenumber">
-		<br><br>
-		<strong>Parent/Guardian Email Address:</strong><br>
-		<input type="text" name="guardianEmail"> *
-		<br><br>
-	</fieldset>
-		<br>
-		<input type="submit" value="Submit">
-		<input type="reset" value="Reset">
+	<div class="form-group">
+		<label>Parent/Guardian First Name</label>
+		<input class="form-control"type="text" name="guardianFirstName"> 
+    </div>
+	<div class="form-group">
+		<label>Parent/Guardian Last Name</label>
+		<input class="form-control"type="text" name="guardianLastName"> 
+    </div>
+	<div class="form-group">
+		<label>Parent/Guardian Preferred Phone Number</label>
+		<input class="form-control"type="text" name="guardianPhonenumber">
+	</div>
+	<div class="form-group">
+		<label>Parent/Guardian Email Address</label>
+		<input class="form-control"type="text" name="guardianEmail"> 
+	</div>
+	</div>
+	</div>
+	    <div class="box-footer">
+	    <button type="submit" class="btn btn-primary">Submit</button>
+		<button type="reset" class="btn btn-default">Reset</button>
+	    </div>
+	
 	</form>
 	
+	
+	
+	</div>
 	<br>
 	<p>Any fields with an asterix * are essential</p>
 </div>
