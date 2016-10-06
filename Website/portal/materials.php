@@ -280,7 +280,7 @@ portal_ckeck();
               <table class="table">
                 <tr>
                   <th style="width:150px">Instrument</th>
-                  <th>Description</th>
+                  <th>Condition</th>
                   <th>Rental Cost (per month)</th>
                   <th style="width: 200px">Availablility</th>
                 </tr>
