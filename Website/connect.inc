@@ -45,4 +45,24 @@ function teacherportal_ckeck()
 }
 
 
+function ageCalculator($dob){
+    if(!empty($dob)){
+        $birthdate = new DateTime($dob);
+        $today   = new DateTime('today');
+        $age = $birthdate->diff($today)->y;
+        return $age;
+    }else{
+        return 0;
+    }
+}
+
+// The test function that removes whitespace and other unnecessary characters,
+//  strips backslashes and prevents xss insertion.
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 ?>

@@ -25,7 +25,7 @@ require "connect.inc";
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="portal/dist/css/skins/_all-skins.min.css">
-  
+  <style type="text/css">.error{color:red;}</style>
   
 
 </head>
@@ -38,11 +38,11 @@ require "connect.inc";
 <?php
 // Define web form results variables and error message variables and set to empty values
 $firstName = $lastName = $dob = $street = $suburb = $state = 
-$postCode = $gender = $phoneNumber = $email = $preferredDay = $preferredTime = 
-$preferredTeacher = $preferredLanguage = $preferredGender = $guardianFirstName = 
+$postCode = $gender = $phoneNumber = $email = $preferredTeacher = $preferredLanguage =
+$preferredGender = $guardianFirstName = $preferredDay = $preferredTime =
 $guardianLastName = $guardianPhonenumber = $guardianEmail = "";
 $firstNameErr = $lastNameErr = $dobErr = $streetErr = $suburbErr = $stateErr = 
-$postCodeErr = $genderErr = $emailErr = "";
+$postCodeErr = $genderErr = $emailErr = $Error="";
 // Check to see each form value passes the requirements and store
 // them in php variables.
 // ---------CURRENTLY MISSES A LOT OF CHECKS--------------- NEEDS IMPROVEMENT
@@ -83,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$state = test_input($_POST["state"]);
 	}
 	
+	
 	if (empty($_POST["postCode"])) {
 		$postCodeErr = "Postcode is required";
 	} else {
@@ -106,73 +107,87 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	} else {
 		$email = test_input($_POST["email"]);
 	}
-	
-	if (empty($_POST["preferredDay"])) {
-		$preferredDay = "";
-	} else {
-		$preferredDay = test_input($_POST["preferredDay"]);
-	}
-	
-	if (empty($_POST["preferredTime"])) {
-		$preferredTime = "";
-	} else {
-		$preferredTime = test_input($_POST["preferredTime"]);
-	}
-	
-	if (empty($_POST["preferredTeacher"])) {
-		$preferredTeacher = "";
-	} else {
-		$preferredTeacher = test_input($_POST["preferredTeacher"]);
-	}
-	
-	if (empty($_POST["preferredLanguage"])) {
-		$preferredLanguage = "";
-	} else {
-		$preferredLanguage = test_input($_POST["preferredLanguage"]);
-	}
-	
+	$preferredDay = test_input($_POST["preferredDay"]);
+	$preferredTime = test_input($_POST["preferredTime"]);
+	$preferredTeacher = test_input($_POST["preferredTeacher"]);
+	$preferredLanguage = test_input($_POST["preferredLanguage"]);
 	if (empty($_POST["preferredGender"])) {
-		$preferredGender = "none";
+		$preferredGender = "";
 	} else {
 		$preferredGender = test_input($_POST["preferredGender"]);
 	}
 	
+	
+
 	// Guardian details need to be required if dob > 1998
 	// Currently only optional
-	if (empty($_POST["guardianFirstName"])) {
-		$guardianFirstName = "";
-	} else {
-		$guardianFirstName = test_input($_POST["guardianFirstName"]);
+	$age=ageCalculator($dob);
+	if ($age < 18){
+		if (empty($_POST["guardianFirstName"])) {
+			$Error = "Fileds Required";
+		} else {
+			$guardianFirstName = test_input($_POST["guardianFirstName"]);
+		}
+		
+		if (empty($_POST["guardianLastName"])) {
+			$Error = "Fileds Required";
+		} else {
+			$guardianLastName = test_input($_POST["guardianLastName"]);
+		}
+		
+		if (empty($_POST["guardianPhonenumber"])) {
+			$Error = "Fileds Required";
+		} else {
+			$guardianPhonenumber = test_input($_POST["guardianPhonenumber"]);
+		}
+		
+		if (empty($_POST["guardianEmail"])) {
+			$Error = "Fileds Required";
+		} else {
+			$guardianEmail = test_input($_POST["guardianEmail"]);
+		}
 	}
-	
-	if (empty($_POST["guardianLastName"])) {
-		$guardianLastName = "";
-	} else {
-		$guardianLastName = test_input($_POST["guardianLastName"]);
-	}
-	
-	if (empty($_POST["guardianPhonenumber"])) {
-		$guardianPhonenumber = "";
-	} else {
-		$guardianPhonenumber = test_input($_POST["guardianPhonenumber"]);
-	}
-	
-	if (empty($_POST["guardianEmail"])) {
-		$guardianEmail = "";
-	} else {
-		$guardianEmail = test_input($_POST["guardianEmail"]);
-	}
+	else {
+         $guardianFirstName = test_input($_POST["guardianFirstName"]);
+         $guardianLastName = test_input($_POST["guardianLastName"]);
+         $guardianPhonenumber = test_input($_POST["guardianPhonenumber"]);
+		 $guardianEmail = test_input($_POST["guardianEmail"]);
+
+	}	
 }
-// The test function that removes whitespace and other unnecessary characters,
-//  strips backslashes and prevents xss insertion.
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+
+
+if(isset($_POST['submit'])){
+	if($firstNameErr == "" && $lastNameErr == "" &&$dobErr == "" &&
+		$streetErr == ""&&		$suburbErr ==""&& $stateErr ==""&& 
+		$postCodeErr == ""&& $genderErr == ""&& $emailErr == ""&& $Error==""){
+		$query="INSERT INTO `students`(`firstName`,`familyName`,`gender`,`DOB`,`street`,`suburb`,`state`,
+								   `postcode`,`emailAddress`,`mobileNumber`,`preferredDay`,`preferredTime`,`preferredTeacher`,
+								    `preferredLanguage`,`preferredGender`,`guardianFirstName`,`guardianLastName`
+								   ,`guardianPhonenumber`,`guardianEmail`,`enroled`)
+			VALUES('$firstName','$lastName','$gender','$dob','$street','$suburb','$state','$postCode','$email',
+				   '$phoneNumber','$preferredDay','$preferredTime','$preferredTeacher','$preferredLanguage',
+				   '$preferredGender','$guardianFirstName','$guardianLastName','$guardianPhonenumber','$guardianEmail','N')";
+	$rs=$conn->prepare($query);
+	$rs->execute();
+	$info="Your Requirements has been Uploaded, We Will Contact You Within 3 days, Please Check Your Email Regularlly";
+	echo "<script type='text/javascript'>
+				alert('$info');
+			  </script>";
+	$firstName = $lastName = $dob = $street = $suburb = $state = 
+	$postCode = $gender = $phoneNumber = $email = $preferredTeacher = $preferredLanguage =
+	$preferredGender = $guardianFirstName = $preferredDay = $preferredTime =
+	$guardianLastName = $guardianPhonenumber = $guardianEmail = "";
+	}
+	else {
+		$info ="Some of the fileds are required";
+		echo "<script type='text/javascript'>
+				alert('$info');
+			  </script>";
+	}
+
 }
-// Test it works - will delete later
-echo "$email is your email";
+
 ?>
 
 
@@ -322,26 +337,26 @@ to complete this section of the form. Fields indicated by an asterix * are essen
         <h3 class="box-title">Enrolment Form</h3>
     </div>
 	
-	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	<div class="box-body">
 	<div class="col-md-6">
 	<legend>All Students</legend>
 	<div class="form-group">
 		<label>First name * </label>
-		<input class="form-control" type="text" name="firstName"> 
+		<input class="form-control" type="text" name="firstName" value="<?php echo $firstName;?>"> 
 		<span class="error"> <?php echo $firstNameErr;?></span>
 		
 	</div>
 	<div class="form-group">
 		<label>Last name * </label>
-		<input class="form-control"type="text" name="lastName"> 
+		<input class="form-control"type="text" name="lastName" value="<?php echo $lastName;?>"> 
 		<span class="error"> <?php echo $lastNameErr;?></span>
 		
 	</div>
 	
 	<div class="form-group">
 		<label>Date Of Birth * </label><br>
-		<input class="form-control" type="date" name="dob"> 
+		<input class="form-control" type="date" name="dob" value="<?php echo $dob;?>">
 		<span class="error"> <?php echo $dobErr;?></span>
 		
 	</div>	
@@ -352,19 +367,19 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 		<label>Address *</label><br>
 	
 		
-			<input class="form-control"type="text" name="street" placeholder="Street"> 
+			<input class="form-control"type="text" name="street" placeholder="Street" value="<?php echo $street;?>">
 			<span class="error"> <?php echo $streetErr;?></span>
 			<br>
 			
-			<input class="form-control"type="text" name="suburb" placeholder="Suburb"> 
+			<input class="form-control"type="text" name="suburb" placeholder="Suburb" value="<?php echo $suburb;?>"> 
 			<span class="error"> <?php echo $suburbErr;?></span>
 			<br>
 			
-			<input class="form-control"type="text" name = "state" placeholder="State"> 
+			<input class="form-control"type="text" name = "state" placeholder="State" value="<?php echo $state;?>"> 
 			<span class="error"> <?php echo $stateErr;?></span>
 			<br>
 			
-			<input class="form-control"type="number" name="postCode" placeholder="Post Code"> 
+			<input class="form-control"type="number" name="postCode" placeholder="Post Code" value="<?php echo $postCode;?>"> 
 			<span class="error"> <?php echo $postCodeErr;?></span>
 			
 		
@@ -383,12 +398,12 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	</div>	
 	<div class="form-group">
 		<label>Preferred Phone Number</label>
-		<input class="form-control"type="text" name="phoneNumber">
+		<input class="form-control"type="text" name="phoneNumber" value="<?php echo $phoneNumber;?>">
 		
 	</div>	
 	<div class="form-group">
 		<label>Email Address </label>
-		<input class="form-control"type="text" name="email"> 
+		<input class="form-control"type="text" name="email" value="<?php echo $email;?>"> 
 		<span class="error"> <?php echo $emailErr;?></span>
 		
 	</div>
@@ -400,7 +415,8 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	<legend>Preferences</legend>
 	<div class="form-group">
 		<label>Preferred Lesson Day</label>
-		<select class="form-control"name = "preferredDay">
+		<select class="form-control" name = "preferredDay">
+		    <option Value = "title">Please Select</option>
 			<option value = "monday">Monday</option>
 			<option value = "tuesday">Tuesday</option>
 			<option value = "wednesday">Wednesday</option>
@@ -410,15 +426,15 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	</div>
 	<div class="form-group">
 		<label>Preferred Lesson Time</label>
-		<input class="form-control"type="time" name="preferredTime">
+		<input class="form-control"type="time" name="preferredTime" value="<?php echo $preferredTime;?>">
 	</div>
     <div class="form-group">
 		<label>Preferred Teacher:</label>
-		<input class="form-control"type="text" name="preferredTeacher">
+		<input class="form-control"type="text" name="preferredTeacher" value="<?php echo $preferredTeacher;?>">
     </div>
 	<div class="form-group">
 		<label>Preferred Language Spoken by Teacher</label>
-		<input class="form-control"type="text" name="preferredLanguage">
+		<input class="form-control"type="text" name="preferredLanguage" value="<?php echo $preferredLanguage;?>">
 	</div>
 	<div class="form-group">
 		<label>Preferred Teacher Gender</label><br>
@@ -435,28 +451,30 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	<!-- Parent/Guardian information only required for under 18s -->
 	<div class="col-md-6">
 	<legend>Under 18s</legend>
+	<span class="error"> <?php echo $Error;?></span>
 	<div class="form-group">
 		<label>Parent/Guardian First Name</label>
-		<input class="form-control"type="text" name="guardianFirstName"> 
+		<input class="form-control"type="text" name="guardianFirstName" value="<?php echo $guardianFirstName;?>"> 
     </div>
 	<div class="form-group">
 		<label>Parent/Guardian Last Name</label>
-		<input class="form-control"type="text" name="guardianLastName"> 
+		<input class="form-control"type="text" name="guardianLastName" value="<?php echo $guardianLastName;?>"> 
     </div>
 	<div class="form-group">
 		<label>Parent/Guardian Preferred Phone Number</label>
-		<input class="form-control"type="text" name="guardianPhonenumber">
+		<input class="form-control"type="text" name="guardianPhonenumber" value="<?php echo $guardianPhonenumber;?>">
 	</div>
 	<div class="form-group">
 		<label>Parent/Guardian Email Address</label>
-		<input class="form-control"type="text" name="guardianEmail"> 
+		<input class="form-control"type="text" name="guardianEmail" value="<?php echo $guardianEmail;?>"> 
 	</div>
 	</div>
 	</div>
-	    <div class="box-footer">
-	    <button type="submit" class="btn btn-primary">Submit</button>
-		<button type="reset" class="btn btn-default">Reset</button>
+	    <div class="box-footer" >
+	    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+		<input type="reset" class="btn btn-default" name ="reset" value="Reset">
 	    </div>
+	    
 	
 	</form>
 	
