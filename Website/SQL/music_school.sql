@@ -99,6 +99,8 @@ CREATE TABLE `instruments` (
 
 LOCK TABLES `instruments` WRITE;
 /*!40000 ALTER TABLE `instruments` DISABLE KEYS */;
+INSERT INTO `pinelands_music_school`.`instruments` (`instrumentID`, `instrumentType`, `hireCost`, `hireCostLesson`) VALUES ('1', 'Guitar', '50', '5');
+INSERT INTO `pinelands_music_school`.`instruments` (`instrumentType`, `hireCostLesson`, `conditionQuality`) VALUES ('Piano', '2', 'Good');
 /*!40000 ALTER TABLE `instruments` ENABLE KEYS */;
 UNLOCK TABLES;
 
