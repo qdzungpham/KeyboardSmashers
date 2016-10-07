@@ -184,7 +184,8 @@ require "connect.inc";
             clients at the forefront of everything they do and they are driven
             by the idea and reality of success.
          </div>
-         <input class = "button" name="more" type="button" value="MORE">
+         <a href="mailto:hr@pinelandsmusicschool.com"> <input class = "button" name="more" type="button" value="Apply Now"> </a>
+		 
        </div>
 <!-- end container -->
        <div class="jobs">
@@ -213,7 +214,7 @@ require "connect.inc";
             clients at the forefront of everything they do and they are driven
             by the idea and reality of success.
          </div>
-         <input class = "button" name="more" type="button" value="MORE">
+         <a href="mailto:hr@pinelandsmusicschool.com"> <input class = "button" name="more" type="button" value="Apply Now"> </a>
        </div>
        <div class="jobs">
          <div class = "jtitle">
@@ -241,7 +242,7 @@ require "connect.inc";
             clients at the forefront of everything they do and they are driven
             by the idea and reality of success.
          </div>
-         <input class = "button" name="more" type="button" value="MORE">
+         <a href="mailto:hr@pinelandsmusicschool.com"> <input class = "button" name="more" type="button" value="Apply Now"> </a>
        </div>
        </div>
   </div>
