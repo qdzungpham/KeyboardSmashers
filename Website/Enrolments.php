@@ -399,7 +399,6 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 		
 		<input type="radio" name="gender" value="male"> Male
 		<input type="radio" name="gender" value="female"> Female
-		<input type="radio" name="gender" value="other"> Other
 	    
 		<br>
 	</div>	
@@ -445,12 +444,9 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	</div>
 	<div class="form-group">
 		<label>Preferred Teacher Gender</label><br>
-		<div class = "options">
 		<input type="radio" name="preferredGender" value="none"> No Preferences
 		<input type="radio" name="preferredGender" value="male"> Male
 		<input type="radio" name="preferredGender" value="female"> Female
-		</div>
-		
 	</div>
 	</fieldset>
 	
