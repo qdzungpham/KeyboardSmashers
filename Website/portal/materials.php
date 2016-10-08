@@ -397,7 +397,7 @@ if(isset($_POST['rent']))
               <table class="table">
                 <tr>
                   <th style="width:150px">Instrument</th>
-                  <th>Condition</th>
+                  <th>Description</th>
                   <th>Rental Cost (per month)</th>
                   <th style="width: 300px">Availablility</th>
                   <th>Action</th>
