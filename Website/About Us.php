@@ -69,13 +69,21 @@ $row = $results->FetchALL(PDO::FETCH_ASSOC);
                 <span class="hidden-xs">Login</span>
               </a>
               <?php
+
+
               if (isset($_SESSION['UserID'])){
                 echo '<ul width: 370px; class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
-                <img src="image/teachers/'.$_SESSION['Name'].'.png " class="img-circle" alt="User Image">
+              <li class="user-header">';
+              if ($_SESSION["Roll"]=="teacher"){
+                echo '<img src="image/teachers/'.$_SESSION['Name'].'.png " class="img-circle" alt="User Image">';
+              }
+              if ($_SESSION["Roll"]=="student"){
+                echo '<img src="image/profile.png" class="img-circle" alt="User Image">';
+              }
 
-                <p>
+
+              echo'<p>
                  '.$_SESSION["UserName"].'
                   <small>'.$_SESSION["Roll"].'</small>
                 </p>

@@ -20,7 +20,7 @@ if (isset($_POST['approve'])){
 	       VALUES('$enrolled','$username','$password')";
     $results=$conn->prepare($sql);
 	$results->execute();
-	echo $username.' '.$password;
+	echo $username.' '.$password.'<br>';
 	
 }
 

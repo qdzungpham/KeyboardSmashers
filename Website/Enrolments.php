@@ -124,25 +124,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$age=ageCalculator($dob);
 	if ($age < 18){
 		if (empty($_POST["guardianFirstName"])) {
-			$Error = "Fileds Required";
+			$Error = "fields Required";
 		} else {
 			$guardianFirstName = test_input($_POST["guardianFirstName"]);
 		}
 		
 		if (empty($_POST["guardianLastName"])) {
-			$Error = "Fileds Required";
+			$Error = "fields Required";
 		} else {
 			$guardianLastName = test_input($_POST["guardianLastName"]);
 		}
 		
 		if (empty($_POST["guardianPhonenumber"])) {
-			$Error = "Fileds Required";
+			$Error = "fields Required";
 		} else {
 			$guardianPhonenumber = test_input($_POST["guardianPhonenumber"]);
 		}
 		
 		if (empty($_POST["guardianEmail"])) {
-			$Error = "Fileds Required";
+			$Error = "fields Required";
 		} else {
 			$guardianEmail = test_input($_POST["guardianEmail"]);
 		}
@@ -180,7 +180,7 @@ if(isset($_POST['submit'])){
 	$guardianLastName = $guardianPhonenumber = $guardianEmail = "";
 	}
 	else {
-		$info ="Some of the fileds are required";
+		$info ="Some of the fields are required";
 		echo "<script type='text/javascript'>
 				alert('$info');
 			  </script>";
@@ -226,9 +226,16 @@ if(isset($_POST['submit'])){
               if (isset($_SESSION['UserID'])){
                 echo '<ul width: 370px; class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
-                <img src="image/teachers/'.$_SESSION['Name'].'.png " class="img-circle" alt="User Image">
+              <li class="user-header">';
+              if ($_SESSION["Roll"]=="teacher"){
+                echo '<img src="image/teachers/'.$_SESSION['Name'].'.png " class="img-circle" alt="User Image">';
+              }
+              if ($_SESSION["Roll"]=="student"){
+                echo '<img src="image/profile.png" class="img-circle" alt="User Image">';
+              }
 
+
+              echo'
                 <p>
                  '.$_SESSION["UserName"].'
                   <small>'.$_SESSION["Roll"].'</small>

@@ -2,6 +2,72 @@
 <?php
 require "../connect.inc";
 portal_ckeck();
+//get data forthe music instrument 
+$id=$_SESSION["UserID"];
+$action="";
+$sql = "SELECT * FROM `instruments`";
+$rs = $conn->prepare($sql);
+$rs -> execute();
+$record = $rs->FetchALL(PDO::FETCH_ASSOC);
+
+
+//get data from instrumenthire base on student id
+$query = "SELECT * FROM `instrumenthire`,`instruments` WHERE `instrumenthire`.`studentID`='$id' and
+`instrumenthire`.`instrumentID`= `instruments`.`instrumentID`";
+$results = $conn->prepare($query);
+$results -> execute();
+$row = $results->FetchALL(PDO::FETCH_ASSOC);
+foreach($row as $info)
+{
+  echo $instrumentID=$info['instrumentID'];
+
+}
+
+
+//when rent button click
+if(isset($_POST['rent']))
+{
+  $startDate=date("Y-m-d");
+  $endDate=date('Y-m-d',strtotime("+3 month"));
+  if(!empty($_POST['check_list']))
+  {
+    foreach($_POST['check_list'] as $selected)
+    {   
+     
+    if (count($row)>0)
+    {    
+          if($info['instrumentID']==$selected)
+          {
+            $rentQuantity= $info['quantity']+1;
+            $sql="UPDATE `instrumenthire` SET `quantity`='$rentQuantity' WHERE `instrumentID`='$selected' and 
+             `studentID`='$id'";
+            $rs = $conn->prepare($sql);
+            $rs -> execute();
+            header('location:materials.php');
+          }
+          else 
+          {
+            $rentQuantity='1';
+             $sql="INSERT INTO `instrumenthire`(`studentID`,`instrumentID`,`startDate`,`endDate`,`quantity`)
+                      VALUES('$id','$selected','$startDate','$endDate','$rentQuantity')";
+                      $rs = $conn->prepare($sql);
+          $rs -> execute();
+          header('location:materials.php');
+          }
+      }
+      else
+      {
+             $rentQuantity='1';
+             $sql="INSERT INTO `instrumenthire`(`studentID`,`instrumentID`,`startDate`,`endDate`,`quantity`)
+                      VALUES('$id','$selected','$startDate','$endDate','$rentQuantity')";
+                      $rs = $conn->prepare($sql);
+          $rs -> execute();
+          header('location:materials.php');
+      }
+    }
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +87,7 @@ portal_ckeck();
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
+  <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
   
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -52,13 +118,13 @@ portal_ckeck();
           
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../image/profile.png" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $_SESSION["Name"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../image/profile.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $_SESSION["UserName"]; ?>
@@ -266,6 +332,56 @@ portal_ckeck();
           <!-- nav-tabs-custom -->
 			
 		</div>
+
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">My Instruments</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+      
+        <!-- table for available instruments -->
+              <table class="table">
+                <tr>
+                  <th >Instrument</th>
+                  <th>Description</th>
+                  <th>Rental Cost (per month)</th>
+                  <th >Start Date</th>
+                  <th>End Date</th>
+                  <th>Quantity</th>
+                </tr>
+                <?php 
+                foreach($row as $info)
+                 { 
+                  $instrumentID=$info['instrumentID'];     
+                  $type=$info['instrumentType'];
+                  $description=$info['conditionQuality'];
+                  $rentalcost=$info['hireCost'];
+                  $start=$info['startDate'];
+                  $end=$info['endDate'];
+                  $rentquantity=$info['quantity'];
+                echo '
+                <tr>
+                  <td><img src="dist/img/'.$type.'.png" alt="" style="width:100px;height:100px"></td>
+                  <td>'.$description.'</td>
+                  <td><span class="badge bg-green">'.$rentalcost.'</span></td>
+                  <td>
+                    <span class="badge bg-yellow">'.$start.'</span>
+                  </td>
+                  <td><span class="badge bg-blue">'.$end.'</span></td>
+                  <td><span class="badge bg-red">'.$rentquantity.'</span></td>
+                </tr>';
+                }
+                ?>
+               
+              </table>
+          </form>     
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
 		
 		<!-- music instruments -->
 		<div class="col-md-12">
@@ -277,53 +393,64 @@ portal_ckeck();
             <div class="box-body no-padding">
 			
 			  <!-- table for available instruments -->
+        <form action="" method="post">
               <table class="table">
                 <tr>
                   <th style="width:150px">Instrument</th>
                   <th>Description</th>
                   <th>Rental Cost (per month)</th>
-                  <th style="width: 200px">Availablility</th>
+                  <th style="width: 300px">Availablility</th>
+                  <th>Action</th>
                 </tr>
+                <?php 
+                foreach($record as $data)
+                 { 
+                  $instrumentID=$data['instrumentID'];     
+                  $type=$data['instrumentType'];
+                  $description=$data['conditionQuality'];
+                  $cost=$data['hireCost'];
+                  $quantity=$data['Quantity'];
+                  if($quantity>0)
+                  {
+                     $status="success";
+                     $value="Available";
+                     $action="<div class='checkbox icheck'>
+                                  <input type='checkbox' value='$instrumentID' name='check_list[]'>
+                              </div>";
+                  }
+                  else {
+                    $status="danger";
+                    $value="Unavailable";
+                    $action="";
+                  }
+                echo '
                 <tr>
-                  <td><img src="dist/img/violin.png" alt="" style="width:100px;height:100px"></td>
-                  <td>In good condition</td>
+                  <td><img src="dist/img/'.$type.'.png" alt="" style="width:100px;height:100px"></td>
+                  <td>'.$description.'</td>
                   <td>
-                    <span class="badge bg-yellow">$50</span>
+                    <span class="badge bg-yellow">'.$cost.'</span>
                   </td>
-                  <td><a style="width:100px"class="btn btn-danger btn-xs">Unavailable</a></td>
-                </tr>
+                  <td><span style="width:100px" class="btn btn-'.$status.' btn-xs">'.$value.'</span></td>
+                  <td>'.$action.'</td>
+                </tr>';
+                }
+                ?>
                 <tr>
-                  <td><img src="dist/img/saxophone.png" alt="" style="width:100px;height:100px"></td>
-                  <td>New</td>
-                  <td>
-                    <span class="badge bg-yellow">$100</span>
-                  </td>
-                  <td><a style="width:100px"class="btn btn-success btn-xs">Available</a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input class="btn btn-primary btn-block btn-flat" 
+                type="submit" name="rent" value="Rent"></td>
                 </tr>
-                <tr>
-                  <td><img src="dist/img/guitar.png" alt="" style="width:100px;height:100px"></td>
-                  <td>Excellent condition</td>
-                  <td>
-                    <span class="badge bg-yellow">$100</span>
-                  </td>
-                  <td><a style="width:100px"class="btn btn-success btn-xs">Available</a></td>
-                </tr>
-                <tr>
-                  <td><img src="dist/img/violin.png" alt="" style="width:100px;height:100px"></td>
-                  <td>Repair</td>
-                  <td>
-                    <span class="badge bg-yellow">$50</span>
-                  </td>
-                  <td><a style="width:100px"class="btn btn-danger btn-xs">Unavailable</a></td>
-                </tr>
+               
               </table>
+          </form>     
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-		</div>
-		
-      </div>
 
       
 
@@ -355,5 +482,15 @@ portal_ckeck();
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
 </body>
 </html>

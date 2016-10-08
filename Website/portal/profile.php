@@ -2,6 +2,20 @@
 <?php
 require "../connect.inc";
 portal_ckeck();
+$id=$_SESSION["UserID"];
+$sql = "SELECT * FROM `students` WHERE studentID = '$id'";
+$rs = $conn->prepare($sql);
+$rs -> execute();
+$record = $rs->FetchALL(PDO::FETCH_ASSOC);
+foreach($record as $data)
+        {       
+          $dob=$data['DOB'];
+          $gender=$data['gender'];
+          $phone=$data['mobileNumber'];
+          $mail=$data['street'].' '.$data['suburb'].' '.$data['state'].' '.$data['postcode'];
+          $address=$mail;
+          $email=$data['emailAddress'];
+        }
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,13 +67,13 @@ portal_ckeck();
          
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../image/profile.png" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $_SESSION["Name"]; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../image/profile.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $_SESSION["UserName"]; ?>
@@ -187,7 +201,7 @@ portal_ckeck();
 						    <div class="panel panel-primary no-boder">
                         <div style = "background-color:#F2F6F9;"class="panel-body yellow">
 						<div class="col-lg-3">
-                            <img src="dist/img/ena.png" alt="" style="width:150px;height:150px;margin-left:40px;">
+                            <img src="../image/profile.png" alt="" style="width:150px;height:150px;margin-left:40px;">
 						</div>
 						<div class="col-lg-9">
 						<div class="row">						
@@ -201,19 +215,19 @@ portal_ckeck();
 							
 							<i style="margin-left:10px"class="fa fa-calendar-o"></i>	
 						    <h style="margin-left:5px">was born on</h>	
-                            <h><b>24 Feb 1996</b></h>								
+                            <h><b><?php echo $dob; ?></b></h>								
 						</div>
 						<div class="row">	
 							
 							<i style="margin-left:10px"class="fa fa-transgender"></i>	
 						    <h style="margin-left:5px">identifies as a</h>	
-                            <h><b>Female</b></h>									
+                            <h><b><?php echo $gender; ?></b></h>									
 						</div>
 						<div class="row">	
 							
 							<i style="margin-left:10px"class="fa fa-globe"></i>	
-						    <h style="margin-left:5px">is an</h>	
-                            <h><b>International student</b></h>								
+						    <h style="margin-left:5px">is a</h>	
+                            <h><b><?php echo $_SESSION["Roll"]; ?></b></h>								
 						</div>
                         </div>
 						</div>
@@ -239,15 +253,13 @@ portal_ckeck();
                             <div style="border-bottom-style:dotted;border-width: 1px;"class="box-body">
                                 <dl class="dl-horizontal">
                                     <dt>Primary contact number:</dt>
-                                    <dd>012345678</dd>
+                                    <dd><?php echo $phone; ?></dd>
                                     <dt>Mailing address</dt>
-                                    <dd>00 Rothburn Street</dd>
-                                    <dd>DOLLANDELLA Queensland 4077, Australia</dd>
+                                    <dd><?php echo $mail; ?></dd>
                                     <dt>Home address:</dt>
-                                    <dd>00 Rothburn Street</dd>
-									<dd>DOLLANDELLA Queensland 4077, Australia</dd>
+                                    <dd><?php echo $address; ?></dd>
                                     <dt>Email address</dt>
-                                    <dd><a>keyboardsmasher@gmail.com</a>
+                                    <dd><a><?php echo $email; ?></a>
                                     </dd>
                                 </dl>
                             </div>
