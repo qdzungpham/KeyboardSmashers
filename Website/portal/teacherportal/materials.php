@@ -168,7 +168,7 @@ teacherportal_ckeck();
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Learning Materials
+        Class Management
         <small></small>
       </h1>
       
@@ -185,7 +185,7 @@ teacherportal_ckeck();
               <li><a href="#tab_2-2" data-toggle="tab">Class 102</a></li>
               <li class="active"><a href="#tab_3-2" data-toggle="tab">Class 101</a></li>
               
-              <li class="pull-left header"><i class="fa  fa-file-text"></i> Learning Documents</li>
+              <li class="pull-left header"><i class="fa  fa-file-text"></i> My Classes</li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane" id="tab_1-1">
@@ -213,54 +213,63 @@ teacherportal_ckeck();
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane active" id="tab_3-2">
-                  <div class="box box-solid">
+                  <div class="box box-success">
                      <div class="box-header with-border">
-                        <h3 class="box-title">Lession 1</h3>
+                        <h3 class="box-title">Student Materials</h3>
                      </div>
                      <!-- /.box-header -->
                      <div class="box-body">
 					    <p><b>Attached Files:<b><p>
 						<p>
 						<a href="#">MSC101_Lession1 - How to Read Sheet Music.pdf</a><br>
-						<a href="#">MSC101_Lession1 - Your First Lesson on the Piano.pdf</a>
-					    </p>
-                
-                     </div>
-                     <!-- /.box-body -->
-                  </div>
-                  <!-- /.box -->
-				  <div class="box box-solid">
-                     <div class="box-header with-border">
-                        <h3 class="box-title">Lession 2</h3>
-                     </div>
-                     <!-- /.box-header -->
-                     <div class="box-body">
-					    <p><b>Attached Files:<b><p>
-						<p>
+						<a href="#">MSC101_Lession1 - Your First Lesson on the Piano.pdf</a><br>
 						<a href="#">MSC101_Lession2 - How to Read Music Notes for Piano.pdf</a><br>
-						<a href="#">MSC101_Lession2 - Reading Music Notes on Treble Clef and Bass Clef.pdf</a>
+						<a href="#">MSC101_Lession2 - Reading Music Notes on Treble Clef and Bass Clef.pdf</a><br>
+						<a href="#">MSC101_Lession3 - How to Read Sheet Music.pdf</a>
 					    </p>
+						<p><b>Upload File:<b><p>
+						<p>
+						    <form role="form">
+							    <input type="file" id="example">
+								<button style="margin-top:10px"type="submit" class="btn btn-primary">Submit</button>
+							</form>
+						</p>
                 
                      </div>
                      <!-- /.box-body -->
                   </div>
                   <!-- /.box -->
-				  <div class="box box-solid">
+				  
+				  <div class="box box-primary">
                      <div class="box-header with-border">
-                        <h3 class="box-title">Lession 3</h3>
+                        <h3 class="box-title">Make an Annoucement</h3>
                      </div>
                      <!-- /.box-header -->
                      <div class="box-body">
-					    <p><b>Attached Files:<b><p>
-						<p>
-						<a href="#">MSC101_Lession3 - How to Read Sheet Music.pdf</a><br>
-						
-					    </p>
+					    <form role="form">
+							    <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+								<div class="form-group">
+                                    <label>Details</label>
+                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                </div>
+								<div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Students can view
+                                    </label>
+                                </div>
+								<button type="submit" class="btn btn-primary">Submit</button>
+								
+							</form>
                 
                      </div>
                      <!-- /.box-body -->
                   </div>
                   <!-- /.box -->
+				  
+				  
               </div>
               <!-- /.tab-pane -->
             </div>

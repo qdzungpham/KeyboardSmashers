@@ -285,45 +285,17 @@ if(isset($_POST['rent']))
 					    <p><b>Attached Files:<b><p>
 						<p>
 						<a href="#">MSC101_Lession1 - How to Read Sheet Music.pdf</a><br>
-						<a href="#">MSC101_Lession1 - Your First Lesson on the Piano.pdf</a>
-					    </p>
-                
-                     </div>
-                     <!-- /.box-body -->
-                  </div>
-                  <!-- /.box -->
-				  <div class="box box-solid">
-                     <div class="box-header with-border">
-                        <h3 class="box-title">Lession 2</h3>
-                     </div>
-                     <!-- /.box-header -->
-                     <div class="box-body">
-					    <p><b>Attached Files:<b><p>
-						<p>
+						<a href="#">MSC101_Lession1 - Your First Lesson on the Piano.pdf</a><br>
 						<a href="#">MSC101_Lession2 - How to Read Music Notes for Piano.pdf</a><br>
-						<a href="#">MSC101_Lession2 - Reading Music Notes on Treble Clef and Bass Clef.pdf</a>
+						<a href="#">MSC101_Lession2 - Reading Music Notes on Treble Clef and Bass Clef.pdf</a><br>
+						<a href="#">MSC101_Lession3 - How to Read Sheet Music.pdf</a>
 					    </p>
                 
                      </div>
                      <!-- /.box-body -->
                   </div>
                   <!-- /.box -->
-				  <div class="box box-solid">
-                     <div class="box-header with-border">
-                        <h3 class="box-title">Lession 3</h3>
-                     </div>
-                     <!-- /.box-header -->
-                     <div class="box-body">
-					    <p><b>Attached Files:<b><p>
-						<p>
-						<a href="#">MSC101_Lession3 - How to Read Sheet Music.pdf</a><br>
-						
-					    </p>
-                
-                     </div>
-                     <!-- /.box-body -->
-                  </div>
-                  <!-- /.box -->
+				  
               </div>
               <!-- /.tab-pane -->
             </div>
