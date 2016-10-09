@@ -31,11 +31,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `classes` (
   `classID` int(11) NOT NULL,
   `teacherID` int(11) NOT NULL,
-  `classDate` date NOT NULL,
+  /*classDay was previously: `classDate` date NOT NULL,
+	but we only want days*/
+  `classDay` enum('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') NOT NULL,
   `startTime` time NOT NULL,
   `endTime` time NOT NULL,
   `roomNumber` char(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `pinelands_music_school`.`classes` (`classID`, `teacherID`, `classDay`, `startTime`, `endTime`, `roomNumber`) VALUES 
+('1', '1', 'Tuesday', '13:30:00', '14:00:00', 'S303'),
+('2', '1', 'Thursday', '09:00:00', '09:30:00', 'P505'),
+('3', '2', 'Tuesday', '13:00:00', '14:00:00', 'S303');
+
 
 -- --------------------------------------------------------
 
@@ -70,7 +82,10 @@ CREATE TABLE `instruments` (
   `instrumentType` varchar(30) NOT NULL,
   `hireCost` decimal(5,2) DEFAULT NULL,
   `hireCostLesson` decimal(5,2) DEFAULT NULL,
+  /*conditionQuality was previously: 
   `conditionQuality` enum('New','Excellent','Good','Repair','Discard') NOT NULL,
+  but this was changed so we are able to put more detail in*/
+  `conditionQuality` varchar(250) NOT NULL,
   `Quantity` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -80,7 +95,7 @@ CREATE TABLE `instruments` (
 
 INSERT INTO `instruments` (`instrumentID`, `instrumentType`, `hireCost`, `hireCostLesson`, `conditionQuality`, `Quantity`) VALUES
 (1, 'Guitar', '50.00', '5.00', 'New', 0),
-(2, 'Violin', '20.00', '2.00', 'Good', 50);
+(2, 'Violin', '20.00', '2.00', 'Good - slight wear on D string', 50);
 
 -- --------------------------------------------------------
 
@@ -251,6 +266,15 @@ CREATE TABLE `teachingcontract` (
   `lessonCost` decimal(5,2) NOT NULL,
   `lessonFrequency` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `teachingcontract`
+--
+
+INSERT INTO `pinelands_music_school`.`teachingcontract` (`contractID`, `studentID`, `teacherID`, `startDate`, `endDate`, `lessonType`, `lessonDuration`, `lessonCost`, `lessonFrequency`) VALUES
+('1', '1', '3', '2017-02-18', '2017-06-18', 'Introduction to Piano', '30', '40', '1'),
+('2', '2', '2', '2016-06-18', '2016-11-18', 'Advanced Guitar', '60', '50', '2');
+
 
 --
 -- Indexes for dumped tables
