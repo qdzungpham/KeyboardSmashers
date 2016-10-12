@@ -275,6 +275,76 @@ INSERT INTO `pinelands_music_school`.`teachingcontract` (`contractID`, `studentI
 ('1', '1', '3', '2017-02-18', '2017-06-18', 'Introduction to Piano', '30', '40', '1'),
 ('2', '2', '2', '2016-06-18', '2016-11-18', 'Advanced Guitar', '60', '50', '2');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `publicAnnouncements`
+--
+
+CREATE TABLE `publicAnnouncements` (
+  `announcementID` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255),
+  `content` TEXT NOT NULL,
+  PRIMARY KEY(`announcementID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `publicAnnouncements`
+--
+
+INSERT INTO `pinelands_music_school`.`publicAnnouncements` (`announcementID`, `title`, `content`) VALUES
+('1', 'Good Morning!', 'This content is actually from the database so I\'m not using the previous filler words\, but I will still sing \'Twinkle Twinkle Little Star\' for you. Actually I won\'t. Tricked you. Trick or treat.'),
+('2', 'Good Afternoon!', 'This content is actually from the database so I\'m not using the previous filler words\, but I will still sing \'Twinkle Twinkle Little Star\' for you. Actually I won\'t. Tricked you. Trick or treat.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classAnnouncements`
+--
+
+CREATE TABLE `classAnnouncements` (
+  `announcementID` INT NOT NULL AUTO_INCREMENT,
+  `classID` INT NOT NULL,
+  `title` VARCHAR(255),
+  `content` TEXT NOT NULL,
+  PRIMARY KEY(`announcementID`),
+  FOREIGN KEY(`classID`) REFERENCES `classes` (`classID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `classAnnouncements`
+--
+
+INSERT INTO `pinelands_music_school`.`classAnnouncements` (`announcementID`, `classID`, `title`, `content`) VALUES
+('1', '1', 'Welcome to Class 1', 'This content is actually from the database so I\'m not using the previous filler words\, but I will still sing \'Twinkle Twinkle Little Star\' for you. Actually I won\'t. Tricked you. Trick or treat.'),
+('2', '3', 'Welcome to Class 3', 'This content is actually from the database so I\'m not using the previous filler words\, but I will still sing \'Twinkle Twinkle Little Star\' for you. Actually I won\'t. Tricked you. Trick or treat.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calloutAnnouncements`
+--
+
+CREATE TABLE `calloutAnnouncements` (
+  `announcementID` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255),
+  `content` TEXT NOT NULL,
+  PRIMARY KEY(`announcementID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `calloutAnnouncements`
+--
+
+INSERT INTO `pinelands_music_school`.`calloutAnnouncements` (`announcementID`, `title`, `content`) VALUES
+('1', 'Servers will be down tomorrow', 'This content is actually from the database so I\'m not using the previous filler words\, but I will still sing \'Twinkle Twinkle Little Star\' for you. Actually I won\'t. Tricked you. Trick or treat.'),
+('2', 'System maintenance next week', 'This content is actually from the database so I\'m not using the previous filler words\, but I will still sing \'Twinkle Twinkle Little Star\' for you. Actually I won\'t. Tricked you. Trick or treat.');
+
+
+
+
+
+
 
 --
 -- Indexes for dumped tables
