@@ -33,36 +33,47 @@ require "connect.inc";
 <body class="hold-transition skin-blue layout-top-nav">
 
 
-<!-- Create the php code to handle the enrolment form submission
-// -----------------------------------CURRENTLY DOES NOT DO ANYTHING WITH THE FORM DETAILS EXCEPT STORE IN PHP VARIABLES AND CHECK IF EMPTY---------------------------------- -->
+<!-- Create the php code to handle the enrolment form submission -->
 <?php
 // Define web form results variables and error message variables and set to empty values
-$firstName = $lastName = $dob = $street = $suburb = $state = 
+$age = $firstName = $lastName = $dob = $street = $suburb = $state = 
 $postCode = $gender = $phoneNumber = $email = $preferredTeacher = $preferredLanguage =
-$preferredGender = $guardianFirstName = $preferredDay = $preferredTime =
+$preferredGender = $preferredDay = $preferredTime = $guardianFirstName = 
 $guardianLastName = $guardianPhonenumber = $guardianEmail = "";
 $firstNameErr = $lastNameErr = $dobErr = $streetErr = $suburbErr = $stateErr = 
-$postCodeErr = $genderErr = $emailErr = $Error="";
+$postCodeErr = $genderErr = $emailErr = $guardianFirstNameErr = 
+$guardianLastNameErr = $guardianPhonenumberErr = $guardianEmailErr = "";
+
 // Check to see each form value passes the requirements and store
 // them in php variables.
-// ---------CURRENTLY MISSES A LOT OF CHECKS--------------- NEEDS IMPROVEMENT
+// ---------CURRENTLY DOES NOT CHECKS FOR ERRORS IN THE PREFERENCES SECTION - MAY NEED IMPROVEMENT
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (empty($_POST["firstName"])) {
 		$firstNameErr = "First name is required";
 	} else {
 		$firstName = test_input($_POST["firstName"]);
+		if (!preg_match("/^[a-zA-Z ]*$/",$firstName)) {
+			$firstNameErr = "Only letters and white space allowed";
+		}
 	}
 	
 	if (empty($_POST["lastName"])) {
 		$lastNameErr = "Last name is required";
 	} else {
 		$lastName = test_input($_POST["lastName"]);
+		if (!preg_match("/^[a-zA-Z ]*$/",$lastName)) {
+			$lastNameErr = "Only letters and white space allowed";
+		}
 	}
 	
 	if (empty($_POST["dob"])) {
 		$dobErr = "Date of birth is required";
 	} else {
 		$dob = test_input($_POST["dob"]);
+		$age = ageCalculator($dob);
+		if ($age <= 0) {
+			$dobErr = "Date of birth must be a valid date";
+		}
 	}
 	
 	if (empty($_POST["street"])) {
@@ -75,6 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$suburbErr = "Suburb is required";
 	} else {
 		$suburb = test_input($_POST["suburb"]);
+		if (!preg_match("/^[a-zA-Z ]*$/",$suburb)) {
+			$suburbErr = "Only letters and white space allowed";
+		}
 	}
 	
 	if (empty($_POST["state"])) {
@@ -83,11 +97,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$state = test_input($_POST["state"]);
 	}
 	
-	
 	if (empty($_POST["postCode"])) {
 		$postCodeErr = "Postcode is required";
 	} else {
 		$postCode = test_input($_POST["postCode"]);
+		if ($postCode > 9999 OR $postCode < 0) {
+			$postCodeErr = "Please enter a valid post code";
+		}
 	}
 	
 	if (empty($_POST["gender"])) {
@@ -96,55 +112,64 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$gender = test_input($_POST["gender"]);
 	}
 	
-	if (empty($_POST["phoneNumber"])) {
-		$phoneNumber = "";
-	} else {
-		$phoneNumber = test_input($_POST["phoneNumber"]);
-	}
+	$phoneNumber = test_input($_POST["phoneNumber"]);
 	
 	if (empty($_POST["email"])) {
 		$emailErr = "Email is required";
 	} else {
 		$email = test_input($_POST["email"]);
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$emailErr = "Invalid email format"; 
+		}
 	}
+	
 	$preferredDay = test_input($_POST["preferredDay"]);
+	
 	$preferredTime = test_input($_POST["preferredTime"]);
+	
 	$preferredTeacher = test_input($_POST["preferredTeacher"]);
+	
 	$preferredLanguage = test_input($_POST["preferredLanguage"]);
-	if (empty($_POST["preferredGender"])) {
-		$preferredGender = "";
-	} else {
+	
+	// Check it's not empty before trying to grab the value, otherwise will cause an error
+	if (!empty($_POST["preferredGender"])) {
 		$preferredGender = test_input($_POST["preferredGender"]);
 	}
 	
-	
 
-	// Guardian details need to be required if dob > 1998
-	// Currently only optional
-	$age=ageCalculator($dob);
+	// Guardian details need to be required if age < 18
 	if ($age < 18){
 		if (empty($_POST["guardianFirstName"])) {
-			$Error = "fields Required";
+			$guardianFirstNameErr = "First name is required";
 		} else {
 			$guardianFirstName = test_input($_POST["guardianFirstName"]);
+			if (!preg_match("/^[a-zA-Z ]*$/",$guardianFirstName)) {
+				$guardianFirstNameErr = "Only letters and white space allowed";
+			}
 		}
 		
 		if (empty($_POST["guardianLastName"])) {
-			$Error = "fields Required";
+			$guardianLastNameErr = "Last name is required";
 		} else {
 			$guardianLastName = test_input($_POST["guardianLastName"]);
+			if (!preg_match("/^[a-zA-Z ]*$/",$guardianLastName)) {
+				$guardianLastNameErr = "Only letters and white space allowed";
+			}
 		}
 		
 		if (empty($_POST["guardianPhonenumber"])) {
-			$Error = "fields Required";
+			$guardianPhonenumberErr = "Number is required in case of emergency";
 		} else {
 			$guardianPhonenumber = test_input($_POST["guardianPhonenumber"]);
 		}
 		
 		if (empty($_POST["guardianEmail"])) {
-			$Error = "fields Required";
+			$guardianEmailErr = "Parent/Guardian email is required";
 		} else {
 			$guardianEmail = test_input($_POST["guardianEmail"]);
+			if (!filter_var($guardianEmail, FILTER_VALIDATE_EMAIL)) {
+				$guardianEmailErr = "Invalid email format"; 
+			}
 		}
 	}
 	else {
@@ -152,15 +177,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $guardianLastName = test_input($_POST["guardianLastName"]);
          $guardianPhonenumber = test_input($_POST["guardianPhonenumber"]);
 		 $guardianEmail = test_input($_POST["guardianEmail"]);
-
 	}	
 }
 
 
+// Upload details to the database when submit is pressed if there are no error messages
+// The applicant won't be enrolled until the manager changes the Enrolled field from 'N' to 'Y'
 if(isset($_POST['submit'])){
-	if($firstNameErr == "" && $lastNameErr == "" &&$dobErr == "" &&
-		$streetErr == ""&&		$suburbErr ==""&& $stateErr ==""&& 
-		$postCodeErr == ""&& $genderErr == ""&& $emailErr == ""&& $Error==""){
+	if($firstNameErr == "" && $lastNameErr == "" && $dobErr == "" &&
+		$streetErr == "" && $suburbErr == "" && $stateErr == "" && 
+		$postCodeErr == "" && $genderErr == "" && $emailErr == "" && 
+		$guardianFirstNameErr == "" && $guardianLastNameErr == "" && 
+		$guardianPhonenumberErr == "" && $guardianEmailErr == "") {
 		$query="INSERT INTO `students`(`firstName`,`familyName`,`gender`,`DOB`,`street`,`suburb`,`state`,
 								   `postcode`,`emailAddress`,`mobileNumber`,`preferredDay`,`preferredTime`,`preferredTeacher`,
 								    `preferredLanguage`,`preferredGender`,`guardianFirstName`,`guardianLastName`
@@ -170,22 +198,25 @@ if(isset($_POST['submit'])){
 				   '$preferredGender','$guardianFirstName','$guardianLastName','$guardianPhonenumber','$guardianEmail','N')";
 	$rs=$conn->prepare($query);
 	$rs->execute();
-	$info="Your Requirements has been Uploaded, We Will Contact You Within 3 days, Please Check Your Email Regularlly";
+	
+	// Let the user know their application is succesfully uploaded
+	$info="Your Requirements Have Been Uploaded, We Will Contact You Within 3 days. Please Check Your Email Regularly";
 	echo "<script type='text/javascript'>
 				alert('$info');
-			  </script>";
+	</script>";
+	
+	// Reset php variables since the application successfully uploaded
 	$firstName = $lastName = $dob = $street = $suburb = $state = 
 	$postCode = $gender = $phoneNumber = $email = $preferredTeacher = $preferredLanguage =
 	$preferredGender = $guardianFirstName = $preferredDay = $preferredTime =
 	$guardianLastName = $guardianPhonenumber = $guardianEmail = "";
 	}
 	else {
-		$info ="Some of the fields are required";
+		$info ="One or more fields have errors or are required";
 		echo "<script type='text/javascript'>
 				alert('$info');
-			  </script>";
+		</script>";
 	}
-
 }
 
 ?>
@@ -382,25 +413,32 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 			<span class="error"> <?php echo $suburbErr;?></span>
 			<br>
 			
-			<input class="form-control"type="text" name = "state" placeholder="State" value="<?php echo $state;?>"> 
+			<select class="form-control" name = "state" placeholder="State" value="<?php echo $state;?>"> 
+				<option value=""disabled selected>State</option>
+				<option value="QLD">QLD</option>
+				<option value="NSW">NSW</option>
+				<option value="ACT">ACT</option>
+				<option value="VIC">VIC</option>
+				<option value="TAS">TAS</option>
+				<option value="SA">SA</option>
+				<option value="WA">WA</option>
+				<option value="NT">NT</option>
+			</select>
 			<span class="error"> <?php echo $stateErr;?></span>
 			<br>
 			
 			<input class="form-control"type="number" name="postCode" placeholder="Post Code" value="<?php echo $postCode;?>"> 
 			<span class="error"> <?php echo $postCodeErr;?></span>
 			
-		
 	</div>
 	
 	<div class="form-group">
 		<label>Gender * </label>
 		<span class="error"> <?php echo $genderErr;?></span>
 		<br>
-		
-		<input type="radio" name="gender" value="male"> Male
-		<input type="radio" name="gender" value="female"> Female
-		<input type="radio" name="gender" value="other"> Other
-	    
+		<input type="radio" name="gender" value="Male"> Male
+		<input type="radio" name="gender" value="Female"> Female
+		<input type="radio" name="gender" value="Other"> Other
 		<br>
 	</div>	
 	<div class="form-group">
@@ -409,10 +447,9 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 		
 	</div>	
 	<div class="form-group">
-		<label>Email Address </label>
+		<label>Email Address * </label>
 		<input class="form-control"type="text" name="email" value="<?php echo $email;?>"> 
 		<span class="error"> <?php echo $emailErr;?></span>
-		
 	</div>
 	</div>
 	
@@ -445,12 +482,9 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	</div>
 	<div class="form-group">
 		<label>Preferred Teacher Gender</label><br>
-		<div class = "options">
-		<input type="radio" name="preferredGender" value="none"> No Preferences
-		<input type="radio" name="preferredGender" value="male"> Male
-		<input type="radio" name="preferredGender" value="female"> Female
-		</div>
-		
+		<input type="radio" name="preferredGender" value="None"> No Preferences
+		<input type="radio" name="preferredGender" value="Male"> Male
+		<input type="radio" name="preferredGender" value="Female"> Female
 	</div>
 	</fieldset>
 	
@@ -458,22 +492,25 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	<!-- Parent/Guardian information only required for under 18s -->
 	<div class="col-md-6">
 	<legend>Under 18s</legend>
-	<span class="error"> <?php echo $Error;?></span>
 	<div class="form-group">
 		<label>Parent/Guardian First Name</label>
 		<input class="form-control"type="text" name="guardianFirstName" value="<?php echo $guardianFirstName;?>"> 
+		<span class="error"> <?php echo $guardianFirstNameErr;?></span>
     </div>
 	<div class="form-group">
 		<label>Parent/Guardian Last Name</label>
 		<input class="form-control"type="text" name="guardianLastName" value="<?php echo $guardianLastName;?>"> 
+		<span class="error"> <?php echo $guardianLastNameErr;?></span>
     </div>
 	<div class="form-group">
 		<label>Parent/Guardian Preferred Phone Number</label>
 		<input class="form-control"type="text" name="guardianPhonenumber" value="<?php echo $guardianPhonenumber;?>">
+		<span class="error"> <?php echo $guardianPhonenumberErr;?></span>
 	</div>
 	<div class="form-group">
 		<label>Parent/Guardian Email Address</label>
 		<input class="form-control"type="text" name="guardianEmail" value="<?php echo $guardianEmail;?>"> 
+		<span class="error"> <?php echo $guardianEmailErr;?></span>
 	</div>
 	</div>
 	</div>
