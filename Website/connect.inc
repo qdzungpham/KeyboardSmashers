@@ -2,7 +2,7 @@
 // php code to connect to database
 session_start();
 try{
-   $conn = new PDO('mysql:host=localhost;dbname=pinelands_music_school', 'root', '12345');  
+   $conn = new PDO('mysql:host=localhost;dbname=pinelands_music_school', 'root', '');  
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 catch(PDOException $e)
@@ -63,6 +63,22 @@ function test_input($data) {
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
+}
+
+function classcheck($class){
+  if($class == "PIA101"){
+    $color="#f56954";//red
+  }
+  else if($class == "VIL101"){
+    $color="#f39c12";//yellow
+  }
+  else if($class == "GUI201"){
+    $color="#00a65a";//green
+  }
+  else {
+    $color="#3c8dbc";//main color
+  }
+  return $color;
 }
 
 ?>
