@@ -149,15 +149,16 @@ require "connect.inc";
     </nav>
   </header>
   
-  <div style="background:url('image/back.gif') no-repeat;background-size:100%;"class="content-wrapper">
+  <div style="background:url('image/backk.png') no-repeat;background-size:100%;"class="content-wrapper">
     <div id ="wrap">
-  		<div id="slider">
-  			<img src="image/image1.gif">
-  		</div>
+  		<div class ="slider_caption">
+		<h2>Music Qualifications Delivered via e-learning / Distance Education </h2>
+		<p style = "color:rgb(221,75,57)">IT'S AMAZING WHAT CAN HAPPEN WHEN YOU START FOR THE FUN OF IT</P>
+		</div>
   </div>
    <div id = "content">
 	<div id = "page-heading">
-		Job Vacancies
+		<b>JOB VACANCIES</b>
 	</div>
      <div id ="cname">
  			<img src="image/line.png">
