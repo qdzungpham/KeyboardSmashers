@@ -153,17 +153,19 @@ require "connect.inc";
     </nav>
   </header>
   <!-- Full Width Column -->
-  <div style="background:url('image/back.gif') no-repeat;background-size:100%;"class="content-wrapper">
+  <div style="background:url('image/backk.png') no-repeat;background-size:100%;"class="content-wrapper">
     <div id ="wrap">
-		<div id="slider">
-			<img src="image/image1.gif">
+		
+		<div class ="slider_caption">
+		<h2>Music Qualifications Delivered via e-learning / Distance Education </h2>
+		<p style = "color:rgb(221,75,57)">IT'S AMAZING WHAT CAN HAPPEN WHEN YOU START FOR THE FUN OF IT</P>
 		</div>
 
 </div>
 	<div id ="content">
   <!-- Couser Details, need to be modify with in the future -->
 		<div id ="page-heading">
-			Our Courses<br>
+			<b>OUR COURSE</b><br>
 		</div>
 		<div class = "coursetype">
 			<div class= "coursename">
