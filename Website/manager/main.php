@@ -76,10 +76,6 @@ if (!isset($_SESSION["manager"]))
 			<th>Preferred Language</th>
 			<th>Preferred Teacher Gender</th>
 			<th>Enrolled</th>
-			<th>Guardian's First Name</th>
-			<th>Guardian's Last Name</th>
-			<th>Guardian's Phone Number</th>
-			<th>Guardian's Email</th>
 			<th>Select Row</th>
 		</tr>
 		
@@ -108,10 +104,6 @@ if (!isset($_SESSION["manager"]))
 			$preferredLanguage=$data['preferredLanguage'];
 			$preferredGender=$data['preferredGender'];
 			$enrolled=$data['enroled'];
-			$guardianFirstName=$data['guardianFirstName'];
-			$guardianLastName=$data['guardianLastName'];
-			$guardianPhoneNumber=$data['guardianPhonenumber'];
-			$guardianEmail=$data['guardianEmail'];
 			
 			echo'
 			<tbody>
@@ -133,10 +125,6 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$preferredLanguage.'</td>
 					<td>'.$preferredGender.'</td>
 					<td>'.$enrolled.'</td>
-					<td>'.$guardianFirstName.'</td>
-					<td>'.$guardianLastName.'</td>
-					<td>'.$guardianPhoneNumber.'</td>
-					<td>'.$guardianEmail.'</td>
 					<td>
 						<form method="post" action="../PHP/ManagerAllStudents.php">
 						<input type="checkbox" value="'.$studentID.'" name="selectBox">
@@ -197,8 +185,8 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$guardianEmail.'</td>
 					<td>'.$guardianPhoneNumber.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerAllStudents.php">
-						<input type="checkbox" value="'.$studentID.'" name="selectBox">
+						<form method="post" action="../PHP/ManagerStudentGuardians.php">
+						<input type="checkbox" value="'.$guardianID.'" name="selectBox">
 					</td>
 				</tr>
 			</tbody>';
@@ -206,9 +194,9 @@ if (!isset($_SESSION["manager"]))
 	</table>
 	<br>
 	<tfoot>
-		<input type="button" value="Add Record" name="id"><br><br>
-		<input type="submit" name="editRow" value="Edit Row">
-		<input type="submit" name="deleteRow" value="Delete Row">
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
 		</form>
 	</tfoot>
 	<br><br><br>
@@ -287,9 +275,9 @@ if (!isset($_SESSION["manager"]))
 	</table>
 	<br>
 	<tfoot>
-		<input type="button" value="Add Record" name="id"><br><br>
-		<input type="submit" name="editRow" value="Edit Row">
-		<input type="submit" name="deleteRow" value="Delete Row">
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
 		</form>
 	</tfoot>
 	<br><br><br>
@@ -354,9 +342,9 @@ if (!isset($_SESSION["manager"]))
 	</table>
 	<br>
 	<tfoot>
-		<input type="button" value="Add Record" name="id"><br><br>
-		<input type="submit" name="editRow" value="Edit Row">
-		<input type="submit" name="deleteRow" value="Delete Row">
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
 		</form>
 	</tfoot>
 	<br><br><br>
@@ -413,9 +401,9 @@ if (!isset($_SESSION["manager"]))
 	</table>
 	<br>
 	<tfoot>
-		<input type="button" value="Add Record" name="id"><br><br>
-		<input type="submit" name="editRow" value="Edit Row">
-		<input type="submit" name="deleteRow" value="Delete Row">
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
 		</form>
 	</tfoot>
 	<br><br><br>
@@ -469,9 +457,9 @@ if (!isset($_SESSION["manager"]))
 	</table>
 	<br>
 	<tfoot>
-		<input type="button" value="Add Record" name="id"><br><br>
-		<input type="submit" name="editRow" value="Edit Row">
-		<input type="submit" name="deleteRow" value="Delete Row">
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
 		</form>
 	</tfoot>
 	<br><br><br>
@@ -528,9 +516,9 @@ if (!isset($_SESSION["manager"]))
 	</table>
 	<br>
 	<tfoot>
-		<input type="button" value="Add Record" name="id"><br><br>
-		<input type="submit" name="editRow" value="Edit Row">
-		<input type="submit" name="deleteRow" value="Delete Row">
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
 		</form>
 	</tfoot>
 	<br><br><br>
@@ -574,9 +562,9 @@ if (!isset($_SESSION["manager"]))
 	</table>
 	<br>
 	<tfoot>
-		<input type="button" value="Add Record" name="id"><br><br>
-		<input type="submit" name="editRow" value="Edit Row">
-		<input type="submit" name="deleteRow" value="Delete Row">
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
 		</form>
 	</tfoot>
 	<br><br><br>
