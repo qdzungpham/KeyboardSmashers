@@ -33,10 +33,6 @@
 				Preferred Language: <input type="text" name="preferredLanguage"><br><br>
 				Preferred Teacher\'s Gender: <input type="text" name="preferredGender"><br><br>
 				Enrolled: <input type="text" name="enroled"><br><br>
-				Parent/Guardian\'s First Name: <input type="text" name="guardianFirstName"><br><br>
-				Parent/Guardian\'s Last Name: <input type="text" name="guardianLastName"><br><br>
-				Parent/Guardian\'s Phone Number: <input type="text" name="guardianPhonenumber"><br><br>
-				Parent/Guardian\'s Email Address: <input type="text" name="guardianEmail"><br><br>
 				<br>
 				<input type="submit" name="createRecord" value="Create Record">
 			</form>
@@ -71,10 +67,6 @@
 			$preferredLanguage=$data['preferredLanguage'];
 			$preferredGender=$data['preferredGender'];
 			$enrolled=$data['enroled'];
-			$guardianFirstName=$data['guardianFirstName'];
-			$guardianLastName=$data['guardianLastName'];
-			$guardianPhoneNumber=$data['guardianPhonenumber'];
-			$guardianEmail=$data['guardianEmail'];
 		}
 		
 		// Create the web form
@@ -97,10 +89,6 @@
 				Preferred Language: <input type="text" name="preferredLanguage" value="'.$preferredLanguage.'"><br><br>
 				Preferred Teacher\'s Gender: <input type="text" name="preferredGender" value="'.$preferredGender.'"><br><br>
 				Enrolled: <input type="text" name="enroled" value="'.$enrolled.'"><br><br>
-				Parent/Guardian\'s First Name: <input type="text" name="guardianFirstName" value="'.$guardianFirstName.'"><br><br>
-				Parent/Guardian\'s Last Name: <input type="text" name="guardianLastName" value="'.$guardianLastName.'"><br><br>
-				Parent/Guardian\'s Phone Number: <input type="text" name="guardianPhonenumber" value="'.$guardianPhoneNumber.'"><br><br>
-				Parent/Guardian\'s Email Address: <input type="text" name="guardianEmail" value="'.$guardianEmail.'"><br><br>
 				<br>
 				<input type="submit" name="updateRecord" value="Update Record">
 			</form>
