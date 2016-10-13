@@ -27,22 +27,16 @@
 	$preferredLanguage=test_input($_POST["preferredLanguage"]);
 	$preferredGender=test_input($_POST["preferredGender"]);
 	$enrolled=test_input($_POST["enroled"]);
-	$guardianFirstName=test_input($_POST["guardianFirstName"]);
-	$guardianLastName=test_input($_POST["guardianLastName"]);
-	$guardianPhoneNumber=test_input($_POST["guardianPhonenumber"]);
-	$guardianEmail=test_input($_POST["guardianEmail"]);
 	
 	// Create the sql to create a new record
 	if (isset($_POST["createRecord"])){
 		$query="INSERT INTO students (firstName, familyName, gender, DOB, street, suburb, state, 
 			postcode, emailAddress, mobileNumber, preferredDay, preferredTime, preferredTeacher, 
-			preferredLanguage, preferredGender, enroled, guardianFirstName, guardianLastName, 
-			guardianPhonenumber, guardianEmail)
+			preferredLanguage, preferredGender, enroled)
 			VALUES ('$firstName', '$familyName', '$gender', 
 			'$DOB', '$street', '$suburb', '$state', '$postCode', 
 			'$emailAddress', '$mobileNumber', '$preferredDay', '$preferredTime', 
-			'$preferredTeacher', '$preferredLanguage', '$preferredGender', '$enrolled', 
-			'$guardianFirstName', '$guardianLastName', '$guardianPhoneNumber', '$guardianEmail');";
+			'$preferredTeacher', '$preferredLanguage', '$preferredGender', '$enrolled');";
 		$rs=$conn->prepare($query);
 		$rs->execute();
 		
@@ -56,8 +50,7 @@
 			DOB='$DOB', street='$street', suburb='$suburb', state='$state', postcode='$postCode', 
 			emailAddress='$emailAddress', mobileNumber='$mobileNumber', preferredDay='$preferredDay', 
 			preferredTime='$preferredTime', preferredTeacher='$preferredTeacher', preferredLanguage='$preferredLanguage', 
-			preferredGender='$preferredGender', enroled='$enrolled', guardianFirstName='$guardianFirstName', 
-			guardianLastName='$guardianLastName', guardianPhonenumber='$guardianPhoneNumber', guardianEmail='$guardianEmail'
+			preferredGender='$preferredGender', enroled='$enrolled'
 			WHERE studentID = ".$studentID.";";
 		$rs=$conn->prepare($query);
 		$rs->execute();
