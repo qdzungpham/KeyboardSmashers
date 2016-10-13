@@ -47,10 +47,6 @@ CREATE TABLE `students` (
   `preferredLanguage` text,
   `preferredGender` varchar(10) DEFAULT NULL,
   `enroled` char(1) NOT NULL,
-  `guardianFirstName` varchar(30) DEFAULT NULL,
-  `guardianLastName` varchar(30) DEFAULT NULL,
-  `guardianPhonenumber` varchar(11) DEFAULT NULL,
-  `guardianEmail` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`studentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -58,10 +54,10 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`studentID`, `firstName`, `familyName`, `gender`, `DOB`, `street`, `suburb`, `state`, `postcode`, `emailAddress`, `mobileNumber`, `preferredDay`, `preferredTime`, `preferredTeacher`, `preferredLanguage`, `preferredGender`, `enroled`, `guardianFirstName`, `guardianLastName`, `guardianPhonenumber`, `guardianEmail`) VALUES
-(1, 'Tom', 'Santos', 'Male', '1995-07-12', '39 main St', 'Sunnybank', 'QLD', '4012', 'tomsantos@gmail.com', '0426256076', NULL, NULL, NULL, NULL, NULL, 'Y', NULL, NULL, NULL, NULL),
-(2, 'Hang', 'Su', 'Male', '1995-02-12', '64 cook st', 'Brisbane', 'QLD', '4075', 'suhangj123@gmail.com', '422893716', 'title', '', '', '', '', 'N', '', '', '', ''),
-(3, 'Hang', 'Su', 'Male', '1995-12-24', '64 cook st', 'Brisbane', 'QLD', '4075', 'suhangj@sohu.com', '0422893716', 'title', '', '', '', '', 'Y', '', '', '', '');
+INSERT INTO `students` (`studentID`, `firstName`, `familyName`, `gender`, `DOB`, `street`, `suburb`, `state`, `postcode`, `emailAddress`, `mobileNumber`, `preferredDay`, `preferredTime`, `preferredTeacher`, `preferredLanguage`, `preferredGender`, `enroled`) VALUES
+(1, 'Tom', 'Santos', 'Male', '1995-07-12', '39 main St', 'Sunnybank', 'QLD', '4012', 'tomsantos@gmail.com', '0426256076', NULL, NULL, NULL, NULL, NULL, 'Y'),
+(2, 'Hang', 'Su', 'Male', '1995-02-12', '64 cook st', 'Brisbane', 'QLD', '4075', 'suhangj123@gmail.com', '422893716', 'title', '', '', '', '', 'N'),
+(3, 'Hang', 'Su', 'Male', '1995-12-24', '64 cook st', 'Brisbane', 'QLD', '4075', 'suhangj@sohu.com', '0422893716', 'title', '', '', '', '', 'Y');
 
 
 -- --------------------------------------------------------
