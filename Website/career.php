@@ -165,95 +165,86 @@ require "connect.inc";
  		 </div>
   </div>
   <div id="wrapper">
-<!-- container for each job -->
-       <div class="jobs">
-         <div class = "jtitle">
-           IT Services
-         </div>
-         <div class="caption">
-          Job Name:
-         </div>
-           <div class = "jname">
-             Senior PHP Developer
-           </div>
-         <div class="caption">
-         Post Date:
-         </div>
-           <div class = "jtime">
-             26/08/2016
-           </div>
-         <div class="caption">
-         Job Description:
-         </div>
-         <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
-         </div>
-         <a href="mailto:hr@pinelandsmusicschool.com"> <input class = "button" name="more" type="button" value="Apply Now"> </a>
-       </div>
-<!-- end container -->
-       <div class="jobs">
-         <div class = "jtitle">
-           IT Services
-         </div>
-         <div class="caption">
-          Job Name:
-         </div>
-           <div class = "jname">
-             Senior PHP Developer
-           </div>
-         <div class="caption">
-         Post Date:
-         </div>
-           <div class = "jtime">
-             26/08/2016
-           </div>
-         <div class="caption">
-         Job Description:
-         </div>
-         <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
-         </div>
-		 <a href="mailto:hr@pinelandsmusicschool.com"> <input class = "button" name="more" type="button" value="Apply Now"> </a>
-         
-       </div>
-       <div class="jobs">
-         <div class = "jtitle">
-           IT Services
-         </div>
-         <div class="caption">
-          Job Name:
-         </div>
-           <div class = "jname">
-             Senior PHP Developer
-           </div>
-         <div class="caption">
-         Post Date:
-         </div>
-           <div class = "jtime">
-             26/08/2016
-           </div>
-         <div class="caption">
-         Job Description:
-         </div>
-         <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
-         </div>
-         <a href="mailto:hr@pinelandsmusicschool.com"> <input class = "button" name="more" type="button" value="Apply Now"> </a>
-       </div>
-       </div>
-  </div>
+  <div id ="jobimage">
+      <img src="image/job.png" alt="image" height="601px" width="1250px">
+    
+	
+	<div class="entry-content clearfix">
+<div align="center">
+<table width="70%">
+<style>
+
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+
+</style>
+<tbody>
+<tr>
+<td width="20%">Job Title</td>
+<td width="80%">Piano teacher</td>
+</tr>
+<tr>
+<td width="20%">Job Description</td>
+<td width="80%">Pinelands music school is currently looking for Piano teachers with following requirements:<p></p>
+<ul>
+Bachelor Degree in Music Performance/ similar fields
+Working experience 1-2 years
+Able to play piano
+
+Good communication skills with students
+Able to work independently with high productivity
+Have strong commitment and dedication in finishing job
+Willing to learn and work hard
+</ul>
+<p>Please send over your CV and&nbsp;Portfolio to hello@pinelandmusicshool.com</p>
+<p>&nbsp;</p></td>
+</tr>
+<tr>
+<td width="20%">Company Name</td>
+<td width="80%"><br>
+Pinelandsmusicschool<br>
+</a></td>
+</tr>
+<tr>
+<td width="20%">Company Description</td>
+<td width="80%">In the past couple of years, our ability to develop concept, design as well as insight and strategy has allowed us to work with wide range of clients, from corporate clients such as mining company, to consumer goods like food and beverage products.<p></p>
+<p>Our passion and expertise is in corporate and consumer brand identity, such as logo company,<br>
+stationery, company profile, product packaging, and other branded system of communication.<br>
+We also have years of experience in creating concepts for print ads, billboard, poster, brochures,<br>
+et cetera for advertisement purpose.</p>
+<p>Specialties</p>
+</td>
+</tr>
+<tr>
+<td width="20%">Opening type</td>
+<td width="80%">Fresh Graduates</td>
+</tr>
+<tr>
+<td width="20%">City</td>
+<td width="80%">Brisbane</td>
+</tr>
+<tr>
+<td width="20%">Salary Range</td>
+<td width="80%">$50000 ~ $60000</td>
+</tr>
+<tr>
+<td width="20%">Application Deadline</td>
+<td width="80%">1-12-2016</td>
+</tr>
+<tr>
+<td width="20%">Send CV to:</td>
+<td width="80%">hello@pinelandmusicshool.com</td>
+</tr>
+</table>
+
+</div>
+<a href="mailto:hr@pinelandsmusicschool.com"> <input class = "button" name="more" type="button" value="Apply Now"> </a>
+</div>
+	</div>
+</div>
+</div>
+
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="container">
@@ -264,6 +255,7 @@ require "connect.inc";
     <!-- /.container -->
   </footer>
 </div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
