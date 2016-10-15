@@ -13,6 +13,9 @@ if (!isset($_SESSION["manager"]))
 </head>
 
 <body>
+	<h1>Pinelands Music School Management Page</h1>
+<!-- Let the admin know that the checkboxes don't work as expected yet -->
+	<p><strong>WARNING:</strong> Please check only one checkbox at a time when editing or deleting rows.</p>
 <!-- Display a table of the students who have applied but not enrolled in the school -->
 	<table>
 		<thead><h2>New Students</h2></thead>
@@ -29,6 +32,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerNewStudents.php">';
 		foreach($row as $data){
 			$studentID=$data['studentID'];
 			$name= $data['firstName'].' '.$data['familyName'];
@@ -39,7 +43,6 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$name.'</td>
 					<td>'.$email.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerNewStudents.php">
 						<input type="checkbox" value="'.$studentID.'" name="selectBox">
 					</td>
 				</tr>
@@ -86,6 +89,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerStudents.php">';
 		foreach($row as $data){
 			$studentID=$data['studentID'];
 			$firstName=$data['firstName'];
@@ -126,7 +130,6 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$preferredGender.'</td>
 					<td>'.$enrolled.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerAllStudents.php">
 						<input type="checkbox" value="'.$studentID.'" name="selectBox">
 					</td>
 				</tr>
@@ -166,6 +169,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
 		foreach($row as $data){
 			$guardianID=$data['guardianID'];
 			$studentID=$data['studentID'];
@@ -185,7 +189,6 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$guardianEmail.'</td>
 					<td>'.$guardianPhoneNumber.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerStudentGuardians.php">
 						<input type="checkbox" value="'.$guardianID.'" name="selectBox">
 					</td>
 				</tr>
@@ -215,6 +218,10 @@ if (!isset($_SESSION["manager"]))
 			<th>Family Name</th>
 			<th>Gender</th>
 			<th>DOB</th>
+			<th>Street</th>
+			<th>Suburb</th>
+			<th>State</th>
+			<th>Post Code</th>
 			<th>Qualifications</th>
 			<th>Email Address</th>
 			<th>Mobile Number</th>
@@ -233,12 +240,17 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerTeachers.php">';
 		foreach($row as $data){
 			$teacherID=$data['teacherID'];
 			$firstName=$data['firstName'];
 			$familyName=$data['familyName'];
 			$gender=$data['gender'];
 			$DOB=$data['DOB'];
+			$street=$data['street'];
+			$suburb=$data['suburb'];
+			$state=$data['state'];
+			$postCode=$data['postcode'];
 			$qualifications=$data['qualifications'];
 			$emailAddress=$data['emailAddress'];
 			$mobileNumber=$data['mobileNumber'];
@@ -257,6 +269,10 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$familyName.'</td>
 					<td>'.$gender.'</td>
 					<td>'.$DOB.'</td>
+					<td>'.$street.'</td>
+					<td>'.$suburb.'</td>
+					<td>'.$state.'</td>
+					<td>'.$postCode.'</td>
 					<td>'.$qualifications.'</td>
 					<td>'.$emailAddress.'</td>
 					<td>'.$mobileNumber.'</td>
@@ -266,8 +282,7 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$skillLevel.'</td>
 					<td>'.$comments.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerAllStudents.php">
-						<input type="checkbox" value="'.$studentID.'" name="selectBox">
+						<input type="checkbox" value="'.$teacherID.'" name="selectBox">
 					</td>
 				</tr>
 			</tbody>';
@@ -308,6 +323,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
 		foreach($row as $data){
 			$contractID=$data['contractID'];
 			$studentID=$data['studentID'];
@@ -333,7 +349,6 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$lessonCost.'</td>
 					<td>'.$lessonFrequency.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerAllStudents.php">
 						<input type="checkbox" value="'.$studentID.'" name="selectBox">
 					</td>
 				</tr>
@@ -358,9 +373,11 @@ if (!isset($_SESSION["manager"]))
 		<thead><h2>All Instruments</h2></thead>
 		<tr>
 			<th>Instrument ID</th>
-			<th>Instrument Name</th>
+			<th>Type of Instrument</th>
 			<th>Cost to Hire</th>
 			<th>Cost to Hire per Lesson</th>
+			<th>Size</th>
+			<th>Brand</th>
 			<th>Instrument Condition</th>
 			<th>Quantity at School</th>
 			<th>Select Row</th>
@@ -373,11 +390,14 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerInstruments.php">';
 		foreach($row as $data){
 			$instrumentID=$data['instrumentID'];
 			$instrumentType=$data['instrumentType'];
 			$hireCost=$data['hireCost'];
 			$hireCostLesson=$data['hireCostLesson'];
+			$instrumentSize=$data['instrumentSize'];
+			$brand=$data['brand'];
 			$conditionQuality=$data['conditionQuality'];
 			$Quantity=$data['Quantity'];
 
@@ -389,11 +409,12 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$instrumentType.'</td>
 					<td>'.$hireCost.'</td>
 					<td>'.$hireCostLesson.'</td>
+					<td>'.$instrumentSize.'</td>
+					<td>'.$brand.'</td>
 					<td>'.$conditionQuality.'</td>
 					<td>'.$Quantity.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerAllStudents.php">
-						<input type="checkbox" value="'.$studentID.'" name="selectBox">
+						<input type="checkbox" value="'.$instrumentID.'" name="selectBox">
 					</td>
 				</tr>
 			</tbody>';
@@ -431,6 +452,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
 		foreach($row as $data){
 			$hireID=$data['hireID'];
 			$studentID=$data['studentID'];
@@ -448,7 +470,6 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$startDate.'</td>
 					<td>'.$endDate.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerAllStudents.php">
 						<input type="checkbox" value="'.$studentID.'" name="selectBox">
 					</td>
 				</tr>
@@ -488,6 +509,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
 		foreach($row as $data){
 			$classID=$data['classID'];
 			$teacherID=$data['teacherID'];
@@ -507,7 +529,6 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$endTime.'</td>
 					<td>'.$roomNumber.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerAllStudents.php">
 						<input type="checkbox" value="'.$studentID.'" name="selectBox">
 					</td>
 				</tr>
@@ -542,6 +563,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
+		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
 		foreach($row as $data){
 			$classID=$data['classID'];
 			$studentID=$data['studentID'];
@@ -553,7 +575,6 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$classID.'</td>
 					<td>'.$studentID.'</td>
 					<td>
-						<form method="post" action="../PHP/ManagerAllStudents.php">
 						<input type="checkbox" value="'.$studentID.'" name="selectBox">
 					</td>
 				</tr>
