@@ -72,7 +72,10 @@ CREATE TABLE `teachers` (
   `familyName` varchar(30) NOT NULL,
   `gender` enum('Male','Female') NOT NULL,
   `DOB` date NOT NULL,
-  `address` varchar(255) NOT NULL,      -- --------------- IS THIS NECESSARY??????????????
+  `street` varchar(50),
+  `suburb` varchar(30),
+  `state` enum('QLD','NSW','ACT','VIC','TAS','SA','WA','NT'),
+  `postcode` char(4),
   `qualifications` text,
   `emailAddress` varchar(255) NOT NULL,
   `mobileNumber` varchar(11) DEFAULT NULL,
@@ -88,10 +91,10 @@ CREATE TABLE `teachers` (
 -- Dumping data for table `teachers`
 --
 
-INSERT INTO `teachers` (`teacherID`, `firstName`, `familyName`, `gender`, `DOB`, `address`, `qualifications`, `emailAddress`, `mobileNumber`, `otherNumber`, `instrumentType`, `spokenLanguage`, `skillLevel`, `comments`) VALUES
-(1, 'bob', 'bobby', 'Male', '1983-02-15', '39 cook st Forest Lake Brisbane', 'Graduated', 'bob.bobby@gmail.com', NULL, '07123456', 'Piano,Guitar', 'English, Spanish', NULL, 'Great teacher'),
-(2, 'Hang', 'Su', 'Male', '1983-01-10', '46 main St SunyBank Brisbane', 'Graduated', 'suhang@gmail.com', NULL, '07234567', 'Guitar,Violin', 'English,Chinese', NULL, 'Great teacher'),
-(3, 'Luna', 'Brown', 'Female', '1990-10-22', '', 'Graduated', 'Luna123@gmail.com', NULL, '07134565', 'Piano', 'English', NULL, 'Great teacher');
+INSERT INTO `teachers` (`teacherID`, `firstName`, `familyName`, `gender`, `DOB`, `street`, `suburb`, `state`, `postcode`, `qualifications`, `emailAddress`, `mobileNumber`, `otherNumber`, `instrumentType`, `spokenLanguage`, `skillLevel`, `comments`) VALUES
+(1, 'bob', 'bobby', 'Male', '1983-02-15', '43 Turkey Street', 'Hawthorne', 'QLD', '4444', 'Graduated', 'bob.bobby@gmail.com', NULL, '07123456', 'Piano,Guitar', 'English, Spanish', NULL, 'Great teacher'),
+(2, 'Hang', 'Su', 'Male', '1983-01-10', '42 Turkey Street', 'Hawthorne', 'QLD', '4444', 'Graduated', 'suhang@gmail.com', NULL, '07234567', 'Guitar,Violin', 'English,Chinese', NULL, 'Great teacher'),
+(3, 'Luna', 'Brown', 'Female', '1990-10-22', '41 Turkey Street', 'Hawthorne', 'QLD', '4444', 'Graduated', 'Luna123@gmail.com', NULL, '07134565', 'Piano', 'English', NULL, 'Great teacher');
 
 
 -- --------------------------------------------------------
@@ -105,6 +108,8 @@ CREATE TABLE `instruments` (
   `instrumentType` varchar(30) NOT NULL,
   `hireCost` decimal(5,2) DEFAULT NULL,
   `hireCostLesson` decimal(5,2) DEFAULT NULL,
+  `instrumentSize` varchar(50),
+  `brand` varchar(50),
   `conditionQuality` varchar(250) NOT NULL,
   `Quantity` int(3) NOT NULL,
   PRIMARY KEY (`instrumentID`)
@@ -114,9 +119,9 @@ CREATE TABLE `instruments` (
 -- Dumping data for table `instruments`
 --
 
-INSERT INTO `instruments` (`instrumentID`, `instrumentType`, `hireCost`, `hireCostLesson`, `conditionQuality`, `Quantity`) VALUES
-(1, 'Guitar', '50.00', '5.00', 'New', 0),
-(2, 'Violin', '20.00', '2.00', 'Good - slight wear on D string', 50);
+INSERT INTO `instruments` (`instrumentID`, `instrumentType`, `hireCost`, `hireCostLesson`, `instrumentSize`, `brand`, `conditionQuality`, `Quantity`) VALUES
+(1, 'Guitar', '50.00', '5.00', 'Standard', 'Tanglewood', 'New', 0),
+(2, 'Violin', '20.00', '2.00', '3 quarters', 'Stentor', 'Good - slight wear on D string', 50);
 
 -- --------------------------------------------------------
 
@@ -317,6 +322,109 @@ INSERT INTO `teacherlogin` (`teacherID`, `teacherUsername`, `Password`) VALUES
 (1, 't1234567', 'password1'),
 (2, 't2345678', 'Hello1'),
 (3, 't3456789', 'Hello2');
+
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `publicAnnouncements`
+--
+
+CREATE TABLE `publicAnnouncements` (
+  `announcementID` int NOT NULL,
+  `title` varchar(40),
+  `content` text NOT NULL,
+  PRIMARY KEY (`announcementID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `publicAnnouncements`
+--
+
+INSERT INTO `publicAnnouncements` (`announcementID`, `title`, `content`) VALUES
+(1, 'Dead servers', 'asdlfjasdklfjaslkdjfalksdjf servers are down alsdkf. Go you troopers'),
+(2, 'New parking', 'We made new motorbike parks for lols. Cars dont need parks.');
+
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classAnnouncements`
+--
+
+CREATE TABLE `classAnnouncements` (
+  `announcementID` int NOT NULL,
+  `classID` int NOT NULL,
+  `title` varchar(40),
+  `content` text NOT NULL,
+  PRIMARY KEY (`announcementID`),
+  FOREIGN KEY (`classID`) REFERENCES `classes` (`classID`)
+  ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `classAnnouncements`
+--
+
+INSERT INTO `classAnnouncements` (`announcementID`, `classID`, `title`, `content`) VALUES
+(1, 1, 'Class tomorrow', 'Despite the public holiday tomorrow, we are pushing on with class. Go you troopers'),
+(2, 3, 'No class tomorrow', 'In spite of the public holiday tomorrow, we are having a break. Rest you troopers');
+
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `availableJobs`
+--
+
+CREATE TABLE `availableJobs` (
+  `jobID` int NOT NULL,
+  `role` varchar(40),
+  `description` text,
+  PRIMARY KEY (`jobID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `availableJobs`
+--
+
+INSERT INTO `availableJobs` (`jobID`, `role`, `description`) VALUES
+(1, 'Piano teacher', 'Teaching students how to git gud'),
+(2, 'Assistant Manager', 'Help out the manager. Need help. Halp');
+
+
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobSeekers`
+--
+
+CREATE TABLE `jobSeekers` (
+  `seekerID` int NOT NULL,
+  `jobID` int NOT NULL,
+  `accepted` enum('Yes', 'No', 'Pending'),
+  PRIMARY KEY (`seekerID`),
+  FOREIGN KEY (`jobID`) REFERENCES `availableJobs` (`jobID`)
+  ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jobSeekers`
+--
+
+INSERT INTO `jobSeekers` (`seekerID`, `jobID`, `accepted`) VALUES
+(1, 1, 'Pending'),
+(2, 1, 'Pending'),
+(3, 2, 'No');
 
 
 
