@@ -1,13 +1,8 @@
 <?php
 // This code uses sql to insert or update the inputted values into the student table
 
-	// I have no idea what this does
+	// Make the connect.inc file available for use
 	require '../connect.inc';
-	
-	//I have no idea what this block of code does
-	if (!isset($_SESSION["manager"])) {
-		header('location:../home.php');
-	}
 	
 	// Regardless if this is an update or insertion, still need to make php variables of each field
 	$studentID=test_input($_POST["studentID"]);
@@ -57,6 +52,11 @@
 		
 		echo 'Successfully updated record';
 	}
+	
+	// Let the user go back to the main manager page
+	echo '
+		<p><a href="../manager/main.php">Back to Manager Page</a></p>
+	';
 ?>
 	
 	
