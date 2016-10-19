@@ -169,7 +169,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
-		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
+		echo'<form method="post" action="../PHP/ManagerGuardians.php">';
 		foreach($row as $data){
 			$guardianID=$data['guardianID'];
 			$studentID=$data['studentID'];
@@ -323,7 +323,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
-		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
+		echo'<form method="post" action="../PHP/ManagerContracts.php">';
 		foreach($row as $data){
 			$contractID=$data['contractID'];
 			$studentID=$data['studentID'];
@@ -349,7 +349,7 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$lessonCost.'</td>
 					<td>'.$lessonFrequency.'</td>
 					<td>
-						<input type="checkbox" value="'.$studentID.'" name="selectBox">
+						<input type="checkbox" value="'.$contractID.'" name="selectBox">
 					</td>
 				</tr>
 			</tbody>';
@@ -452,7 +452,7 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
-		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
+		echo'<form method="post" action="../PHP/ManagerInstrumentHire.php">';
 		foreach($row as $data){
 			$hireID=$data['hireID'];
 			$studentID=$data['studentID'];
@@ -470,7 +470,7 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$startDate.'</td>
 					<td>'.$endDate.'</td>
 					<td>
-						<input type="checkbox" value="'.$studentID.'" name="selectBox">
+						<input type="checkbox" value="'.$hireID.'" name="selectBox">
 					</td>
 				</tr>
 			</tbody>';
@@ -495,10 +495,15 @@ if (!isset($_SESSION["manager"]))
 		<tr>
 			<th>Class ID</th>
 			<th>Teacher ID</th>
+			<th>Class Name</th>
+			<th>Class Code</th>
+			<th>Start Date</th>
+			<th>End Date</th>
 			<th>Class Day</th>
 			<th>Start Time</th>
 			<th>End Time</th>
 			<th>Room Number</th>
+			<th>Class Capacity</th>
 			<th>Select Row</th>
 		</tr>
 		
@@ -509,14 +514,19 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
-		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
+		echo'<form method="post" action="../PHP/ManagerClasses.php">';
 		foreach($row as $data){
 			$classID=$data['classID'];
 			$teacherID=$data['teacherID'];
+			$className=$data['className'];
+			$classIdname=$data['classIdname'];
+			$startDate=$data['startDate'];
+			$endDate=$data['endDate'];
 			$classDay=$data['classDay'];
 			$startTime=$data['startTime'];
 			$endTime=$data['endTime'];
 			$roomNumber=$data['roomNumber'];
+			$classCapacity=$data['classCapacity'];
 
 			
 			echo'
@@ -524,12 +534,17 @@ if (!isset($_SESSION["manager"]))
 				<tr>
 					<td>'.$classID.'</td>
 					<td>'.$teacherID.'</td>
+					<td>'.$className.'</td>
+					<td>'.$classIdname.'</td>
+					<td>'.$startDate.'</td>
+					<td>'.$endDate.'</td>
 					<td>'.$classDay.'</td>
 					<td>'.$startTime.'</td>
 					<td>'.$endTime.'</td>
 					<td>'.$roomNumber.'</td>
+					<td>'.$classCapacity.'</td>
 					<td>
-						<input type="checkbox" value="'.$studentID.'" name="selectBox">
+						<input type="checkbox" value="'.$classID.'" name="selectBox">
 					</td>
 				</tr>
 			</tbody>';
@@ -551,6 +566,7 @@ if (!isset($_SESSION["manager"]))
 	<table>
 		<thead><h2>Classes Each Student Goes To</h2></thead>
 		<tr>
+			<th>Row ID</th>
 			<th>Class ID</th>
 			<th>Student ID</th>
 			<th>Select Row</th>
@@ -563,19 +579,20 @@ if (!isset($_SESSION["manager"]))
 		$rs->execute();
 		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
-		echo'<form method="post" action="../PHP/ManagerAllStudents.php">';
+		echo'<form method="post" action="../PHP/ManagerStudentClasses.php">';
 		foreach($row as $data){
+			$ID=$data['ID'];
 			$classID=$data['classID'];
 			$studentID=$data['studentID'];
 
-			
 			echo'
 			<tbody>
 				<tr>
+					<td>'.$ID.'</td>
 					<td>'.$classID.'</td>
 					<td>'.$studentID.'</td>
 					<td>
-						<input type="checkbox" value="'.$studentID.'" name="selectBox">
+						<input type="checkbox" value="'.$ID.'" name="selectBox">
 					</td>
 				</tr>
 			</tbody>';
