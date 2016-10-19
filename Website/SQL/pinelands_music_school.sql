@@ -165,10 +165,10 @@ INSERT INTO `classes` (`classID`, `teacherID`, `className`, `classIdname`, `star
 --
 
 CREATE TABLE `studentclass` (
-  -- ----------------------------`ID` int(3) NOT NULL,             DELETE THIS - PRIMARY KEY IS A COMBINATION KEY
+  `ID` int(3) NOT NULL AUTO_INCREMENT,
   `studentID` int(3) NOT NULL,
   `classID` int(3) NOT NULL,
-  PRIMARY KEY (`studentID`, `classID`),
+  PRIMARY KEY (`ID`),
   FOREIGN KEY (`studentID`) REFERENCES `students` (`studentID`)
   ON DELETE CASCADE,
   FOREIGN KEY (`classID`) REFERENCES `classes` (`classID`)
@@ -179,9 +179,9 @@ CREATE TABLE `studentclass` (
 -- Dumping data for table `studentclass`
 --
 
-INSERT INTO `studentclass` (`studentID`, `classID`) VALUES
-(1, 4),
-(1, 3);
+INSERT INTO `studentclass` (`ID`, `studentID`, `classID`) VALUES
+(1, 1, 4),
+(2, 1, 3);
 
 -- --------------------------------------------------------
 
