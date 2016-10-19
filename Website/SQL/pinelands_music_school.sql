@@ -208,7 +208,8 @@ CREATE TABLE `instrumenthire` (
 --
 
 INSERT INTO `instrumenthire` (`hireID`, `studentID`, `instrumentID`, `startDate`, `endDate`) VALUES
-(68, 1, 2, '2016-10-06', '2017-01-06');
+(68, 1, 2, '2016-10-06', '2017-01-06'),
+(69, 3, 1, '2016-09-06', '2017-09-06');
 
 
 -- --------------------------------------------------------
@@ -228,6 +229,16 @@ CREATE TABLE `studentguardian` (
   FOREIGN KEY (`studentID`) REFERENCES `students` (`studentID`)
   ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `studentguardian`
+--
+
+INSERT INTO `studentguardian` (`guardianID`, `studentID`, `guardianFirstName`, `guardianLastName`, `guardianEmail`, `guardianPhoneNumber`) VALUES
+(4, 2, 'Bobbette', 'Fett', 'bobbette@gmail.com', '0422396716'),
+(5, 1, 'Rudy', 'Rudyson', 'rudy@gmail.com', '0422893316');
+
+
 
 
 -- --------------------------------------------------------
@@ -252,6 +263,19 @@ CREATE TABLE `teachingcontract` (
   FOREIGN KEY (`teacherID`) REFERENCES `Teachers` (`teacherID`)
   ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Dumping data for table `teachingcontract`
+--
+
+INSERT INTO `teachingcontract` (`contractID`, `studentID`, `teacherID`, `startDate`, `endDate`, `lessonType`, 
+	`lessonDuration`, `lessonCost`, `lessonFrequency`) VALUES
+(1, 2, 3, '2016-02-06', '2017-01-06', 'Violin', '30', '50.00', '2'),
+(2, 3, 3, '2016-02-06', '2017-01-06', 'Piano', '60', '40.00', '1');
+
+
+
 
 
 -- --------------------------------------------------------
