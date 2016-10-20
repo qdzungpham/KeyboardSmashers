@@ -607,7 +607,225 @@ if (!isset($_SESSION["manager"]))
 	</tfoot>
 	<br><br><br>
 	
+	
+	
+	
+<!-- Display a table of available jobs -->
+	<table>
+		<thead><h2>Available Jobs</h2></thead>
+		<tr>
+			<th>Job ID</th>
+			<th>Role</th>
+			<th>Description</th>
+			<th>Select Row</th>
+		</tr>
+		
+		<!-- Retrieve the database values of all available jobs -->
+		<?php
+		$query="SELECT * FROM `availablejobs`";
+		$rs=$conn->prepare($query);
+		$rs->execute();
+		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
+		
+		echo'<form method="post" action="../PHP/ManagerAvailableJobs.php">';
+		foreach($row as $data){
+			$jobID=$data['jobID'];
+			$role=$data['role'];
+			$description=$data['description'];
 
+			echo'
+			<tbody>
+				<tr>
+					<td>'.$jobID.'</td>
+					<td>'.$role.'</td>
+					<td>'.$description.'</td>
+					<td>
+						<input type="checkbox" value="'.$jobID.'" name="selectBox">
+					</td>
+				</tr>
+			</tbody>';
+		}?>
+	</table>
+	<br>
+	<tfoot>
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
+		</form>
+	</tfoot>
+	<br><br><br>
+	
+
+<!-- Display a table of all job seekers -->
+	<table>
+		<thead><h2>Job Seekers</h2></thead>
+		<tr>
+			<th>Seeker ID</th>
+			<th>Job ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email Address</th>
+			<th>Phone Number</th>
+			<th>Street</th>
+			<th>Suburb</th>
+			<th>State</th>
+			<th>Post Code</th>
+			<th>CV File Path</th>
+			<th>Accepted</th>
+			<th>Select Row</th>
+		</tr>
+		
+		<!-- Retrieve the database values of all job seekers -->
+		<?php
+		$query="SELECT * FROM `jobseekers`";
+		$rs=$conn->prepare($query);
+		$rs->execute();
+		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
+		
+		echo'<form method="post" action="../PHP/ManagerJobSeekers.php">';
+		foreach($row as $data){
+			$seekerID=$data['seekerID'];
+			$jobID=$data['jobID'];
+			$firstName=$data['firstName'];
+			$lastName=$data['lastName'];
+			$emailAddress=$data['emailAddress'];
+			$phoneNumber=$data['phoneNumber'];
+			$street=$data['street'];
+			$suburb=$data['suburb'];
+			$state=$data['state'];
+			$postcode=$data['postcode'];
+			$cvPath=$data['cvPath'];
+			$accepted=$data['accepted'];
+			
+			echo'
+			<tbody>
+				<tr>
+					<td>'.$seekerID.'</td>
+					<td>'.$jobID.'</td>
+					<td>'.$firstName.'</td>
+					<td>'.$lastName.'</td>
+					<td>'.$emailAddress.'</td>
+					<td>'.$phoneNumber.'</td>
+					<td>'.$street.'</td>
+					<td>'.$suburb.'</td>
+					<td>'.$state.'</td>
+					<td>'.$postcode.'</td>
+					<td>'.$cvPath.'</td>
+					<td>'.$accepted.'</td>
+					<td>
+						<input type="checkbox" value="'.$seekerID.'" name="selectBox">
+					</td>
+				</tr>
+			</tbody>';
+		}?>
+	</table>
+	<br>
+	<tfoot>
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
+		</form>
+	</tfoot>
+	<br><br><br>
+	
+	
+	
+<!-- Display a table of all public announcements -->
+	<table>
+		<thead><h2>Public Announcements</h2></thead>
+		<tr>
+			<th>Announcement ID</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Select Row</th>
+		</tr>
+		
+		<!-- Retrieve the database values of all public announcements -->
+		<?php
+		$query="SELECT * FROM `publicannouncements`";
+		$rs=$conn->prepare($query);
+		$rs->execute();
+		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
+		
+		echo'<form method="post" action="../PHP/ManagerPublicAnnouncements.php">';
+		foreach($row as $data){
+			$announcementID=$data['announcementID'];
+			$title=$data['title'];
+			$content=$data['content'];
+
+			
+			echo'
+			<tbody>
+				<tr>
+					<td>'.$announcementID.'</td>
+					<td>'.$title.'</td>
+					<td>'.$content.'</td>
+					<td>
+						<input type="checkbox" value="'.$announcementID.'" name="selectBox">
+					</td>
+				</tr>
+			</tbody>';
+		}?>
+	</table>
+	<br>
+	<tfoot>
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
+		</form>
+	</tfoot>
+	<br><br><br>
+	
+	
+	
+	
+<!-- Display a table of all class announcements -->
+	<table>
+		<thead><h2>Class Announcements</h2></thead>
+		<tr>
+			<th>Announcement ID</th>
+			<th>Class ID</th>
+			<th>Title</th>
+			<th>Content</th>
+			<th>Select Row</th>
+		</tr>
+		
+		<!-- Retrieve the database values of all class announcements -->
+		<?php
+		$query="SELECT * FROM `classannouncements`";
+		$rs=$conn->prepare($query);
+		$rs->execute();
+		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
+		
+		echo'<form method="post" action="../PHP/ManagerClassAnnouncements.php">';
+		foreach($row as $data){
+			$announcementID=$data['announcementID'];
+			$classID=$data['classID'];
+			$title=$data['title'];
+			$content=$data['content'];
+
+			echo'
+			<tbody>
+				<tr>
+					<td>'.$announcementID.'</td>
+					<td>'.$classID.'</td>
+					<td>'.$title.'</td>
+					<td>'.$content.'</td>
+					<td>
+						<input type="checkbox" value="'.$announcementID.'" name="selectBox">
+					</td>
+				</tr>
+			</tbody>';
+		}?>
+	</table>
+	<br>
+	<tfoot>
+		<input type="submit" name="addRecord" value="Add Record">
+		<input type="submit" name="editRecord" value="Edit Record">
+		<input type="submit" name="deleteRecord" value="Delete Record">
+		</form>
+	</tfoot>
+	<br><br><br>
 
 </body>
 </html>
