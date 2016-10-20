@@ -357,7 +357,7 @@ INSERT INTO `teacherlogin` (`teacherID`, `teacherUsername`, `Password`) VALUES
 --
 
 CREATE TABLE `publicAnnouncements` (
-  `announcementID` int NOT NULL,
+  `announcementID` int NOT NULL AUTO_INCREMENT,
   `title` varchar(40),
   `content` text NOT NULL,
   PRIMARY KEY (`announcementID`)
@@ -381,7 +381,7 @@ INSERT INTO `publicAnnouncements` (`announcementID`, `title`, `content`) VALUES
 --
 
 CREATE TABLE `classAnnouncements` (
-  `announcementID` int NOT NULL,
+  `announcementID` int NOT NULL AUTO_INCREMENT,
   `classID` int NOT NULL,
   `title` varchar(40),
   `content` text NOT NULL,
@@ -408,7 +408,7 @@ INSERT INTO `classAnnouncements` (`announcementID`, `classID`, `title`, `content
 --
 
 CREATE TABLE `availableJobs` (
-  `jobID` int NOT NULL,
+  `jobID` int NOT NULL AUTO_INCREMENT,
   `role` varchar(40),
   `description` text,
   PRIMARY KEY (`jobID`)
@@ -433,8 +433,17 @@ INSERT INTO `availableJobs` (`jobID`, `role`, `description`) VALUES
 --
 
 CREATE TABLE `jobSeekers` (
-  `seekerID` int NOT NULL,
+  `seekerID` int NOT NULL AUTO_INCREMENT,
   `jobID` int NOT NULL,
+  `firstName` varchar(45),
+  `lastName` varchar(45),
+  `emailAddress` varchar(45),
+  `phoneNumber` varchar(15),
+  `street` varchar(45),
+  `suburb` varchar(45),
+  `state` enum('QLD','NSW','ACT','VIC','TAS','SA','WA','NT') DEFAULT NULL,
+  `postcode` char(4) NOT NULL,
+  `cvPath` text,
   `accepted` enum('Yes', 'No', 'Pending'),
   PRIMARY KEY (`seekerID`),
   FOREIGN KEY (`jobID`) REFERENCES `availableJobs` (`jobID`)
@@ -445,10 +454,10 @@ CREATE TABLE `jobSeekers` (
 -- Dumping data for table `jobSeekers`
 --
 
-INSERT INTO `jobSeekers` (`seekerID`, `jobID`, `accepted`) VALUES
-(1, 1, 'Pending'),
-(2, 1, 'Pending'),
-(3, 2, 'No');
+INSERT INTO `jobSeekers` (`seekerID`, `jobID`, `firstName`, `lastName`, `emailAddress`, `phoneNumber`, `street`, `suburb`, `state`, `postcode`, `cvPath`, `accepted`) VALUES
+(1, 1, 'Stevo', 'Bongo', 'stevo@gmail.com', '0433333333', '1/11 Bro Street', 'Vale', 'QLD', '4011', '../images/file1.doc', 'Pending'),
+(2, 1, 'Roggo', 'Nart', 'roggo@gmail.com', '0477777777', '2/11 Bro Street', 'Vale', 'QLD', '4011', '../images/file2.doc', 'Pending'),
+(3, 2, 'Uli', 'Williamson', 'uli@gmail.com', '0422222222', '44 Sis Street', 'Treet', 'QLD', '4011', '../images/file3.pdf', 'No');
 
 
 
