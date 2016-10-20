@@ -3,7 +3,7 @@
 require "connect.inc";
  if (isset($_POST['login'])){
  $username=$_POST['username'];
- $password=$_POST['password'];
+ $password=hash('sha256', $_POST['password']);
 
  if (preg_match("/^t/", $username, $match)){
   $roll = "teacher";
