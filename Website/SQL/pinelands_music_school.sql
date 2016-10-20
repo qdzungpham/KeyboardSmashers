@@ -287,7 +287,7 @@ INSERT INTO `teachingcontract` (`contractID`, `studentID`, `teacherID`, `startDa
 CREATE TABLE `manager` (
   `id` int(11) NOT NULL AUTO_INCREMENT,            -- THIS ID SHOULD BE RENAMED TO "managerID"
   `username` varchar(45) UNIQUE NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,  --   `password` char(64) NOT NULL,      use this when hashing
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -296,7 +296,7 @@ CREATE TABLE `manager` (
 --
 
 INSERT INTO `manager` (`id`, `username`, `password`) VALUES
-(1, 'administrator', 'pinelands');
+(1, 'administrator', 'pinelands'); -- Unhashed password is "pinelands" Hashed password is "a329844518755c6987500cc3791e88e2d3b2722fc4a9944facc3d7fafbfbe533"
 
 
 -- --------------------------------------------------------
@@ -308,7 +308,7 @@ INSERT INTO `manager` (`id`, `username`, `password`) VALUES
 CREATE TABLE `studentlogin` (
   `studentID` int(11) NOT NULL,
   `studentUsername` char(8) NOT NULL,
-  `Password` varchar(30) NOT NULL,
+  `Password` char(64) NOT NULL,
   PRIMARY KEY (`studentUsername`),
   FOREIGN KEY (`studentID`) REFERENCES `students` (`studentID`)
   ON DELETE CASCADE
@@ -319,8 +319,8 @@ CREATE TABLE `studentlogin` (
 --
 
 INSERT INTO `studentlogin` (`studentID`, `studentUsername`, `Password`) VALUES
-(1, 'n1234567', 'password1'),
-(3, 'n1944332', '57fcf0819b6dd');
+(1, 'n1234567', '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e'), -- Unhashed password is "password1"
+(3, 'n1944332', '0034d29e693a3c6cd6cbc55a984e2504709309535bde828cdda1cc2966d6451f'); -- Unhashed password is "57fcf0819b6dd"
 
 
 -- --------------------------------------------------------
@@ -332,7 +332,7 @@ INSERT INTO `studentlogin` (`studentID`, `studentUsername`, `Password`) VALUES
 CREATE TABLE `teacherlogin` (
   `teacherID` int(11) NOT NULL,
   `teacherUsername` varchar(8) NOT NULL,
-  `Password` varchar(30) NOT NULL,
+  `Password` char(64) NOT NULL,
   PRIMARY KEY (`teacherUsername`),
   FOREIGN KEY (`teacherID`) REFERENCES `teachers` (`teacherID`)
   ON DELETE CASCADE
@@ -343,9 +343,9 @@ CREATE TABLE `teacherlogin` (
 --
 
 INSERT INTO `teacherlogin` (`teacherID`, `teacherUsername`, `Password`) VALUES
-(1, 't1234567', 'password1'),
-(2, 't2345678', 'Hello1'),
-(3, 't3456789', 'Hello2');
+(1, 't1234567', '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e'), -- Unhashed password is "password1"
+(2, 't2345678', '948edbe7ede5aa7423476ae29dcd7d61e7711a071aea0d83698377effa896525'), -- Unhashed password is "Hello1"
+(3, 't3456789', 'be98c2510e417405647facb89399582fc499c3de4452b3014857f92e6baad9a9'); -- Unhashed password is "Hello2"
 
 
 
