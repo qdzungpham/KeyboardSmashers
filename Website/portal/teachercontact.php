@@ -8,7 +8,6 @@ $classsql = "SELECT * FROM `classes`,`studentclass`,`teachers`
         WHERE `classes`.classID = `studentclass`.classID
         AND `studentclass`.studentID= '$id'
         AND `classes`.teacherID = `teachers`.teacherID";
-        echo $classsql;
 $classrs = $conn->prepare($classsql);
 $classrs -> execute();
 $classrecord = $classrs->FetchALL(PDO::FETCH_ASSOC);
@@ -19,6 +18,7 @@ $classrecord = $classrs->FetchALL(PDO::FETCH_ASSOC);
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Pinelands Music School | Portal</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../image/logo.ico" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->

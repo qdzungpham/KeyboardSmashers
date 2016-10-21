@@ -10,6 +10,7 @@ if (!isset($_SESSION["manager"]))
 <html>
 <head>
 	<link href="../css/managerCSS.css" rel="stylesheet" type="text/css" >
+	<link rel="shortcut icon" type="image/x-icon" href="../image/logo.ico" />
 </head>
 
 <body>
@@ -150,7 +151,7 @@ if (!isset($_SESSION["manager"]))
 	
 	
 <!-- Display a table of all student parent/guardians -->
-	<table>
+	<!--<table>
 		<thead><h2>Student's Parent/Guardian</h2></thead>
 		<tr>
 			<th>Parent/Guardian ID</th>
@@ -162,24 +163,24 @@ if (!isset($_SESSION["manager"]))
 			<th>Select Row</th>
 		</tr>
 		
-		<!-- Retrieve the database values of all student parents/guardians -->
+		Retrieve the database values of all student parents/guardians
 		<?php
-		$query="SELECT * FROM `studentguardian`";
-		$rs=$conn->prepare($query);
-		$rs->execute();
-		$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
+		//$query="SELECT * FROM `studentguardian`";
+		//$rs=$conn->prepare($query);
+		//$rs->execute();
+		//$row=$rs->FetchALL(PDO::FETCH_ASSOC); 
 		
-		echo'<form method="post" action="../PHP/ManagerGuardians.php">';
-		foreach($row as $data){
-			$guardianID=$data['guardianID'];
-			$studentID=$data['studentID'];
-			$guardianFirstName=$data['guardianFirstName'];
-			$guardianLastName=$data['guardianLastName'];
-			$guardianEmail=$data['guardianEmail'];
-			$guardianPhoneNumber=$data['guardianPhoneNumber'];
+		//echo'<form method="post" action="../PHP/ManagerGurdians.php">';
+		//foreach($row as $data){
+		//	$guardianID=$data['guardianID'];
+		//	$studentID=$data['studentID'];
+		//	$guardianFirstName=$data['guardianFirstName'];
+		//	$guardianLastName=$data['guardianLastName'];
+		//	$guardianEmail=$data['guardianEmail'];
+		//	$guardianPhoneNumber=$data['guardianPhoneNumber'];
 
 			
-			echo'
+		/*	echo'
 			<tbody>
 				<tr>
 					<td>'.$guardianID.'</td>
@@ -193,7 +194,7 @@ if (!isset($_SESSION["manager"]))
 					</td>
 				</tr>
 			</tbody>';
-		}?>
+		}*/?>
 	</table>
 	<br>
 	<tfoot>
@@ -202,7 +203,7 @@ if (!isset($_SESSION["manager"]))
 		<input type="submit" name="deleteRecord" value="Delete Record">
 		</form>
 	</tfoot>
-	<br><br><br>
+	<br><br><br> -->
 	
 	
 	

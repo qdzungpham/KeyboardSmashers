@@ -15,6 +15,10 @@ else if (preg_match("/^n/", $username, $match)){
   $roll = "student";
   $qurey = "SELECT * FROM `studentlogin` WHERE `studentUsername` = '$username'";
   
+ }
+ else if (preg_match("/^m/", $username, $match)){
+  $roll = "manager";
+  $qurey = "SELECT * FROM `manager` WHERE `Username` = '$username'";
   
  }
  else {
@@ -62,6 +66,13 @@ if (count($row)==1)
 					$_SESSION["Name"] = $info['firstName']." ".$info['familyName'];
 				}
 				header('location: portal/teacherportal/index.php');
+			}
+			else  if ($roll == "manager")
+			{
+                 $_SESSION["manager"]='1';
+                 $_SESSION["Roll"] = $roll;
+                  header('location: manager/main.php');
+
 			}
 		}
 		else 

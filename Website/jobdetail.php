@@ -1,8 +1,7 @@
 <?php 
 require "connect.inc";
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -25,9 +24,6 @@ require "connect.inc";
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="portal/dist/css/skins/_all-skins.min.css">
-  
-  <link rel="stylesheet" href="portal/plugins/iCheck/square/blue.css">
-
 </head>
 
 <body class="hold-transition skin-blue layout-top-nav">
@@ -46,10 +42,10 @@ require "connect.inc";
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="home.php">Home</a></li>
+            <li><a href="home.php">Home</a></li>
             <li><a href="Enrolments.php">Enrolment</a></li>
-			<li><a href="About us.php">About Us</a></li>
-			<li><a href="career.php">Careers</a></li>
+      <li><a href="About us.php">About Us</a></li>
+      <li class="active"><a href="career.php">Careers</a></li>
           </ul>
           
         </div>
@@ -61,12 +57,9 @@ require "connect.inc";
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!-- The user image in the navbar-->
-                
-                <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">Login</span>
               </a>
-              <?php
+             <?php
               if (isset($_SESSION['UserID'])){
                 echo '<ul width: 370px; class="dropdown-menu">
               <!-- User image -->
@@ -153,65 +146,122 @@ require "connect.inc";
       <!-- /.container-fluid -->
     </nav>
   </header>
-  <!-- Full Width Column -->
+ 
   <div style="background:url('image/backk.png') no-repeat;background-size:100%;"class="content-wrapper">
     <div id ="wrap">
-		
-		<div class ="slider_caption">
-		<h2>Music Qualifications Delivered via e-learning / Distance Education </h2>
-		<p style = "color:rgb(221,75,57)">IT'S AMAZING WHAT CAN HAPPEN WHEN YOU START FOR THE FUN OF IT</P>
-		</div>
-
+    <div class ="slider_caption">
+    <h2>Music Qualifications Delivered via e-learning / Distance Education </h2>
+    <p style = "color:rgb(221,75,57)">IT'S AMAZING WHAT CAN HAPPEN WHEN YOU START FOR THE FUN OF IT</P>
+    </div>
 </div>
-	<div id ="content">
-  <!-- Couser Details, need to be modify with in the future -->
-		<div id ="page-heading">
-			<b>OUR COURSE</b><br>
-		</div>
-		<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			&#9734;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
-		</div>
+<div id ="content">
+    <div id ="page-heading">
+      <b>JOB VACANCIES</b><br>
+    </div>
+    <div id ="cname">
+      <img src="image/line.png">
+    </div>
+</div>
 
-		<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			 &#9825;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
+  <div id="wrapper">
+<!-- container for each job -->
+<div class ="left-bar">
+<?php
+      $des = file_get_contents('upload/jobs/job1.txt');
+      echo $des;
 
-		</div>
-			<div class = "coursetype">
-			<div class= "coursename">
-			Children Course
-			</div>
-			<div class= "courselink">
-			&#9813;
-			</div>
-			<div class= "coursedescription">
-			Pinelands music programs
-			designed for children aged
-			between 3 to 12
-			</div>
+    ?>
+</div>
 
-		</div>
-	</div>
-  <!-- /.content-wrapper -->
+
+<div class = "right-bar">
+<div class="box box-primary">
+  <div class="box-header with-border" ">
+        <h3 class="box-title">Upload Your CV </h3>
+    </div>
+  
+  <form method="post" action="">
+  <div class="box-body" style="width:100%;">
+  <div class="col-md-10">
+  <div class="form-group">
+    <label>First name * </label>
+    <input class="form-control" type="text" name="firstName" value=""> 
+    <span class="error"> </span>
+    
+  </div>
+  <div class="form-group">
+    <label>Last name * </label>
+    <input class="form-control"type="text" name="lastName" value=""> 
+    <span class="error"></span>
+    
+  </div>
+  
+
+  <div class="form-group">
+    <label>Address *</label><br>
+  
+    
+      <input class="form-control"type="text" name="street" placeholder="Street" value="">
+      <span class="error"> </span>
+      <br>
+      
+      <input class="form-control"type="text" name="suburb" placeholder="Suburb" value=""> 
+      <span class="error"> </span>
+      <br>
+      
+      <select class="form-control" name = "state" placeholder="State" value=""> 
+        <option value=""disabled selected>State</option>
+        <option value="QLD">QLD</option>
+        <option value="NSW">NSW</option>
+        <option value="ACT">ACT</option>
+        <option value="VIC">VIC</option>
+        <option value="TAS">TAS</option>
+        <option value="SA">SA</option>
+        <option value="WA">WA</option>
+        <option value="NT">NT</option>
+      </select>
+      <span class="error"></span>
+      <br>
+      
+      <input class="form-control"type="number" name="postCode" placeholder="Post Code" value=""> 
+      <span class="error"> </span>
+      
+  </div>
+  
+  <div class="form-group">
+    <label>Gender * </label>
+    <span class="error"> </span>
+    <br>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <br>
+  </div>  
+  <div class="form-group">
+    <label>Phone Number</label>
+    <input class="form-control"type="text" name="phoneNumber" value="">
+    
+  </div>  
+  <div class="form-group">
+    <label>Email Address * </label>
+    <input class="form-control"type="text" name="email" value=""> 
+    <span class="error"> </span>
+  </div>
+  <div class="form-group">
+    <label>Upload CV * </label>
+    <input class="form-control" type="file" name="email" value=""> 
+    <span class="error"> </span>
+  </div>
+  </div>
+  
+  </div>
+  <div class="box-footer" >
+      <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+    <input type="reset" class="btn btn-default" name ="reset" value="Reset">
+      </div>
+  </form>
+</div>
+</div>
+  </div>
   <footer class="main-footer">
     <div class="container">
       
@@ -235,15 +285,5 @@ require "connect.inc";
 <script src="portal/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="portal/dist/js/demo.js"></script>
-<script src="portal/plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-</script>
 </body>
 </html>

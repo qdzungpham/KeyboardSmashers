@@ -1,0 +1,35 @@
+<pre>
+<div style="text-align: left;">
+<b>Job brief:</b>
+
+We are looking for a capable system security engineer, who enjoys security work and possesses 
+both deep and wide expertise in the security space.
+
+You will make things more secure by protecting system boundaries, keeping computer systems and 
+network devices hardened against attacks and securing highly sensitive data. Qualified candidates 
+will have a background in security or systems engineering.
+
+<b>Responsibilities:</b>
+
+Engineer, implement and monitor security measures for the protection of computer systems, networks and information
+Identify and define system security requirements
+Design system security architecture and develop detailed security designs
+Prepare and document standard operating procedures and protocols
+Configure and troubleshoot security infrastructure devices
+Develop technical solutions and new security tools to help mitigate security vulnerabilities and automate repeatable tasks
+Ensure that the company knows as much as possible, as quickly as possible about security incidents
+Write comprehensive reports including assessment-based findings, outcomes and propositions for further system security enhancement
+
+<b>Requirements:</b>
+
+Proven work experience as a system security engineer
+Experience in building and maintaining security systems
+Detailed technical knowledge of database and operating system security
+Hands on experience in security systems, including firewalls, intrusion detection systems, anti-virus software, authentication systems, log management, content filtering, etc
+Experience with network technologies and with system, security, and network monitoring tools
+Thorough understanding of the latest security principles, techniques, and protocols
+Familiarity with web related technologies (Web applications, Web Services, Service Oriented Architectures) and of network/web related protocols
+Problem solving skills and ability to work under pressure
+BS degree in Computer Science or related field
+</div>
+</pre>

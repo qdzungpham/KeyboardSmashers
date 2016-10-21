@@ -14,7 +14,7 @@ foreach($record as $data)
           $dob=$data['DOB'];
           $gender=$data['gender'];
           $phone=$data['otherNumber'];
-          $mail=$data['address'];
+          $mail=$data['street'].' '.$data['suburb'].' '.$data['state'].' '.$data['postcode'];
           $address=$mail;
           $email=$data['emailAddress'];
         }
@@ -25,7 +25,8 @@ foreach($record as $data)
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Pinelands Music School | Portal</title>
+  <title>Pinelands Music School | Teacher Portal</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../../image/logo.ico" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->

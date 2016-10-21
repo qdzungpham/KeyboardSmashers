@@ -25,8 +25,9 @@
 			$time = $t.rand(0,9);
 			$username = 'n'.substr($time,4,11);
 			$password = uniqid();
+			$hpassword = hash('sha256', $password);
 			$sql= "INSERT INTO `studentlogin` (`studentID`,`studentUsername`,`Password`)
-				   VALUES('$studentID','$username','$password')";
+				   VALUES('$studentID','$username','$hpassword')";
 			$results=$conn->prepare($sql);
 			$results->execute();
 			
