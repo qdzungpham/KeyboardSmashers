@@ -67,10 +67,13 @@ if (count($row)==1)
 				}
 				header('location: portal/teacherportal/index.php');
 			}
-			else  if ($roll == "manager")
+			else if ($roll == "manager")
 			{
+				 $id=$data['id'];
+				 $_SESSION["UserID"] = $id;
                  $_SESSION["manager"]='1';
                  $_SESSION["Roll"] = $roll;
+                 $_SESSION["UserName"] = $data['Username'];
                   header('location: manager/main.php');
 
 			}

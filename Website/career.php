@@ -1,7 +1,15 @@
 <?php 
 require "connect.inc";
 
-?><!DOCTYPE html>
+
+$sql="SELECT * FROM `availablejobs`";
+$rs= $conn->prepare($sql);
+$rs->execute();
+$row = $rs->FetchALL(PDO::FETCH_ASSOC);
+
+
+?>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -73,6 +81,9 @@ require "connect.inc";
               if ($_SESSION["Roll"]=="student"){
                 echo '<img src="image/profile.png" class="img-circle" alt="User Image">';
               }
+              if ($_SESSION["Roll"]=="manager"){
+                echo '<img src="image/profile.png" class="img-circle" alt="User Image">';
+              }
 
 
               echo'
@@ -91,6 +102,9 @@ require "connect.inc";
                 }
                 if ($_SESSION["Roll"]=="student"){
                   echo '<a href="portal/index.php" class="btn btn-default btn-flat">Student Portal</a>';
+                }
+                if ($_SESSION["Roll"]=="manager"){
+                  echo '<a href="manager/main.php" class="btn btn-default btn-flat">manager Portal</a>';
                 }
                 echo '</div>
                 <div class="pull-right">
@@ -159,102 +173,48 @@ require "connect.inc";
 </div>
 <div id ="content">
     <div id ="page-heading">
-      <b>ABOUT US</b><br>
+      <b>JOB VACANCIES</b><br>
     </div>
     <div id ="cname">
       <img src="image/line.png">
-      
     </div>
 </div>
   <div id="wrapper">
 <!-- container for each job -->
-       <div class="jobs">
+<?php
+   foreach ($row as $data) {
+     # code...
+  
+       echo'<div class="jobs">
          <div class = "jtitle">
-           IT Services
+         '.$data['role'].'
          </div>
          <div class="caption">
           Job Name:
          </div>
            <div class = "jname">
-             Senior PHP Developer
+            '.$data['role'].'
            </div>
          <div class="caption">
          Post Date:
          </div>
            <div class = "jtime">
-             26/08/2016
+              '.$data['postDate'].'
            </div>
          <div class="caption">
          Job Description:
          </div>
          <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
+            '.$data['description'].'
          </div>
-         <input class = "button" name="more" type="button" value="MORE">
-       </div>
+         <a href="jobdetail.php?id='.$data['jobID'].'"><button class="btn btn-success">
+         More Info</button></a>
+       </div>';
+        }
+       ?>
+       
 <!-- end container -->
-       <div class="jobs">
-         <div class = "jtitle">
-           IT Services
-         </div>
-         <div class="caption">
-          Job Name:
-         </div>
-           <div class = "jname">
-             Senior PHP Developer
-           </div>
-         <div class="caption">
-         Post Date:
-         </div>
-           <div class = "jtime">
-             26/08/2016
-           </div>
-         <div class="caption">
-         Job Description:
-         </div>
-         <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
-         </div>
-         <a href="jobdetail.php"><input class = "button" name="more" type="button" value="MORE"></a>
-                </div>
-       <div class="jobs">
-         <div class = "jtitle">
-           IT Services
-         </div>
-         <div class="caption">
-          Job Name:
-         </div>
-           <div class = "jname">
-             Senior PHP Developer
-           </div>
-         <div class="caption">
-         Post Date:
-         </div>
-           <div class = "jtime">
-             26/08/2016
-           </div>
-         <div class="caption">
-         Job Description:
-         </div>
-         <div class = "jdescription">
-           We are looking for an experienced Digital Telesales individual who
-           is passionate and proactive in their approach to consulting and
-           selling. This person is customer focused; putting the needs of our
-            clients at the forefront of everything they do and they are driven
-            by the idea and reality of success.
-         </div>
-         <input class = "button" name="more" type="button" value="MORE">
        </div>
-       </div>
-  </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="container">

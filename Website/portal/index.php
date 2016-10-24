@@ -1,6 +1,16 @@
 <?php
 require "../connect.inc";
 portal_ckeck();
+
+$id=$_SESSION["UserID"];
+$sql="SELECT * FROM `classes`,`classannouncements`,`studentclass`
+      WHERE `classes`.classID=`classannouncements`.classID and `studentclass`.studentID ='$id'
+      and `classes`.classID= `studentclass`.classID;
+      Order By `classannouncements`.announcementID Desc";
+$rs = $conn->prepare($sql);
+$rs -> execute();
+$row = $rs->FetchALL(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,6 +18,7 @@ portal_ckeck();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Pinelands Music School | Portal</title>
+  <link href="../css/mycss.css" rel="stylesheet" type="text/css" >
   <link rel="shortcut icon" type="image/x-icon" href="../image/logo.ico" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -179,7 +190,7 @@ portal_ckeck();
         <div class="col-md-7">
 		
 		  <!-- my annoucement -->
-          <div class="box box-solid">
+          <div class="box box-solid" id ="announcement">
             <div class="box-header with-border">
 			  <i class="fa fa-info-circle"></i>
               <h3 class="box-title">My Announments</h3>
@@ -187,73 +198,23 @@ portal_ckeck();
             <!-- /.box-header -->
             <div class="box-body">
               <div class="box-group" id="accordion">
-                
-                <div class="panel box box-primary">
+                <?php
+                foreach ($row as $data) {                
+                echo '<div class="panel box box-primary">
                   <div class="box-header with-border">
                     <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Good Morning
+                      <a data-toggle="collapse" data-parent="#accordion" href="#'.$data['announcementID'].'">
+                        '.$data['classIdname'].' '.$data['title'].'
                       </a>
                     </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
+                  <div id="'.$data['announcementID'].'" class="panel-collapse collapse">
                     <div class="box-body">
-                      Twinkle, twinkle, little star,
-                      How I wonder what you are!
-                      Up above the world so high,
-                      Like a diamond in the sky.
-
-                      When the blazing sun is gone,
-                      When he nothing shines upon,
-                      Then you show your little light,
-                      Twinkle, twinkle, all the night.
+                      '.$data['content'].'
                     </div>
                   </div>
-                </div>
-                <div class="panel box box-danger">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                        Good Afternoon
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="box-body">
-                      Twinkle, twinkle, little star,
-                      How I wonder what you are!
-                      Up above the world so high,
-                      Like a diamond in the sky.
-
-                      When the blazing sun is gone,
-                      When he nothing shines upon,
-                      Then you show your little light,
-                      Twinkle, twinkle, all the night.
-                    </div>
-                  </div>
-                </div>
-                <div class="panel box box-success">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                        Good Evening
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="box-body">
-                      Twinkle, twinkle, little star,
-                      How I wonder what you are!
-                      Up above the world so high,
-                      Like a diamond in the sky.
-
-                      When the blazing sun is gone,
-                      When he nothing shines upon,
-                      Then you show your little light,
-                      Twinkle, twinkle, all the night.
-                    </div>
-                  </div>
-                </div>
+                </div>';}
+                ?>
               </div>
             </div>
             <!-- /.box-body -->

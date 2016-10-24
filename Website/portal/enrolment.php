@@ -2,7 +2,7 @@
 require "../connect.inc";
 portal_ckeck();
 $id=$_SESSION["UserID"];
-
+$status = 'New';
 
 //get the data from studentcalss table for register
 $classsql = "SELECT * FROM `classes`,`studentclass` 
@@ -25,41 +25,101 @@ if (isset($_POST['save']))
 {
    if(!empty($_POST['check']))
   {
-    if(!count($classrecord)>0)
+    if (count($_POST['check'])>=2 && count($_POST['check'])<=3)
     {
-      $check=$_POST['check'];
-      foreach($check as $class)
+      if($status != 'New')
       {
-          $sql = "INSERT INTO `studentclass`(`classID`,`studentID`) VALUES('$class','$id')";
-          $rs = $conn->prepare($sql);
-          $rs -> execute();
-          $classsql = "SELECT * FROM `classes`,`studentclass` 
-                      WHERE `classes`.classID=`studentclass`.classID 
-                      and `studentclass`.studentID='$id'";
-          $classrs = $conn->prepare($classsql);
-          $classrs -> execute();
-          $classrecord = $classrs->FetchALL(PDO::FETCH_ASSOC);
-          foreach($classrecord as $data)
-            {
-               $classcapacity=$data['classCapacity'];
-               $classcapacity = $classcapacity-1;
-            }
-          $sql = "UPDATE `classes` SET `classCapacity` = $classcapacity
-          WHERE `classes`.`classID` = '$class'";
-          $rs = $conn->prepare($sql);
-          $rs -> execute();
-          echo "<meta http-equiv='refresh' content='0'>";
+        if(!count($classrecord)>0)
+        {
+          $check=$_POST['check'];
+          foreach($check as $class)
+          {
+              $sql = "INSERT INTO `studentclass`(`classID`,`studentID`) VALUES('$class','$id')";
+              $rs = $conn->prepare($sql);
+              $rs -> execute();
+              $classsql = "SELECT * FROM `classes`,`studentclass` 
+                          WHERE `classes`.classID=`studentclass`.classID 
+                          and `studentclass`.studentID='$id'";
+              $classrs = $conn->prepare($classsql);
+              $classrs -> execute();
+              $classrecord = $classrs->FetchALL(PDO::FETCH_ASSOC);
+              foreach($classrecord as $data)
+                {
+                   $classcapacity=$data['classCapacity'];
+                   $classcapacity = $classcapacity-1;
+                }
+              $sql = "UPDATE `classes` SET `classCapacity` = $classcapacity
+              WHERE `classes`.`classID` = '$class'";
+              $rs = $conn->prepare($sql);
+              $rs -> execute();
+              echo "<meta http-equiv='refresh' content='0'>";
+              header('location:timetable.php');
+          }
+        }
+       else
+        {
+          echo "<script>
+                alert('You have already registered in some classes');
+                </script>";
+         echo "<meta http-equiv='refresh' content='0'>";
+        }
+      }
+      else 
+      {
+        if ($status == 'New'){
+        echo "<script>
+                alert('You can only register for one class');
+                </script>";
+         echo "<meta http-equiv='refresh' content='0'>";
+       }
+       
       }
     }
-    else
+    else if(count($_POST['check'])==1)
     {
-      echo "<script>
-            alert('You have already registerd in some classes');
-            </script>";
-     echo "<meta http-equiv='refresh' content='0'>";
+        if(!count($classrecord)>0)
+        {
+          $check=$_POST['check'];
+          foreach($check as $class)
+          {
+              $sql = "INSERT INTO `studentclass`(`classID`,`studentID`) VALUES('$class','$id')";
+              $rs = $conn->prepare($sql);
+              $rs -> execute();
+              $classsql = "SELECT * FROM `classes`,`studentclass` 
+                          WHERE `classes`.classID=`studentclass`.classID 
+                          and `studentclass`.studentID='$id'";
+              $classrs = $conn->prepare($classsql);
+              $classrs -> execute();
+              $classrecord = $classrs->FetchALL(PDO::FETCH_ASSOC);
+              foreach($classrecord as $data)
+                {
+                   $classcapacity=$data['classCapacity'];
+                   $classcapacity = $classcapacity-1;
+                }
+              $sql = "UPDATE `classes` SET `classCapacity` = $classcapacity
+              WHERE `classes`.`classID` = '$class'";
+              $rs = $conn->prepare($sql);
+              $rs -> execute();
+              echo "<meta http-equiv='refresh' content='0'>";
+              header('location:timetable.php');
+          }
+        }
+       else
+        {
+          echo "<script>
+                alert('You have already registered in some classes');
+                </script>";
+         echo "<meta http-equiv='refresh' content='0'>";
+        }
+      }
+      else {
+        echo "<script>
+                alert('You can only register for maxmum There classes');
+                </script>";
+         echo "<meta http-equiv='refresh' content='0'>";
+       }
     }
   }
-}
 
 
 ?>
@@ -242,12 +302,12 @@ if (isset($_POST['save']))
               
       </div>
        <div class="box-body table-responsive no-padding">
-       <span style="margin-left:20%; color:blue; font-size: 18px;">!!! You Are identify as a <span style="color:red;">new</span> student 
+       <span style="margin-left:20%; color:blue; font-size: 18px;">!!! You Are identify as a <span style="color:red;"><?php echo $status; ?></span> student 
        which can only register one lesson per week.</span> 
        </div>
       </div>
 		  <!-- class registration -->
-          <div class="box">
+          <div class="box">                                                               
             <div class="box-header">
 			<i class="fa fa-pencil-square-o"></i>
               <h3 class="box-title">Class Registration</h3>

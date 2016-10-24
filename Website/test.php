@@ -24,6 +24,7 @@ echo hash('sha256', $firstName);
 <html>
 <head>
 	<title></title>
+	<link href="css/mycss.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 <form method="POST" enctype="multipart/form-data">
@@ -39,7 +40,28 @@ echo hash('sha256', $firstName);
 	<input type="file" name="file"><br>
 	<input type="text" name="suburb" placeholder="suburb"><br>
 	<input type="submit" name="submit" value = "submit">
-
 </form>
+<select class="div-toggle" data-target=".my-info-1">
+  <option value="orange" data-show=".citrus">Orange</option>
+  <option value="lemon" data-show=".citrus">Lemon</option>
+  <option value="apple" data-show=".pome">Apple</option>
+  <option value="pear" data-show=".pome">Pear</option>
+</select>
+
+<div class="my-info-1">
+  <div class="citrus hide">Citrus is...</div>
+  <div class="pome hide">A pome is...</div>
+</div>
+<script>
+$(document).on('change', '.div-toggle', function() {
+  var target = $(this).data('target');
+  var show = $("option:selected", this).data('show');
+  $(target).children().addClass('hide');
+  $(show).removeClass('hide');
+});
+$(document).ready(function(){
+    $('.div-toggle').trigger('change');
+});
+</script>
 </body>
 </html>

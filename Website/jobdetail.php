@@ -1,7 +1,44 @@
 <?php 
 require "connect.inc";
+if(isset($_GET['id'])){
+  $ID=$_GET['id'];
+}
 
-?><!DOCTYPE html>
+if(isset($_POST['submit']))
+{
+
+ $firstName=$_POST['firstName'] ;
+ $lastName=$_POST['lastName'] ;
+ $street=$_POST['street'];
+ $suburb=$_POST['suburb'];
+ $state=$_POST['state'];
+ $postCode=$_POST['postCode'];
+ $phoneNumber=$_POST['phoneNumber'];
+ $email=$_POST['email'];
+ $file = $_FILES['file']['name'];
+ $file_loc = $_FILES['file']['tmp_name'];
+ $file_size = $_FILES['file']['size'];
+ $file_type = $_FILES['file']['type'];
+ $folder="upload/CVs/";
+ $file_path=$folder.$file;
+ if(move_uploaded_file($file_loc,$file_path))
+ {
+
+  $sql="INSERT INTO `jobseekers`(`JobID`,`firstName`,`lastName`,`street`,`suburb`,`state`,
+                    `postcode`,`phoneNumber`,`emailAddress`,`cvPath`,`accepted`) 
+        VALUES('$ID','$firstName','$lastName','$street','$suburb','$state','$postCode',
+               '$phoneNumber','$email','$file_path','Pending')";
+  $rs= $conn->prepare($sql);
+  $rs->execute();
+  echo "<script>
+          alert(' Upload Successful');
+      </script>";
+echo "<meta http-equiv='refresh' content='0'>";
+}
+}
+
+?>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -70,6 +107,10 @@ require "connect.inc";
               if ($_SESSION["Roll"]=="student"){
                 echo '<img src="image/profile.png" class="img-circle" alt="User Image">';
               }
+              if ($_SESSION["Roll"]=="manager"){
+                echo '<img src="image/profile.png" class="img-circle" alt="User Image">';
+              }
+
 
 
               echo'
@@ -88,6 +129,9 @@ require "connect.inc";
                 }
                 if ($_SESSION["Roll"]=="student"){
                   echo '<a href="portal/index.php" class="btn btn-default btn-flat">Student Portal</a>';
+                }
+                if ($_SESSION["Roll"]=="manager"){
+                  echo '<a href="manager/main.php" class="btn btn-default btn-flat">manager Portal</a>';
                 }
                 echo '</div>
                 <div class="pull-right">
@@ -180,7 +224,7 @@ require "connect.inc";
         <h3 class="box-title">Upload Your CV </h3>
     </div>
   
-  <form method="post" action="">
+  <form method="post" action="" enctype="multipart/form-data">
   <div class="box-body" style="width:100%;">
   <div class="col-md-10">
   <div class="form-group">
@@ -191,7 +235,7 @@ require "connect.inc";
   </div>
   <div class="form-group">
     <label>Last name * </label>
-    <input class="form-control"type="text" name="lastName" value=""> 
+    <input class="form-control" type="text" name="lastName" value=""> 
     <span class="error"></span>
     
   </div>
@@ -201,11 +245,11 @@ require "connect.inc";
     <label>Address *</label><br>
   
     
-      <input class="form-control"type="text" name="street" placeholder="Street" value="">
+      <input class="form-control" type="text" name="street" placeholder="Street" value="">
       <span class="error"> </span>
       <br>
       
-      <input class="form-control"type="text" name="suburb" placeholder="Suburb" value=""> 
+      <input class="form-control" type="text" name="suburb" placeholder="Suburb" value=""> 
       <span class="error"> </span>
       <br>
       
@@ -223,32 +267,23 @@ require "connect.inc";
       <span class="error"></span>
       <br>
       
-      <input class="form-control"type="number" name="postCode" placeholder="Post Code" value=""> 
+      <input class="form-control" type="number" name="postCode" placeholder="Post Code" value=""> 
       <span class="error"> </span>
       
   </div>
-  
-  <div class="form-group">
-    <label>Gender * </label>
-    <span class="error"> </span>
-    <br>
-    <input type="radio" name="gender" value="Male"> Male
-    <input type="radio" name="gender" value="Female"> Female
-    <br>
-  </div>  
   <div class="form-group">
     <label>Phone Number</label>
-    <input class="form-control"type="text" name="phoneNumber" value="">
+    <input class="form-control" type="text" name="phoneNumber" value="">
     
   </div>  
   <div class="form-group">
     <label>Email Address * </label>
-    <input class="form-control"type="text" name="email" value=""> 
+    <input class="form-control" type="text" name="email" value=""> 
     <span class="error"> </span>
   </div>
   <div class="form-group">
     <label>Upload CV * </label>
-    <input class="form-control" type="file" name="email" value=""> 
+    <input class="form-control" type="file" name="file"> 
     <span class="error"> </span>
   </div>
   </div>

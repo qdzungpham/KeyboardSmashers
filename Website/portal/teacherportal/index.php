@@ -1,6 +1,15 @@
 <?php
 require "../../connect.inc";
 teacherportal_ckeck();
+
+$id=$_SESSION["UserID"];
+$sql="SELECT * FROM `classes`,`classannouncements`
+      WHERE `classes`.classID=`classannouncements`.classID and `classes`.teacherID ='$id'
+      Order By `classannouncements`.announcementID Desc";
+$rs = $conn->prepare($sql);
+$rs -> execute();
+$row = $rs->FetchALL(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,6 +19,7 @@ teacherportal_ckeck();
   <title>Pinelands Music School | Teacher Portal</title>
   <link rel="shortcut icon" type="image/x-icon" href="../../image/logo.ico" />
   <!-- Tell the browser to be responsive to screen width -->
+  <link href="../../css/mycss.css" rel="stylesheet" type="text/css" >
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -177,7 +187,7 @@ teacherportal_ckeck();
 
       <div class="row">
         <div class="col-md-7">
-          <div class="box box-solid">
+          <div class="box box-solid" id = "announcement">
             <div class="box-header with-border">
 			  <i class="fa fa-info-circle"></i>
               <h3 class="box-title">Student's Announments</h3>
@@ -187,73 +197,26 @@ teacherportal_ckeck();
             <div class="box-body">
               <div class="box-group" id="accordion">
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                <div class="panel box box-primary">
+                <?php
+                foreach ($row as $data) {                
+                echo '<div class="panel box box-primary">
                   <div class="box-header with-border">
                     <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Good Morning
+                      <a data-toggle="collapse" data-parent="#accordion" href="#'.$data['announcementID'].'">
+                        '.$data['classIdname'].' '.$data['title'].'
                       </a>
                     </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
+                  <div id="'.$data['announcementID'].'" class="panel-collapse collapse">
                     <div class="box-body">
-                      Twinkle, twinkle, little star,
-                      How I wonder what you are!
-                      Up above the world so high,
-                      Like a diamond in the sky.
-
-                      When the blazing sun is gone,
-                      When he nothing shines upon,
-                      Then you show your little light,
-                      Twinkle, twinkle, all the night.
+                      '.$data['content'].'
                     </div>
                   </div>
-                </div>
-                <div class="panel box box-danger">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                        Good Afternoon
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="box-body">
-                      Twinkle, twinkle, little star,
-                      How I wonder what you are!
-                      Up above the world so high,
-                      Like a diamond in the sky.
+                </div>';}
+                ?>
 
-                      When the blazing sun is gone,
-                      When he nothing shines upon,
-                      Then you show your little light,
-                      Twinkle, twinkle, all the night.
-                    </div>
-                  </div>
-                </div>
-                <div class="panel box box-success">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                        Good Evening
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="box-body">
-                      Twinkle, twinkle, little star,
-                      How I wonder what you are!
-                      Up above the world so high,
-                      Like a diamond in the sky.
 
-                      When the blazing sun is gone,
-                      When he nothing shines upon,
-                      Then you show your little light,
-                      Twinkle, twinkle, all the night.
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>
             </div>
             <!-- /.box-body -->
 			

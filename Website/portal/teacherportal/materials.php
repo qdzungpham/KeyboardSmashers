@@ -7,11 +7,35 @@ teacherportal_ckeck();
 
 $id=$_SESSION["UserID"];
 $action="";
+//get the classes which this teacher has involved
+$query = "SELECT * FROM `classes`
+          WHERE `teacherID`='$id'";
+$results = $conn->prepare($query);
+$results -> execute();
+$row = $results->FetchALL(PDO::FETCH_ASSOC);
+//get the instrumrnts
 $sql = "SELECT * FROM `instruments`";
 $rs = $conn->prepare($sql);
 $rs -> execute();
 $record = $rs->FetchALL(PDO::FETCH_ASSOC);
 
+
+if(isset($_POST['annoucement']))
+{
+  $classid=$_POST['class'];
+  $title=$_POST['title'];
+  $content=$_POST['content'];
+$sql = "INSERT INTO `classannouncements`(`classID`,`title`,`content`)
+        VALUES('$classid','$title','$content')";
+$rs = $conn->prepare($sql);
+$rs -> execute();
+echo "<script>
+          alert(' Upload Successful');
+      </script>";
+echo "<meta http-equiv='refresh' content='0'>";
+
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -193,106 +217,87 @@ $record = $rs->FetchALL(PDO::FETCH_ASSOC);
 	    <div class="row">
             <div class="col-md-12">
 			    <!-- Custom Tabs (Pulled to the right) -->
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs pull-right">
-              <li><a href="#tab_1-1" data-toggle="tab">Class 103</a></li>
-              <li><a href="#tab_2-2" data-toggle="tab">Class 102</a></li>
-              <li class="active"><a href="#tab_3-2" data-toggle="tab">Class 101</a></li>
-              
-              <li class="pull-left header"><i class="fa  fa-file-text"></i> My Classes</li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane" id="tab_1-1">
-                Twinkle, twinkle, little star,
-                      How I wonder what you are!
-                      Up above the world so high,
-                      Like a diamond in the sky.
-
-                      When the blazing sun is gone,
-                      When he nothing shines upon,
-                      Then you show your little light,
-                      Twinkle, twinkle, all the night.
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_2-2">
-                Twinkle, twinkle, little star,
-                      How I wonder what you are!
-                      Up above the world so high,
-                      Like a diamond in the sky.
-
-                      When the blazing sun is gone,
-                      When he nothing shines upon,
-                      Then you show your little light,
-                      Twinkle, twinkle, all the night.
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane active" id="tab_3-2">
-                  <div class="box box-success">
-                     <div class="box-header with-border">
-                        <h3 class="box-title">Student Materials</h3>
-                     </div>
-                     <!-- /.box-header -->
-                     <div class="box-body">
-					    <p><b>Attached Files:<b><p>
-						<p>
-						<a href="#">MSC101_Lession1 - How to Read Sheet Music.pdf</a><br>
-						<a href="#">MSC101_Lession1 - Your First Lesson on the Piano.pdf</a><br>
-						<a href="#">MSC101_Lession2 - How to Read Music Notes for Piano.pdf</a><br>
-						<a href="#">MSC101_Lession2 - Reading Music Notes on Treble Clef and Bass Clef.pdf</a><br>
-						<a href="#">MSC101_Lession3 - How to Read Sheet Music.pdf</a>
-					    </p>
-						<p><b>Upload File:<b><p>
-						<p>
-						    <form role="form">
-							    <input type="file" id="example">
-								<button style="margin-top:10px"type="submit" class="btn btn-primary">Submit</button>
-							</form>
-						</p>
-                
-                     </div>
-                     <!-- /.box-body -->
+          <div class="box box-solid">
+            <div class="box-header with-border">
+        <i class="fa  fa-file-text"></i>
+              <h3 class="box-title"> Student Materials</h3>
+        
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="box-group" id="accordion">
+                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                <div class="panel box box-primary">
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                       hello 
+                      </a>
+                    </h4>
                   </div>
-                  <!-- /.box -->
-				  
+                  <div id="collapseOne" class="panel-collapse collapse">
+                      <div class="box-body">
+                       <p><b>Attached Files:</b></p>
+            <p>
+            <a href="#">MSC101_Lession1 - How to Read Sheet Music.pdf</a><br>
+            <a href="#">MSC101_Lession1 - Your First Lesson on the Piano.pdf</a><br>
+            <a href="#">MSC101_Lession2 - How to Read Music Notes for Piano.pdf</a><br>
+            <a href="#">MSC101_Lession2 - Reading Music Notes on Treble Clef and Bass Clef.pdf</a><br>
+            <a href="#">MSC101_Lession3 - How to Read Sheet Music.pdf</a>
+              </p>
+            <p><b>Upload File:</b></p>
+            <p>
+                <form role="form">
+                  <input type="file" id="example">
+                <button style="margin-top:10px"type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </p>
+                    </div>
+                  </div>
+                </div>
+
+
+            </div>
+            </div>
+            <!-- /.box-body -->
+      
+          </div>
+          <!-- /.box -->
 				  <div class="box box-primary">
                      <div class="box-header with-border">
                         <h3 class="box-title">Make an Annoucement</h3>
                      </div>
                      <!-- /.box-header -->
                      <div class="box-body">
-					    <form role="form">
+					    <form method="POST">
+              <div class="form-group">
+              <label>Select Your classes</label>
+              <select class="form-control" name = "class"> 
+                  <option value="" disabled selected>My Classes</option>
+                 <?php 
+                 foreach($row as $info)
+                 {
+                  echo '<option value="'.$info['classID'].'">'.$info['classIdname'].'</option>';
+                 }
+                 ?>
+              </select>
+                </div>
 							    <div class="form-group">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-								<div class="form-group">
-                                    <label>Details</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                </div>
-								<div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Students can view
-                                    </label>
-                                </div>
-								<button type="submit" class="btn btn-primary">Submit</button>
-								
+                      <label>Title</label>
+                      <input type="text" name ="title" class="form-control" placeholder="Enter ...">
+                  </div>
+								 <div class="form-group">
+                      <label>Details</label>
+                      <textarea class="form-control" rows="3" name = "content"
+                      placeholder="Enter ..."></textarea>
+                  </div>
+								<input type="submit" class="btn btn-primary" name="annoucement" value ="Submit">
 							</form>
                 
                      </div>
                      <!-- /.box-body -->
                   </div>
-                  <!-- /.box -->
-				  
-				  
-              </div>
-              <!-- /.tab-pane -->
-            </div>
-            <!-- /.tab-content -->
-          </div>
-          <!-- nav-tabs-custom -->
-			
-		</div>
-		
+                  <!-- /.box -->		
 		<div class="col-md-12">
         <div class="box">
             <div class="box-header">
@@ -347,7 +352,7 @@ $record = $rs->FetchALL(PDO::FETCH_ASSOC);
 		
       </div>
 
-      
+      </div>
 
     </section>
     <!-- /.content -->

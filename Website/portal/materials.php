@@ -310,6 +310,7 @@ if(isset($_POST['rent']))
                 <tr>
                   <th >Instrument</th>
                   <th>Description</th>
+                  <th>Size</th>
                   <th>Rental Cost (per month)</th>
                   <th >Start Date</th>
                   <th>End Date</th>
@@ -320,6 +321,7 @@ if(isset($_POST['rent']))
                  { 
                   $instrumentID=$info['instrumentID'];     
                   $type=$info['instrumentType'];
+                  $size=$info['instrumentSize'];
                   $description=$info['conditionQuality'];
                   $rentalcost=$info['hireCost'];
                   $start=$info['startDate'];
@@ -329,6 +331,7 @@ if(isset($_POST['rent']))
                 <tr>
                   <td><img src="dist/img/'.$type.'.png" alt="" style="width:100px;height:100px"></td>
                   <td>'.$description.'</td>
+                  <td>'.$size.'</td>
                   <td><span class="badge bg-green">'.$rentalcost.'</span></td>
                   <td>
                     <span class="badge bg-yellow">'.$start.'</span>
@@ -359,10 +362,11 @@ if(isset($_POST['rent']))
         <form action="" method="post">
               <table class="table">
                 <tr>
-                  <th style="width:150px">Instrument</th>
+                  <th >Instrument</th>
                   <th>Description</th>
+                  <th>Size</th>
                   <th>Rental Cost (per month)</th>
-                  <th style="width: 300px">Availablility</th>
+                  <th >Availablility</th>
                   <th>Select</th>
                 </tr>
                 <?php 
@@ -370,6 +374,7 @@ if(isset($_POST['rent']))
                  { 
                   $instrumentID=$data['instrumentID'];     
                   $type=$data['instrumentType'];
+                  $size=$info['instrumentSize'];
                   $description=$data['conditionQuality'];
                   $cost=$data['hireCost'];
                   $quantity=$data['Quantity'];
@@ -390,6 +395,7 @@ if(isset($_POST['rent']))
                 <tr>
                   <td><img src="dist/img/'.$type.'.png" alt="" style="width:100px;height:100px"></td>
                   <td>'.$description.'</td>
+                  <td>'.$size.'</td>
                   <td>
                     <span class="badge bg-yellow">'.$cost.'</span>
                   </td>

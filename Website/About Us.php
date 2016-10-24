@@ -82,6 +82,9 @@ $row = $results->FetchALL(PDO::FETCH_ASSOC);
               if ($_SESSION["Roll"]=="student"){
                 echo '<img src="image/profile.png" class="img-circle" alt="User Image">';
               }
+              if ($_SESSION["Roll"]=="manager"){
+                echo '<img src="image/profile.png" class="img-circle" alt="User Image">';
+              }
 
 
               echo'<p>
@@ -99,6 +102,9 @@ $row = $results->FetchALL(PDO::FETCH_ASSOC);
                 }
                 if ($_SESSION["Roll"]=="student"){
                   echo '<a href="portal/index.php" class="btn btn-default btn-flat">Student Portal</a>';
+                }
+                if ($_SESSION["Roll"]=="manager"){
+                  echo '<a href="manager/main.php" class="btn btn-default btn-flat">manager Portal</a>';
                 }
                 echo '</div>
                 <div class="pull-right">
