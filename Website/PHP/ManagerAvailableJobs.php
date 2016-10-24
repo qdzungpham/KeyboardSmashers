@@ -17,6 +17,7 @@
 				Job ID: <input type="number" name="jobID"><br><br>
 				Role: <input type="text" name="role"><br><br>
 				Description: <input type="text" name="description"><br><br>
+				Date Posted: <input type="date" name="postDate"><br><br>
 				<br>
 				<input type="submit" name="createRecord" value="Create Record">
 			</form>
@@ -42,6 +43,7 @@
 				$jobID=$data['jobID'];
 				$role=$data['role'];
 				$description=$data['description'];
+				$postDate=$data['postDate'];
 			}
 			
 			// Create the web form
@@ -50,6 +52,7 @@
 					Job ID: <input type="number" name="jobID" value="'.$jobID.'"><br><br>
 					Role: <input type="text" name="role" value="'.$role.'"><br><br>
 					Description: <input type="text" name="description" value="'.$description.'"><br><br>
+					Date Posted: <input type="date" name="postDate" value="'.$postDate.'"><br><br>
 					<br>
 					<input type="submit" name="updateRecord" value="Update Record">
 				</form>
