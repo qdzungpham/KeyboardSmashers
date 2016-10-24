@@ -87,7 +87,7 @@ CREATE TABLE `teachers` (
   `otherNumber` varchar(11) DEFAULT NULL,
   `instrumentType` varchar(30) NOT NULL,
   `spokenLanguage` text NOT NULL,
-  `skillLevel` enum('1','2','3','4','5') DEFAULT NULL,        -- ---------- THIS NEEDS IMPROVEMENT FOR CLARITY
+  `skillLevel` varchar(20) DEFAULT NULL,
   `comments` text,
   PRIMARY KEY (`teacherID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
