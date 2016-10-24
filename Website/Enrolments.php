@@ -415,16 +415,16 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 			<span class="error"> <?php echo $suburbErr;?></span>
 			<br>
 			
-			<select class="form-control" name = "state" placeholder="State" value="<?php echo $state;?>"> 
+			<select class="form-control" name = "state" placeholder="State"> 
 				<option value=""disabled selected>State</option>
-				<option value="QLD">QLD</option>
-				<option value="NSW">NSW</option>
-				<option value="ACT">ACT</option>
-				<option value="VIC">VIC</option>
-				<option value="TAS">TAS</option>
-				<option value="SA">SA</option>
-				<option value="WA">WA</option>
-				<option value="NT">NT</option>
+				<option <?php if($state == 'QLD'){echo("selected");}?>>QLD</option>
+				<option <?php if($state == 'NSW'){echo("selected");}?>>NSW</option>
+				<option <?php if($state == 'ACT'){echo("selected");}?>>ACT</option>
+				<option <?php if($state == 'VIC'){echo("selected");}?>>VIC</option>
+				<option <?php if($state == 'TAS'){echo("selected");}?>>TAS</option>
+				<option <?php if($state == 'SA'){echo("selected");}?>>SA</option>
+				<option <?php if($state == 'WA'){echo("selected");}?>>WA</option>
+				<option <?php if($state == 'NT'){echo("selected");}?>>NT</option>
 			</select>
 			<span class="error"> <?php echo $stateErr;?></span>
 			<br>
@@ -438,9 +438,9 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 		<label>Gender * </label>
 		<span class="error"> <?php echo $genderErr;?></span>
 		<br>
-		<input type="radio" name="gender" value="Male"> Male
-		<input type="radio" name="gender" value="Female"> Female
-		<input type="radio" name="gender" value="Other"> Other
+		<input type="radio" name="gender" value="Male" <?php if($gender == 'Male'){echo("checked");}?>> Male
+		<input type="radio" name="gender" value="Female" <?php if($gender == 'Female'){echo("checked");}?>> Female
+		<input type="radio" name="gender" value="Other" <?php if($gender == 'Other'){echo("checked");}?>> Other
 		<br>
 	</div>	
 	<div class="form-group">
@@ -463,11 +463,11 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 		<label>Preferred Lesson Day</label>
 		<select class="form-control" name = "preferredDay">
 		    <option Value = "title">Please Select</option>
-			<option value = "monday">Monday</option>
-			<option value = "tuesday">Tuesday</option>
-			<option value = "wednesday">Wednesday</option>
-			<option value = "thursday">Thursday</option>
-			<option value = "friday">Friday</option>
+			<option <?php if($preferredDay == 'Monday'){echo("selected");}?>>Monday</option>
+			<option <?php if($preferredDay == 'Tuesday'){echo("selected");}?>>Tuesday</option>
+			<option <?php if($preferredDay == 'Wednesday'){echo("selected");}?>>Wednesday</option>
+			<option <?php if($preferredDay == 'Thursday'){echo("selected");}?>>Thursday</option>
+			<option <?php if($preferredDay == 'Friday'){echo("selected");}?>>Friday</option>
 		</select>
 	</div>
 	<div class="form-group">
@@ -484,9 +484,9 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	</div>
 	<div class="form-group">
 		<label>Preferred Teacher Gender</label><br>
-		<input type="radio" name="preferredGender" value="None"> No Preferences
-		<input type="radio" name="preferredGender" value="Male"> Male
-		<input type="radio" name="preferredGender" value="Female"> Female
+		<input type="radio" name="preferredGender" value="None" <?php if($preferredGender == 'None'){echo("checked");}?>> No Preferences
+		<input type="radio" name="preferredGender" value="Male" <?php if($preferredGender == 'Male'){echo("checked");}?>> Male
+		<input type="radio" name="preferredGender" value="Female" <?php if($preferredGender == 'Female'){echo("checked");}?>> Female
 	</div>
 	</fieldset>
 	
@@ -518,7 +518,7 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	</div>
 	    <div class="box-footer" >
 	    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
-		<input type="reset" class="btn btn-default" name ="reset" value="Reset">
+		<a href="enrolments.php" class="btn btn-primary">Reset</a>
 	    </div>
 	    
 	
