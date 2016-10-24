@@ -419,6 +419,7 @@ CREATE TABLE `availableJobs` (
   `jobID` int NOT NULL AUTO_INCREMENT,
   `role` varchar(40),
   `description` text,
+  `postDate` date,
   PRIMARY KEY (`jobID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -426,9 +427,9 @@ CREATE TABLE `availableJobs` (
 -- Dumping data for table `availableJobs`
 --
 
-INSERT INTO `availableJobs` (`jobID`, `role`, `description`) VALUES
-(1, 'Piano teacher', 'Teaching students how to git gud'),
-(2, 'Assistant Manager', 'Help out the manager. Need help. Halp');
+INSERT INTO `availableJobs` (`jobID`, `role`, `description`, `postDate`) VALUES
+(1, 'Piano teacher', 'Teaching students how to git gud', '2016-10-14'),
+(2, 'Assistant Manager', 'Help out the manager. Need help. Halp', '2016-10-20');
 
 
 
