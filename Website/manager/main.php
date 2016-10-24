@@ -79,6 +79,10 @@ if (!isset($_SESSION["manager"]))
 			<th>Preferred Teacher</th>
 			<th>Preferred Language</th>
 			<th>Preferred Teacher Gender</th>
+			<th>Guardian's First Name</th>
+			<th>Guardian's Last Name</th>
+			<th>Email Address</th>
+			<th>Emergency Phone Number</th>
 			<th>Enrolled</th>
 			<th>Select Row</th>
 		</tr>
@@ -108,6 +112,10 @@ if (!isset($_SESSION["manager"]))
 			$preferredTeacher=$data['preferredTeacher'];
 			$preferredLanguage=$data['preferredLanguage'];
 			$preferredGender=$data['preferredGender'];
+			$guardianFirstName=$data['guardianFirstName'];
+			$guardianLastName=$data['guardianLastName'];
+			$guardianEmail=$data['guardianEmail'];
+			$guardianPhoneNumber=$data['guardianPhoneNumber'];
 			$enrolled=$data['enroled'];
 			
 			echo'
@@ -129,6 +137,10 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$preferredTeacher.'</td>
 					<td>'.$preferredLanguage.'</td>
 					<td>'.$preferredGender.'</td>
+					<td>'.$guardianFirstName.'</td>
+					<td>'.$guardianLastName.'</td>
+					<td>'.$guardianEmail.'</td>
+					<td>'.$guardianPhoneNumber.'</td>
 					<td>'.$enrolled.'</td>
 					<td>
 						<input type="checkbox" value="'.$studentID.'" name="selectBox">
@@ -618,6 +630,7 @@ if (!isset($_SESSION["manager"]))
 			<th>Job ID</th>
 			<th>Role</th>
 			<th>Description</th>
+			<th>Date Posted</th>
 			<th>Select Row</th>
 		</tr>
 		
@@ -633,6 +646,7 @@ if (!isset($_SESSION["manager"]))
 			$jobID=$data['jobID'];
 			$role=$data['role'];
 			$description=$data['description'];
+			$postDate=$data['postDate'];
 
 			echo'
 			<tbody>
@@ -640,6 +654,7 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$jobID.'</td>
 					<td>'.$role.'</td>
 					<td>'.$description.'</td>
+					<td>'.$postDate.'</td>
 					<td>
 						<input type="checkbox" value="'.$jobID.'" name="selectBox">
 					</td>
