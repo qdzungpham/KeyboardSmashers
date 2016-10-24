@@ -30,6 +30,10 @@
 				Preferred Teacher: <input type="text" name="preferredTeacher"><br><br>
 				Preferred Language: <input type="text" name="preferredLanguage"><br><br>
 				Preferred Teacher\'s Gender: <input type="text" name="preferredGender"><br><br>
+				Guardian\'s First Name: <input type="text" name="guardianFirstName"><br><br>
+				Guardian\'s Last Name: <input type="text" name="guardianLastName"><br><br>
+				Guardian\'s Email Address: <input type="text" name="guardianEmail"><br><br>
+				Guardian\'s Emergency Phone Number: <input type="text" name="guardianPhoneNumber"><br><br>
 				Enrolled: <input type="text" name="enroled"><br><br>
 				<br>
 				<input type="submit" name="createRecord" value="Create Record">
@@ -69,6 +73,10 @@
 				$preferredTeacher=$data['preferredTeacher'];
 				$preferredLanguage=$data['preferredLanguage'];
 				$preferredGender=$data['preferredGender'];
+				$guardianFirstName=$data['guardianFirstName'];
+				$guardianLastName=$data['guardianLastName'];
+				$guardianEmail=$data['guardianEmail'];
+				$guardianPhoneNumber=$data['guardianPhoneNumber'];
 				$enrolled=$data['enroled'];
 			}
 			
@@ -91,6 +99,10 @@
 					Preferred Teacher: <input type="text" name="preferredTeacher" value="'.$preferredTeacher.'"><br><br>
 					Preferred Language: <input type="text" name="preferredLanguage" value="'.$preferredLanguage.'"><br><br>
 					Preferred Teacher\'s Gender: <input type="text" name="preferredGender" value="'.$preferredGender.'"><br><br>
+					Guardian\'s First Name: <input type="text" name="guardianFirstName" value="'.$guardianFirstName.'"><br><br>
+					Guardian\'s Last Name: <input type="text" name="guardianLastName" value="'.$guardianLastName.'"><br><br>
+					Guardian\'s Email Address: <input type="text" name="guardianEmail" value="'.$guardianEmail.'"><br><br>
+					Guardian\'s Emergency Phone Number: <input type="text" name="guardianPhoneNumber" value="'.$guardianPhoneNumber.'"><br><br>
 					Enrolled: <input type="text" name="enroled" value="'.$enrolled.'"><br><br>
 					<br>
 					<input type="submit" name="updateRecord" value="Update Record">
