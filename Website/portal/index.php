@@ -2,6 +2,12 @@
 require "../connect.inc";
 portal_ckeck();
 
+$query = "SELECT * FROM `publicannouncements`
+          order by announcementID Desc";
+$results = $conn->prepare($query);
+$results -> execute();
+$record = $results->FetchALL(PDO::FETCH_ASSOC);
+
 $id=$_SESSION["UserID"];
 $sql="SELECT * FROM `classes`,`classannouncements`,`studentclass`
       WHERE `classes`.classID=`classannouncements`.classID and `studentclass`.studentID ='$id'
@@ -10,6 +16,10 @@ $sql="SELECT * FROM `classes`,`classannouncements`,`studentclass`
 $rs = $conn->prepare($sql);
 $rs -> execute();
 $row = $rs->FetchALL(PDO::FETCH_ASSOC);
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -223,7 +233,7 @@ $row = $rs->FetchALL(PDO::FETCH_ASSOC);
           <!-- /.box -->
 		  
 		  <!-- callouts -->
-		  <div class="box box-default">
+		  <div class="box box-default" id="callout">
             <div class="box-header with-border">
               <i class="fa fa-bullhorn"></i>
 
@@ -231,27 +241,23 @@ $row = $rs->FetchALL(PDO::FETCH_ASSOC);
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <div class="callout callout-danger">
-                <h4>System maintenance</h4>
+            <?php 
+            foreach($record as $info)
+            {   
+              if ($info['announcementID'] % 2 == 0) {
+                    $type='success';
+                }   
+                else {
+                  $type='danger';
+                } 
+       
+              echo '<div class="callout callout-'.$type.'">
+                <h4>'.$info['title'].'</h4>
 
-                <p>There is a problem that we need to fix......</p>
-              </div>
-              <!-- <div class="callout callout-info">
-                <h4>I am an info callout!</h4>
-
-                <p>Follow the steps to continue to payment.</p>
-              </div> -->
-              <!-- <div class="callout callout-warning">
-                <h4>I am a warning callout!</h4>
-
-                <p>This is a yellow callout.</p>
-              </div> -->
-              <div class="callout callout-success">
-                <h4>Free Food Friday</h4>
-
-                <p>Twinkle, twinkle, little star, How I wonder what you are! 
-				Up above the world so high, Like a diamond in the sky. </p>
-              </div>
+                <p>'.$info['content'].' </p>
+              </div>';
+            }
+              ?>
             </div>
             <!-- /.box-body -->
           </div>

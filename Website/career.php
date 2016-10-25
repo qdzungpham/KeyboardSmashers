@@ -148,7 +148,7 @@ $row = $rs->FetchALL(PDO::FETCH_ASSOC);
                                <!-- /.col -->
                            </div>
                        </form>
-                       <a href="#">I forgot my password</a><br>
+                       <a href="settings/passwordchange.php">I forgot my password</a><br>
                    </div>
                    <!-- /.login-box-body -->
                 </div>

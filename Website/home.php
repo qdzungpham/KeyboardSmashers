@@ -144,7 +144,7 @@ require "connect.inc";
                                <!-- /.col -->
                            </div>
                        </form>
-                       <a href="#">I forgot my password</a><br>
+                       <a href="settings/passwordchange.php">I forgot my password</a><br>
                    </div>
                    <!-- /.login-box-body -->
                 </div>

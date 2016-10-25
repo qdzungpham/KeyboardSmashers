@@ -3,6 +3,7 @@
 require "../connect.inc";
 portal_ckeck();
 $id=$_SESSION["UserID"];
+$err='';
 $sql = "SELECT * FROM `students` WHERE studentID = '$id'";
 $rs = $conn->prepare($sql);
 $rs -> execute();
@@ -16,6 +17,61 @@ foreach($record as $data)
           $address=$mail;
           $email=$data['emailAddress'];
         }
+
+$query = "SELECT * FROM `studentlogin` WHERE studentID = '$id'";
+$results = $conn->prepare($query);
+$results -> execute();
+$row = $results->FetchALL(PDO::FETCH_ASSOC);
+foreach($row as $info)
+        {       
+          $password=$info['Password'];
+        }
+if(isset($_POST['Change'])){
+  $username=$_POST['username'];
+  $oldpassword=hash('sha256',$_POST['oldpassword']);
+  $newpassword=hash('sha256',$_POST['newpassword']);
+  if(!empty($_POST['newpassword']))
+  {
+  if ($username==$_SESSION['UserName'])
+  {
+       if ($oldpassword==$password)
+       {
+        $sql="UPDATE `studentlogin` SET `Password`='$newpassword'
+              WHERE `studentID`='$id'";
+        $rs = $conn->prepare($sql);
+        $rs -> execute();
+        echo "<script>
+          alert(' Your password has benn changed');
+          </script>";
+        echo "<meta http-equiv='refresh' content='0'>";
+        session_destroy();
+        header('location:../home.php');
+
+      }
+      else
+      {
+         echo "<script>
+         alert(' Invalide passwrod');
+          </script>";
+          echo "<meta http-equiv='refresh' content='0'>";
+
+      }
+  }
+  else
+  {   
+   echo "<script>
+         alert(' Invalide Username');
+          </script>";
+   echo "<meta http-equiv='refresh' content='0'>";
+  }
+}
+else {
+   echo "<script>
+         alert(' New password can not be empty');
+          </script>";
+   echo "<meta http-equiv='refresh' content='0'>";
+}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,10 +92,46 @@ foreach($record as $data)
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- skin -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../css/elements.css">
 
   
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+
+
+<!--password change pop up-->
+<div id="abc">
+<!-- Popup Div Starts Here -->
+<div id="popupContact">
+<form method="post" action="" id="change">
+<i id ="close" class="fa fa-times fa-2x" onclick ="div_hide()"></i>
+  <h2>Change password</h2>
+  <hr>
+  <div class="form-group">
+    <label>Username * </label>
+    <input class="form-control" type="text" name="username"> 
+    <span class="error"></span>
+  </div>
+  <div class="form-group">
+    <label>Old password * </label>
+    <input class="form-control" type="password" name="oldpassword"> 
+    <span class="error"></span>
+    
+  </div>
+  
+  <div class="form-group">
+    <label>New password * </label><br>
+    <input class="form-control" type="password" name="newpassword" >
+    <span class="error"><?php echo $err;?></span>
+  </div>  
+  <div class="box-footer" >
+      <input type="submit" class="btn btn-primary" name="Change" value="Change">
+      </div>
+</form>
+<!-- Popup Div Ends Here -->
+</div>
+<!-- close pop up -->
+</div>
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -266,12 +358,12 @@ foreach($record as $data)
                             </div>
 							
                             <div style="margin-left:5px;margin-top:5px"class="row">						
-							    <i style="margin-left:10px"class="fa fa-share"></i>	
-						        <a href="#" style="margin-left:5px">Update contact details</a>										
+							    <i style="margin-left:10px" class="fa fa-share"></i>	
+						        <a href="#" style="margin-left:5px">Update contact details</a>									
 						    </div>
 							<div style="margin-left:5px;"class="row">						
 							    <i style="margin-left:10px"class="fa fa-share"></i>	
-						        <a href="#" style="margin-left:5px">Change password</a>										
+						        <a href ="#" onclick="div_show()" style="margin-left:5px">Change password</a>										
 						    </div>
                         </div>
 
@@ -296,7 +388,16 @@ foreach($record as $data)
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<script>
+//Function To Display Popup
+function div_show() {
+document.getElementById('abc').style.display = "block";
+}
+//Function to Hide Popup
+function div_hide(){
+document.getElementById('abc').style.display = "none";
+}
+</script>
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
