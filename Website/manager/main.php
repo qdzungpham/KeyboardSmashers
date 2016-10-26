@@ -5,18 +5,148 @@ if (!isset($_SESSION["manager"]))
     header('location:../home.php');
   } 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="../css/managerCSS.css" rel="stylesheet" type="text/css" >
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pinelands Music School | Management</title>
+  <link href="../css/mycss.css" rel="stylesheet" type="text/css" >
+  <link rel="shortcut icon" type="image/x-icon" href="../image/logo.ico" />
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="../portal/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../portal/dist/css/AdminLTE.min.css">
+  <!-- skins -->
+  <link rel="stylesheet" href="../portal/dist/css/skins/_all-skins.min.css">
+  	<link href="../css/managerCSS.css" rel="stylesheet" type="text/css" >
 	<link rel="shortcut icon" type="image/x-icon" href="../image/logo.ico" />
+  
 </head>
+<body class="hold-transition skin-blue sidebar-mini" >
+<!-- Site wrapper -->
+<div class="wrapper">
 
-<body>
-	<h1>Pinelands Music School Management Page</h1>
-<!-- Let the admin know that the checkboxes don't work as expected yet -->
-	<p><strong>WARNING:</strong> Please check only one checkbox at a time when editing or deleting rows.</p>
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../home.php" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>P</b>MS</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Pinelands</b>MusicSchool</span>
+    </a>
+    
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      
+	  <!-- User menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          
+
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../image/profile.png" class="user-image" alt="User Image">
+              <span class="hidden-xs"><?php echo $_SESSION["Name"]; ?></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="../image/profile.png" class="img-circle" alt="User Image">
+
+                <p>
+                  <?php echo $_SESSION["UserName"]; ?>
+                  <small>School Manager</small>
+                </p>
+              </li>
+              
+              
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                
+                <div class="pull-right">
+                  <a href="../home.php?logout=true" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      
+      
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      
+	  <!-- main menu -->
+      <ul class="sidebar-menu">
+        
+        <li class="active">
+          <a href="main.php">
+            <i class="fa fa-dashboard"></i> <span>Management Home</span>
+            <span class="pull-right-container">
+              
+            </span>
+          </a>
+          
+        
+        
+        
+        
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper"  style="background-color:white">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Management Home
+        <small></small>
+      </h1>
+      
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+
+        <p><strong>WARNING:</strong> Please check only one checkbox at a time when editing or deleting rows.</p>
 <!-- Display a table of the students who have applied but not enrolled in the school -->
 	<table>
 		<thead><h2>New Students</h2></thead>
@@ -60,7 +190,7 @@ if (!isset($_SESSION["manager"]))
 	
 	
 <!-- Display a table of all students -->
-	<table>
+	<table style="display:block;overflow-x:auto;">
 		<thead><h2>All Students</h2></thead>
 		<tr>
 			<th>Student ID</th>
@@ -223,7 +353,7 @@ if (!isset($_SESSION["manager"]))
 	
 	
 <!-- Display a table of all teachers -->
-	<table>
+	<table style="display:block;overflow-x:auto;">
 		<thead><h2>All Teachers</h2></thead>
 		<tr>
 			<th>Teacher ID</th>
@@ -842,8 +972,41 @@ if (!isset($_SESSION["manager"]))
 		</form>
 	</tfoot>
 	<br><br><br>
+        
+		  
+		 
 
+	  
+	  
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- footer -->
+  <footer class="main-footer">
+    
+    <strong>Copyright &copy; 2016 KeyboardSmashers.</strong> All rights
+    reserved.
+  </footer>
+
+
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.2.3 -->
+<script src="../portal/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../portal/bootstrap/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../portal/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../portal/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../portal/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../portal/dist/js/demo.js"></script>
 </body>
 </html>
-
-
