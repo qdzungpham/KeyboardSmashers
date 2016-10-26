@@ -59,7 +59,7 @@ if (!isset($_SESSION["manager"]))
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../image/profile.png" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $_SESSION["Name"]; ?></span>
+              <span class="hidden-xs"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -856,7 +856,7 @@ if (!isset($_SESSION["manager"]))
 					<td>'.$suburb.'</td>
 					<td>'.$state.'</td>
 					<td>'.$postcode.'</td>
-					<td>'.$cvPath.'</td>
+					<td><a target="_blank" href = "../'.$cvPath.'">'.$cvPath.'</a></td>
 					<td>'.$accepted.'</td>
 					<td>
 						<input type="checkbox" value="'.$seekerID.'" name="selectBox">
