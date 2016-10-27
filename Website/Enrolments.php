@@ -42,7 +42,7 @@ $postCode = $gender = $phoneNumber = $email = $preferredTeacher = $preferredLang
 $preferredGender = $preferredDay = $preferredTime = $guardianFirstName = 
 $guardianLastName = $guardianPhonenumber = $guardianEmail = "";
 $firstNameErr = $lastNameErr = $dobErr = $streetErr = $suburbErr = $stateErr = 
-$postCodeErr = $genderErr = $emailErr = $guardianFirstNameErr = 
+$postCodeErr = $genderErr = $emailErr = $phoneNumberErr = $guardianFirstNameErr = 
 $guardianLastNameErr = $guardianPhonenumberErr = $guardianEmailErr = "";
 
 // Check to see each form value passes the requirements and store
@@ -114,6 +114,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 	
 	$phoneNumber = test_input($_POST["phoneNumber"]);
+	if (!empty($phoneNumber) && strlen($phoneNumber) != 10) {
+		$phoneNumberErr = "Phone number must be empty or 10 characters long";
+	}
 	
 	if (empty($_POST["email"])) {
 		$emailErr = "Email is required";
@@ -125,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 	
 	$preferredDay = test_input($_POST["preferredDay"]);
-	
+
 	$preferredTime = test_input($_POST["preferredTime"]);
 	
 	$preferredTeacher = test_input($_POST["preferredTeacher"]);
@@ -187,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if(isset($_POST['submit'])){
 	if($firstNameErr == "" && $lastNameErr == "" && $dobErr == "" &&
 		$streetErr == "" && $suburbErr == "" && $stateErr == "" && 
-		$postCodeErr == "" && $genderErr == "" && $emailErr == "" && 
+		$postCodeErr == "" && $genderErr == "" && $emailErr == "" && $phoneNumberErr == "" &&
 		$guardianFirstNameErr == "" && $guardianLastNameErr == "" && 
 		$guardianPhonenumberErr == "" && $guardianEmailErr == "") {
 		$query="INSERT INTO `students`(`firstName`,`familyName`,`gender`,`DOB`,`street`,`suburb`,`state`,
@@ -368,7 +371,7 @@ if(isset($_POST['submit'])){
 <p>The following form must be filled out by new students. Students can indicate 
 their preferences, but this section of the form is optional. Students aged under 18 must
 fill in their parent or guardian details on this form. Students aged 18 or over do not need
-to complete this section of the form. Fields indicated by an asterix * are essential.</p><br><br>
+to complete this section of the form. <br><br> Fields indicated by an asterix * are essential.</p><br><br>
 	
 	<!-- The error messages are not completely correct yet - need additional checks in the php code.
 	For now, they simply show up if a required field is not filled out -->
@@ -446,7 +449,7 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	<div class="form-group">
 		<label>Preferred Phone Number</label>
 		<input class="form-control"type="text" name="phoneNumber" value="<?php echo $phoneNumber;?>">
-		
+		<span class="error"> <?php echo $phoneNumberErr;?></span>
 	</div>	
 	<div class="form-group">
 		<label>Email Address * </label>
@@ -458,11 +461,11 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	
 	<!-- Optional student preferences -->
 	<fieldset class="col-md-6">
-	<legend>Preferences</legend>
+	<legend>Preferences</legend> 	 	
 	<div class="form-group">
 		<label>Preferred Lesson Day</label>
-		<select class="form-control" name = "preferredDay">
-		    <option Value = "title">Please Select</option>
+		<select class="form-control" name="preferredDay" placeholder="Please Select">
+		    <option value="">Please Select</option>
 			<option <?php if($preferredDay == 'Monday'){echo("selected");}?>>Monday</option>
 			<option <?php if($preferredDay == 'Tuesday'){echo("selected");}?>>Tuesday</option>
 			<option <?php if($preferredDay == 'Wednesday'){echo("selected");}?>>Wednesday</option>
@@ -528,7 +531,6 @@ to complete this section of the form. Fields indicated by an asterix * are essen
 	
 	</div>
 	<br>
-	<p>Any fields with an asterix * are essential</p>
 </div>
 
 
