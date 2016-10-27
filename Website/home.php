@@ -165,7 +165,7 @@ require "connect.inc";
 		
 		<div class ="slider_caption">
 		<h2>Music Qualifications Delivered via e-learning / Distance Education </h2>
-		<p style = "color:rgb(221,75,57)">IT'S AMAZING WHAT CAN HAPPEN WHEN YOU START FOR THE FUN OF IT</P>
+		<p style = "color:rgb(221,75,57)"><b>IT'S AMAZING WHAT CAN HAPPEN WHEN YOU START FOR THE FUN OF IT</b></P>
 		</div>
 
 </div>
@@ -174,9 +174,12 @@ require "connect.inc";
 		<div id ="page-heading">
 			<b>OUR COURSE</b><br>
 		</div>
+		<div class= "school-description_home">
+		Want to study music in your spare time? Are you in a remote location? Are traditional "on campus" study options just not for you? Our music courses begin at the Cert. II level and are designed to be delivered online, without the need for external attendance at a campus. If you can play a musical instrument, or sing, and have access to a high speed internet connection, as well as a recent PC or Mac computer, then you have everything you need to begin studying towards a qualification in music.
+		</div>
 		<div class = "coursetype">
 			<div class= "coursename">
-			Children Course
+			<b>Children Course<b/>
 			</div>
 			<div class= "courselink">
 			&#9734;
@@ -190,7 +193,7 @@ require "connect.inc";
 
 		<div class = "coursetype">
 			<div class= "coursename">
-			Children Course
+			<b>Certificate Course</b>
 			</div>
 			<div class= "courselink">
 			 &#9825;
@@ -204,7 +207,7 @@ require "connect.inc";
 		</div>
 			<div class = "coursetype">
 			<div class= "coursename">
-			Children Course
+			<b>Adult Course</b>
 			</div>
 			<div class= "courselink">
 			&#9813;
@@ -216,7 +219,34 @@ require "connect.inc";
 			</div>
 
 		</div>
-	</div>
+		   <div style="background:#083860  no-repeat;background-size:100%;"id="content2">
+	 
+              <div class="col-lg-3 col-md-3 col-sm-6">
+                <i class="fa fa-phone"></i>
+                <p style = "color:white">Call Us</p>
+                <p style = "color:white">1-265-596-580</p>                
+              </div>
+           
+            <!-- BEGAIN CALL US FEATURE -->
+           
+               <div class="col-lg-3 col-md-3 col-sm-6">
+                <i class="fa fa-envelope-o"></i>
+                <p style = "color:white">Email Address</p>
+                <p style = "color:white">pineland@gmail.com</p>
+          </div>
+            <!-- BEGAIN CALL US FEATURE -->
+         <div class="col-lg-3 col-md-3 col-sm-6">
+                <i class="fa fa-map-marker"></i>
+                <p style = "color:white">Office Location</p>
+                <p style = "color:white">Sunnybank QLD4109</p>
+           </div>
+            <!-- BEGAIN CALL US FEATURE -->
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                <i class="fa fa-clock-o"></i>
+                <p style = "color:white">Working Hours</p>
+                <p style = "color:white">Monday-Friday 9.00-21.00</p>
+              </div>
+</div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="container">

@@ -103,22 +103,13 @@ body {
 #content{
 	background-color: #ffffff;
     width: auto;
-    
-    
-    
     text-align:center;
 	/* margin-top: 400px; */
 }
-
 #content2{
-	background-color: #ffffff;
-    width: auto;
-    min-height: 100px;
-    
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    text-align:center;
-	/* margin-top: 400px; */
+	margin-top: 100px;
+   height:100px;
+
 }
 
 .slider_caption {
@@ -156,9 +147,10 @@ body {
 
 }
 .coursename{
-	margin-bottom: 25px;
+	margin-bottom: 45px;
 	margin-left: -100px;
 	font-size: 18px;
+	color:#3A8EBD;
 }
 .courselink{
 	text-align: center;
@@ -167,7 +159,7 @@ body {
 	height:100px;
 	width: 100px;
 	border-radius: 50%;
-	border:2px dashed #606060;
+	border:2px dashed #3A8EBD;
 }
 .courselink:hover{
 	text-align: center;
@@ -179,7 +171,7 @@ body {
 	width: 150px;
 	border-radius: 50%;
 	border:2px;
-	border:2px dashed #606060;
+	border:2px dashed #3A8EBD;
 }
 .courselink:hover + .coursedescription{
 	margin-top:-5px;
@@ -189,6 +181,141 @@ body {
 	width:200px;
 	height:50px;
 	margin-left: -50px;
+	color:#3A8EBD;
+}
+.school-description_home {
+	padding: 10px;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-bottom: 5%;
+	font-family: Verdana, sans-serif;
+	font-size: 16px;
+	text-align: justify;
+}
+.slider_overlay33 {
+  background: #083860;
+  height: 100%;
+/*   opacity: 0.8; */
+  position: absolute;
+/*   right: 0;
+  top: 0; */
+  width: 100%;
+/*   z-index: 10; */
+}  
+.counter_section {
+  /* background-image: url("img/works_counterbg.jpg"); */
+  /* background-repeat: no-repeat; */
+  background-size: 100%;
+  display: inline;
+  float: left;
+  min-height: 350px;
+  /* padding: 50px 0; */
+  position: relative;
+  width: 100%;
+}
+
+
+@-moz-document url-prefix() { 
+	 #map_canvas{
+		width: 100%;
+		float: left;
+		display: inline;
+		height: 422px;
+	}
+}
+.contact_feature{
+	float: left;
+	display: inline;
+	width: 100%;	
+	position: relative;
+	z-index: 999;
+}
+.single_contact_feaured {  
+  border: 1px solid #ccc;
+  display: inline;
+  float: left;
+  padding: 20px 10px;
+  text-align: center;
+  width: 100%;
+}
+.single_contact_feaured > i {
+  font-size: 50px;
+  line-height: 50px;
+  margin-bottom: 5px;
+}
+.single_contact_feaured > h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #ffffff;
+}
+.single_contact_feaured>p{
+	color: #888888;
+}
+.success {
+  border: 1px solid #008000;
+  color: #008000;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.error{
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#contactFeature{
+	background-image: url("img/contact-feature-bg.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;	
+	position: relative;
+	float: left;
+	display: block;
+	width: 100%;
+	padding: 50px 0px;
+}
+
+#subscribe{
+	float: left;
+	display: inline;
+	width: 100%;
+	padding: 80px 0px;
+}
+.subscribe_form {
+  margin: 0 auto;
+  width: 60%;
+}
+.subscrive_group {
+  display: inline;
+  float: left;
+  margin-top: 40px;
+  width: 100%;
+}
+.subscribe_mail {
+  border-radius: 0;
+  display: inline;
+  float: left;
+  height: 50px;
+  width: 80%;
+  font-size: 18px;
+}
+.subscr_btn {
+  border: medium none;
+  color: #fff;
+  display: inline;
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+  height: 50px;
+  text-transform: uppercase;
+  width: 20%;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.subscr_btn:hover{
+	opacity: 0.75;
 }
 /*end home page*/
 
@@ -210,7 +337,7 @@ body {
 
 #page-heading {
 	padding:60px;
-	padding-bottom: 10px;
+	padding-bottom: 30px;
 	font-family: Verdana, sans-serif;  
 	font-size: 30px;
 	color:#3A8EBD;

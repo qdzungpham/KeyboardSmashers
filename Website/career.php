@@ -168,7 +168,7 @@ $row = $rs->FetchALL(PDO::FETCH_ASSOC);
     <div id ="wrap">
     <div class ="slider_caption">
     <h2>Music Qualifications Delivered via e-learning / Distance Education </h2>
-    <p style = "color:rgb(221,75,57)">IT'S AMAZING WHAT CAN HAPPEN WHEN YOU START FOR THE FUN OF IT</P>
+    <p style = "color:rgb(221,75,57)"><b>IT'S AMAZING WHAT CAN HAPPEN WHEN YOU START FOR THE FUN OF IT</b></P>
     </div>
 </div>
 <div id ="content">
@@ -179,7 +179,10 @@ $row = $rs->FetchALL(PDO::FETCH_ASSOC);
       <img src="image/line.png">
     </div>
 </div>
+
   <div id="wrapper">
+
+   <p style="text-align:center;"><img src="image/jobk.png"></p>
 <!-- container for each job -->
 <?php
    foreach ($row as $data) {
