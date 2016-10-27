@@ -3,7 +3,7 @@ require "../connect.inc";
 if(isset($_POST['submit']))
 {
 	$url = "https://www.google.com/recaptcha/api/siteverify";
-	$privatekey="6Ld5PwgUAAAAAMwNvdd5t1hkxNuToF7E93Nu8GlN";
+	$privatekey="6LdPMgoUAAAAAIFzh07CbMAVLK9eeIiAWAYx6XWo";
 
 	$response=file_get_contents($url."?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);
 	$data = json_decode($response);
@@ -112,7 +112,7 @@ if(isset($_POST['back'])){
        name="newpassword" required>
    </div>
    <div class="form-group has-feedback">
-   <div class="g-recaptcha" data-sitekey="6Ld5PwgUAAAAAL4HXl4BeHw6WdK0rcXzXaWi20jL"></div>
+   <div class="g-recaptcha" data-sitekey="6LdPMgoUAAAAAMdO0uN5LQYL2C_S4xG1eH9Djb42"></div>
    </div>
    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
    <a href="../home.php" class="btn btn-success">Back</a>

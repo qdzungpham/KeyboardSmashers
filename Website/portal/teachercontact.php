@@ -199,8 +199,7 @@ $classrecord = $classrs->FetchALL(PDO::FETCH_ASSOC);
                 <div class="col-md-9">
 				    
 				    <h4><b>'.$classrecord["firstName"].' '.$classrecord["familyName"].'</b></h4>
-					<a href="
-            <h4><b>'.$classrecord["emailAddress"].'" >  <b>Email:</b> '.$classrecord["emailAddress"].'</a> 
+					<a href="mailto:'.$classrecord["emailAddress"].'" >  <b>Email:</b> '.$classrecord["emailAddress"].'</a> 
 					<p> classes: '.$classrecord["className"].'
 					<br><b>Office Hours:</b> 9 AM - 4 PM
 					<br><b>Notes:</b> Hello!

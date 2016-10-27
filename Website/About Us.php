@@ -67,7 +67,7 @@ $row = $results->FetchALL(PDO::FETCH_ASSOC);
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs">Login</span>
+                <span class="hidden-md">Login</span>
               </a>
               <?php
 
@@ -216,7 +216,7 @@ $row = $results->FetchALL(PDO::FETCH_ASSOC);
 	{
 	echo'
 			<div class = "teacherd">
-				<div class ="timage">
+				<div class ="timage" >
 					<img src = "image/teachers/'.$data['firstName']." ".$data['familyName'].'.png">
 				</div>
 				

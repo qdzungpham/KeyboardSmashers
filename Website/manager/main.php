@@ -867,6 +867,7 @@ if (!isset($_SESSION["manager"]))
 	</table>
 	<br>
 	<tfoot>
+	    <input type="submit" name="approve" value="Approve">
 		<input type="submit" name="addRecord" value="Add Record">
 		<input type="submit" name="editRecord" value="Edit Record">
 		<input type="submit" name="deleteRecord" value="Delete Record">

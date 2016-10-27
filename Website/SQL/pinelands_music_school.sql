@@ -59,12 +59,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`studentID`, `firstName`, `familyName`, `gender`, `DOB`, `street`, `suburb`, `state`, `postcode`, `emailAddress`, `mobileNumber`, `preferredDay`, `preferredTime`, `preferredTeacher`, `preferredLanguage`, `preferredGender`, `guardianFirstName`, `guardianLastName`, `guardianEmail`, `guardianPhoneNumber`, `enroled`) VALUES
-(1, 'Tom', 'Santos', 'Male', '2000-07-12', '39 main St', 'Sunnybank', 'QLD', '4012', 'tomsantos@gmail.com', '0426256076', NULL, NULL, NULL, NULL, NULL, 'John', 'Santos', 'john.santos@gmail.com', '0411348021', 'Y'),
-(2, 'Hang', 'Su', 'Male', '1995-02-12', '64 cook st', 'Brisbane', 'QLD', '4075', 'suhangj123@gmail.com', '422893716', 'Monday', NULL, NULL,  'English', NULL, NULL, NULL, NULL, NULL, 'N'),
-(3, 'Hang', 'Su', 'Male', '1995-12-24', '64 cook st', 'Brisbane', 'QLD', '4075', 'suhangj@sohu.com', '0422893716', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Y'),
-(4,'Rick','Pham','Male','1994-03-12','32','Forest','VIC','1234','haha@pinelands.com','','title','','','','','','','','','Y'),
-(5,'saldkfjsadf','alskdfjsadf','Male','1996-02-18','alskdfj','alskdjf','NSW','3333','asldkf@gmail.com','','','','','','','','','','','Y'),
-(7,'Rick','Pham','Male','1995-12-31','39 melbane','Forest Lake','QLD','1234','suhangj@jj.com','','title','','','','','','','','','Y');
+(1, 'Tom', 'Santos', 'Male', '2000-07-12', '39 main St', 'Sunnybank', 'QLD', '4012', 'tomsantos@gmail.com', '0426256076', NULL, NULL, NULL, NULL, NULL, 'John', 'Santos', 'john.santos@gmail.com', '0411348021', 'Y');
+
 -- --------------------------------------------------------
 
 --
@@ -75,8 +71,8 @@ CREATE TABLE `teachers` (
   `teacherID` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(30) NOT NULL,
   `familyName` varchar(30) NOT NULL,
-  `gender` enum('Male','Female') NOT NULL,
-  `DOB` date NOT NULL,
+  `gender` enum('Male','Female'),
+  `DOB` date,
   `street` varchar(50),
   `suburb` varchar(30),
   `state` enum('QLD','NSW','ACT','VIC','TAS','SA','WA','NT'),
@@ -85,8 +81,8 @@ CREATE TABLE `teachers` (
   `emailAddress` varchar(255) NOT NULL,
   `mobileNumber` varchar(11) DEFAULT NULL,
   `otherNumber` varchar(11) DEFAULT NULL,
-  `instrumentType` varchar(30) NOT NULL,
-  `spokenLanguage` text NOT NULL,
+  `instrumentType` varchar(30) ,
+  `spokenLanguage` text ,
   `skillLevel` varchar(20) DEFAULT NULL,
   `comments` text,
   PRIMARY KEY (`teacherID`)
@@ -97,9 +93,12 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacherID`, `firstName`, `familyName`, `gender`, `DOB`, `street`, `suburb`, `state`, `postcode`, `qualifications`, `emailAddress`, `mobileNumber`, `otherNumber`, `instrumentType`, `spokenLanguage`, `skillLevel`, `comments`) VALUES
-(1, 'bob', 'bobby', 'Male', '1983-02-15', '43 Turkey Street', 'Hawthorne', 'QLD', '4444', 'Graduated', 'bob.bobby@gmail.com', NULL, '07123456', 'Piano,Guitar', 'English, Spanish', NULL, 'Great teacher'),
-(2, 'Hang', 'Su', 'Male', '1983-01-10', '42 Turkey Street', 'Hawthorne', 'QLD', '4444', 'Graduated', 'suhang@gmail.com', NULL, '07234567', 'Guitar,Violin', 'English,Chinese', NULL, 'Great teacher'),
-(3, 'Luna', 'Brown', 'Female', '1990-10-22', '41 Turkey Street', 'Hawthorne', 'QLD', '4444', 'Graduated', 'Luna123@gmail.com', NULL, '07134565', 'Piano', 'English', NULL, 'Great teacher');
+(1, 'Darian', 'Brandt', 'Male', '1983-02-15', '43 Turkey Street', 'Hawthorne', 'QLD', '4444', 'Graduated', 'Darian.Brandt@gmail.com', NULL, '07123456', 'Piano,Guitar', 'English, Spanish', NULL, 'Great teacher'),
+(2, 'Hang', 'Su', 'Male', '1983-01-10', '39 Cook Street', 'Forst Lake', 'QLD', '4026', 'Graduated', 'suhang@gmail.com', NULL, '07234567', 'Guitar,Violin', 'English,Chinese', NULL, 'Great teacher'),
+(3, 'Rick', 'Pham', 'Male', '1990-10-22', '12 Melbane Street', 'Heathwood', 'QLD', '4023', 'Graduated', 'rick123@gmail.com', NULL, '07134565', 'Piano', 'English', NULL, 'Great teacher'),
+(4, 'Anneyashan', ' Dey', 'Male', '1986-02-15', '5 Jindeby Street', 'Southbank', 'QLD', '4034', 'Graduated', 'Anneyashan@gmail.com', NULL, '07123456', 'Piano,Guitar', 'English, Spanish', NULL, 'Great teacher'),
+(5, 'Nick', 'Martin', 'Male', '1986-01-10', '33 Captain Street', 'City', 'QLD', '4026', 'Graduated', 'Nick123@gmail.com', NULL, '07234566', 'Guitar,Violin', 'English,Chinese', NULL, 'Great teacher'),
+(6, 'Ashvin', 'Kanniason', 'Male', '1990-10-22', '41 Melbane Street', 'Heathwood', 'QLD', '4013', 'Graduated', 'Ashvin@gmail.com', NULL, '07134564', 'Piano', 'English', NULL, 'Great teacher');
 
 
 -- --------------------------------------------------------
@@ -126,7 +125,9 @@ CREATE TABLE `instruments` (
 
 INSERT INTO `instruments` (`instrumentID`, `instrumentType`, `hireCost`, `hireCostLesson`, `instrumentSize`, `brand`, `conditionQuality`, `Quantity`) VALUES
 (1, 'Guitar', '50.00', '5.00', 'Standard', 'Tanglewood', 'New', 0),
-(2, 'Violin', '20.00', '2.00', '3 quarters', 'Stentor', 'Good - slight wear on D string', 50);
+(2, 'Violin', '20.00', '2.00', '3 quarters', 'Stentor', 'Good - slight wear on D string', 50),
+(3, 'Bass', '30.00', '5.00', 'Standard', 'Tanglewood', 'New', 50);
+
 
 -- --------------------------------------------------------
 
@@ -156,11 +157,11 @@ CREATE TABLE `classes` (
 --
 
 INSERT INTO `classes` (`classID`, `teacherID`, `className`, `classIdname`, `startDate`, `endDate`, `classDay`, `startTime`, `endTime`, `roomNumber`, `classCapacity`) VALUES
-(1, 1, 'Introduction to Piano', 'PIA101', '2016-10-20', '2017-01-31', 'Tuesday', '13:00:00', '14:00:00', 'F303', 0),
-(2, 1, 'Advanced Guitar', 'GUI201', '2016-10-20', '2017-01-31', 'Thursday', '09:00:00', '10:00:00', 'P505', 26),
-(3, 2, 'Introduction to Vilolin', 'VIL101', '2016-10-20', '2017-01-31', 'Tuesday', '13:00:00', '14:00:00', 'S303', 25),
-(4, 3, 'Advanced Piano', 'PIA201', '2016-10-20', '2017-01-31', 'Friday', '13:00:00', '14:00:00', 'S304', 23),
-(5, 2, 'Introduction to Violin', 'VIL101', '2016-10-20', '2017-01-31', 'Wednesday', '11:00:00', '12:00:00', 'S303', 25);
+(1, 1, 'Introduction to Piano', 'PIA101', '2016-10-5', '2017-01-5', 'Tuesday', '13:00:00', '14:00:00', 'F303', 2),
+(2, 1, 'Advanced Guitar', 'GUI201', '2016-10-5', '2017-01-5', 'Thursday', '09:00:00', '10:00:00', 'P505', 26),
+(3, 2, 'Introduction to Vilolin', 'VIL101', '2016-10-5', '2017-01-5', 'Tuesday', '13:00:00', '14:00:00', 'S303', 26),
+(4, 3, 'Advanced Piano', 'PIA201', '2016-10-5', '2017-01-5', 'Friday', '13:00:00', '14:00:00', 'S304', 26),
+(5, 2, 'Introduction to Violin', 'VIL101', '2016-10-5', '2017-01-5', 'Wednesday', '11:00:00', '12:00:00', 'S303', 26);
 
 
 -- --------------------------------------------------------
@@ -183,10 +184,6 @@ CREATE TABLE `studentclass` (
 --
 -- Dumping data for table `studentclass`
 --
-
-INSERT INTO `studentclass` (`ID`, `studentID`, `classID`) VALUES
-(1, 1, 4),
-(2, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -211,10 +208,6 @@ CREATE TABLE `instrumenthire` (
 --
 -- Dumping data for table `instrumenthire`
 --
-
-INSERT INTO `instrumenthire` (`hireID`, `studentID`, `instrumentID`, `startDate`, `endDate`, `quantity`) VALUES
-(68, 1, 2, '2016-10-06', '2017-01-06', '2'),
-(69, 3, 1, '2016-09-06', '2017-09-06', '1');
 
 
 -- Removing the following table because group decided it was easier to put it in students table.
@@ -275,12 +268,6 @@ CREATE TABLE `teachingcontract` (
 -- Dumping data for table `teachingcontract`
 --
 
-INSERT INTO `teachingcontract` (`contractID`, `studentID`, `teacherID`, `startDate`, `endDate`, `lessonType`, 
-	`lessonDuration`, `lessonCost`, `lessonFrequency`) VALUES
-(1, 2, 3, '2016-02-06', '2017-01-06', 'Violin', '30', '50.00', '2'),
-(2, 3, 3, '2016-02-06', '2017-01-06', 'Piano', '60', '40.00', '1');
-
-
 
 
 
@@ -325,12 +312,7 @@ CREATE TABLE `studentlogin` (
 --
 
 INSERT INTO `studentlogin` (`studentID`, `studentUsername`, `Password`) VALUES
-(1, 'n1234567', '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e'), -- Unhashed password is "password1"
-(3, 'n1944332', '0034d29e693a3c6cd6cbc55a984e2504709309535bde828cdda1cc2966d6451f'), -- Unhashed password is "57fcf0819b6dd"
-(4, 'n0111241', 'f484d6dc2a68603c77bd165e8598e30a3cf9c5d022c6e2d96172ed5fb6814a3a'),
-(5, 'n0114154', 'ad7a3f21f068766d8a1d1f91d11d7189ff5ac84a6974d6471098c4bc11e65f20'),
-(7, 'n0571081', 'baef7106ebb42465df59bb63b0fc58097d853724e0bf1cba14aa6faea83e8ee0');
-
+(1, 'n1234567', '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e'); -- Unhashed password is "password1"
 -- --------------------------------------------------------
 
 --
@@ -429,7 +411,8 @@ CREATE TABLE `availableJobs` (
 
 INSERT INTO `availableJobs` (`jobID`, `role`, `description`, `postDate`) VALUES
 (1, 'Piano teacher', 'Teaching students how to git gud', '2016-10-14'),
-(2, 'Assistant Manager', 'Help out the manager. Need help. Halp', '2016-10-20');
+(2, 'Assistant Manager', 'Help out the manager. Need help. Halp', '2016-10-20'),
+(3, 'Guitar', 'Basic Undersatnding on playing Guiters', '2016-10-20');
 
 
 
@@ -464,9 +447,9 @@ CREATE TABLE `jobSeekers` (
 --
 
 INSERT INTO `jobSeekers` (`seekerID`, `jobID`, `firstName`, `lastName`, `emailAddress`, `phoneNumber`, `street`, `suburb`, `state`, `postcode`, `cvPath`, `accepted`) VALUES
-(1, 1, 'Stevo', 'Bongo', 'stevo@gmail.com', '0433333333', '1/11 Bro Street', 'Vale', 'QLD', '4011', '../images/file1.doc', 'Pending'),
-(2, 1, 'Roggo', 'Nart', 'roggo@gmail.com', '0477777777', '2/11 Bro Street', 'Vale', 'QLD', '4011', '../images/file2.doc', 'Pending'),
-(3, 2, 'Uli', 'Williamson', 'uli@gmail.com', '0422222222', '44 Sis Street', 'Treet', 'QLD', '4011', '../images/file3.pdf', 'No');
+(1, 1, 'Stevo', 'Bongo', 'stevo@gmail.com', '0433333333', '1/11 Bro Street', 'Vale', 'QLD', '4011', '../upload/CVs/file1.doc', 'Pending'),
+(2, 1, 'Roggo', 'Nart', 'roggo@gmail.com', '0477777777', '2/11 Bro Street', 'Vale', 'QLD', '4011', '../upload/CVs/file2.doc', 'Pending'),
+(3, 2, 'Uli', 'Williamson', 'uli@gmail.com', '0422222222', '44 Sis Street', 'Treet', 'QLD', '4011', '../upload/CVs/file3.pdf', 'No');
 
 
 

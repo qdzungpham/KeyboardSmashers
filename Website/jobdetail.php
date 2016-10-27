@@ -94,7 +94,7 @@ echo "<meta http-equiv='refresh' content='0'>";
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs">Login</span>
+                <span class="hidden-md">Login</span>
               </a>
              <?php
               if (isset($_SESSION['UserID'])){

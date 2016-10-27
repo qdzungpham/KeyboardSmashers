@@ -19,6 +19,11 @@
 			$rs=$conn->prepare($query);
 			$rs->execute();
 
+			$query="SELECT * FROM `students` WHERE `studentID`='$studentID'";
+			$rs=$conn->prepare($query);
+			$rs->execute();
+			$row = $rs->FetchALL(PDO::FETCH_ASSOC);
+
 			// Create a random username (that fits the constraints) and a random password using time as a seed
 			// Then insert it into database
 			$t=time();
@@ -33,6 +38,12 @@
 			
 			// Let the user know the username and password of the student
 			echo 'Username: ' .$username.'<br>Password: '.$password.'<br>';
+			foreach ($row as $data)
+			{
+				$subject="Congratulations";
+				$body="Username:%20$username%0D%0APassword:%20$password";
+			echo '<a href="mailto:'.$data['emailAddress'].'?subject='.$subject.'&body='.$body.'">Email To:'.$data['emailAddress'].'<br></a>';
+			}
 		}
 	}
 	

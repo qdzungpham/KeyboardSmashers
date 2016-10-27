@@ -374,7 +374,7 @@ if(isset($_POST['rent']))
                  { 
                   $instrumentID=$data['instrumentID'];     
                   $type=$data['instrumentType'];
-                  $size=$info['instrumentSize'];
+                  $size=$data['instrumentSize'];
                   $description=$data['conditionQuality'];
                   $cost=$data['hireCost'];
                   $quantity=$data['Quantity'];

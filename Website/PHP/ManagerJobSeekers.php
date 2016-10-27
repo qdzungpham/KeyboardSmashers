@@ -104,4 +104,69 @@
 	echo '
 		<p><a href="../manager/main.php">Back to Manager Page</a></p>
 	';
+
+
+	if(isset($_POST['approve'])){
+		// Check if $_POST is not null and create an error message if it is
+		if (empty($_POST['selectBox'])) {
+			echo '<script>alert("'.$selectionError.'");</script>';
+		} else {
+            
+            $seekerID=test_input($_POST['selectBox']);
+			$query="SELECT * FROM `jobseekers` WHERE `seekerID`='$seekerID'";
+			$rs=$conn->prepare($query);
+			$rs->execute();
+			$row = $rs->FetchALL(PDO::FETCH_ASSOC);
+			foreach ($row as $data) {
+				$firstName=$data['firstName'];
+				$lastName=$data['lastName'];
+				$emailAddress=$data['emailAddress'];
+				$phoneNumber=$data['phoneNumber'];
+				$street=$data['street'];
+				$suburb=$data['suburb'];
+				$state=$data['state'];
+				$postcode=$data['postcode'];
+			}
+			$query="INSERT INTO `teachers` (`firstName`,`familyName`,`emailAddress`,`mobileNumber`,
+			                                `street`,`suburb`,`postcode`)
+			                                VALUES('$firstName','$lastName','$emailAddress','$phoneNumber',
+			                                '$street','$suburb','$postcode')";
+			$rs=$conn->prepare($query);
+			$rs->execute();
+
+			$query="SELECT * FROM `teachers` WHERE `emailAddress` = '$emailAddress'";
+			$rs=$conn->prepare($query);
+			$rs->execute();
+			$record = $rs->FetchALL(PDO::FETCH_ASSOC);
+			foreach ($record as $data) {
+				$teacherID=$data['teacherID'];
+			}
+
+
+			$query="DELETE FROM `jobseekers` WHERE `seekerID`='$seekerID'";
+			$rs=$conn->prepare($query);
+			$rs->execute();
+
+			// Create a random username (that fits the constraints) and a random password using time as a seed
+			// Then insert it into database
+			$t=time();
+			$time = $t.rand(0,9);
+			$username = 't'.substr($time,4,11);
+			$password = uniqid();
+			$hpassword = hash('sha256', $password);
+			$sql= "INSERT INTO `teacherlogin` (`teacherID`,`teacherUsername`,`Password`)
+				   VALUES('$teacherID','$username','$hpassword')";
+			$results=$conn->prepare($sql);
+			$results->execute();
+			
+			// Let the user know the username and password of the student
+			echo 'Username: ' .$username.'<br>Password: '.$password.'<br>';
+			foreach ($row as $data)
+			{
+				$subject="Congratulations";
+				$body="Username:%20$username%0D%0APassword:%20$password";
+			echo '<a href="mailto:'.$data['emailAddress'].'?subject='.$subject.'&body='.$body.'">Email To:'.$data['emailAddress'].'<br></a>';
+			}
+		}
+	}
 ?>

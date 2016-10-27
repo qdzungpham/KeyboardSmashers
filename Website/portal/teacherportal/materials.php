@@ -227,15 +227,18 @@ echo "<meta http-equiv='refresh' content='0'>";
             <div class="box-body">
               <div class="box-group" id="accordion">
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                <div class="panel box box-primary">
+                <?php foreach($row as $info)
+                         {
+                echo '<div class="panel box box-primary">
                   <div class="box-header with-border">
                     <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                       hello 
+                      <a data-toggle="collapse" data-parent="#accordion" href="#'.$info['classIdname'].'">                       
+                          '.$info['classIdname'].'
+                         
                       </a>
                     </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse">
+                  <div id="'.$info['classIdname'].'" class="panel-collapse collapse">
                       <div class="box-body">
                        <p><b>Attached Files:</b></p>
             <p>
@@ -258,7 +261,9 @@ echo "<meta http-equiv='refresh' content='0'>";
 
 
             </div>
-            </div>
+            </div>';
+            }
+                        ?>
             <!-- /.box-body -->
       
           </div>
@@ -309,16 +314,18 @@ echo "<meta http-equiv='refresh' content='0'>";
         <!-- table for available instruments -->
               <table class="table">
                 <tr>
-                  <th style="width:150px">Instrument</th>
+                  <th >Instrument</th>
                   <th>Description</th>
+                  <th>Size</th>
                   <th>Rental Cost (per month)</th>
-                  <th style="width: 300px">Availablility</th>
+                  <th >Availablility</th>
                 </tr>
                 <?php 
                 foreach($record as $data)
                  { 
                   $instrumentID=$data['instrumentID'];     
                   $type=$data['instrumentType'];
+                  $size=$data['instrumentSize'];
                   $description=$data['conditionQuality'];
                   $cost=$data['hireCost'];
                   $quantity=$data['Quantity'];
@@ -336,10 +343,11 @@ echo "<meta http-equiv='refresh' content='0'>";
                 <tr>
                   <td><img src="../dist/img/'.$type.'.png" alt="" style="width:100px;height:100px"></td>
                   <td>'.$description.'</td>
+                  <td>'.$size.'</td>
                   <td>
                     <span class="badge bg-yellow">'.$cost.'</span>
                   </td>
-                  <td><span style="width:100px" class="btn btn-'.$status.' btn-xs">'.$value.'</span></td>
+                  <td><span class="btn btn-'.$status.' btn-xs">'.$value.'</span></td>
                 </tr>';
                 }
                 ?>
