@@ -1,0 +1,155 @@
+<div class="box box-primary">
+	<div class="box-header with-border">
+        <h3 class="box-title">Enrolment Form</h3>
+    </div>
+	
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	<div class="box-body">
+	<div class="col-md-6">
+	<legend>All Students</legend>
+	<div class="form-group">
+		<label>First name * </label>
+		<input class="form-control" type="text" name="firstName" value="<?php echo $firstName;?>"> 
+		<span class="error"> <?php echo $firstNameErr;?></span>
+		
+	</div>
+	<div class="form-group">
+		<label>Last name * </label>
+		<input class="form-control"type="text" name="lastName" value="<?php echo $lastName;?>"> 
+		<span class="error"> <?php echo $lastNameErr;?></span>
+		
+	</div>
+	
+	<div class="form-group">
+		<label>Date Of Birth * </label><br>
+		<input class="form-control" type="date" name="dob" value="<?php echo $dob;?>">
+		<span class="error"> <?php echo $dobErr;?></span>
+		
+	</div>	
+		<!-- Create two divs - one to store the address titles on the left (which is right aligned),
+		and the second div contains the input forms for the corresponding address title on the right of the first div
+		(and which is left aligned). Having these two divs side by side is purely for formatting. -->
+	<div class="form-group">
+		<label>Address *</label><br>
+	
+		
+			<input class="form-control"type="text" name="street" placeholder="Street" value="<?php echo $street;?>">
+			<span class="error"> <?php echo $streetErr;?></span>
+			<br>
+			
+			<input class="form-control"type="text" name="suburb" placeholder="Suburb" value="<?php echo $suburb;?>"> 
+			<span class="error"> <?php echo $suburbErr;?></span>
+			<br>
+			
+			<select class="form-control" name = "state" placeholder="State"> 
+				<option value=""disabled selected>State</option>
+				<option <?php if($state == 'QLD'){echo("selected");}?>>QLD</option>
+				<option <?php if($state == 'NSW'){echo("selected");}?>>NSW</option>
+				<option <?php if($state == 'ACT'){echo("selected");}?>>ACT</option>
+				<option <?php if($state == 'VIC'){echo("selected");}?>>VIC</option>
+				<option <?php if($state == 'TAS'){echo("selected");}?>>TAS</option>
+				<option <?php if($state == 'SA'){echo("selected");}?>>SA</option>
+				<option <?php if($state == 'WA'){echo("selected");}?>>WA</option>
+				<option <?php if($state == 'NT'){echo("selected");}?>>NT</option>
+			</select>
+			<span class="error"> <?php echo $stateErr;?></span>
+			<br>
+			
+			<input class="form-control"type="number" name="postCode" placeholder="Post Code" value="<?php echo $postCode;?>"> 
+			<span class="error"> <?php echo $postCodeErr;?></span>
+			
+	</div>
+	
+	<div class="form-group">
+		<label>Gender * </label>
+		<span class="error"> <?php echo $genderErr;?></span>
+		<br>
+		<input type="radio" name="gender" value="Male" <?php if($gender == 'Male'){echo("checked");}?>> Male
+		<input type="radio" name="gender" value="Female" <?php if($gender == 'Female'){echo("checked");}?>> Female
+		<input type="radio" name="gender" value="Other" <?php if($gender == 'Other'){echo("checked");}?>> Other
+		<br>
+	</div>	
+	<div class="form-group">
+		<label>Preferred Phone Number</label>
+		<input class="form-control"type="text" name="phoneNumber" value="<?php echo $phoneNumber;?>">
+		
+	</div>	
+	<div class="form-group">
+		<label>Email Address * </label>
+		<input class="form-control"type="text" name="email" value="<?php echo $email;?>"> 
+		<span class="error"> <?php echo $emailErr;?></span>
+	</div>
+	</div>
+	
+	
+	<!-- Optional student preferences -->
+	<fieldset class="col-md-6">
+	<legend>Preferences</legend>
+	<div class="form-group">
+		<label>Preferred Lesson Day</label>
+		<select class="form-control" name = "preferredDay">
+		    <option Value = "title">Please Select</option>
+			<option <?php if($preferredDay == 'Monday'){echo("selected");}?>>Monday</option>
+			<option <?php if($preferredDay == 'Tuesday'){echo("selected");}?>>Tuesday</option>
+			<option <?php if($preferredDay == 'Wednesday'){echo("selected");}?>>Wednesday</option>
+			<option <?php if($preferredDay == 'Thursday'){echo("selected");}?>>Thursday</option>
+			<option <?php if($preferredDay == 'Friday'){echo("selected");}?>>Friday</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label>Preferred Lesson Time</label>
+		<input class="form-control"type="time" name="preferredTime" value="<?php echo $preferredTime;?>">
+	</div>
+    <div class="form-group">
+		<label>Preferred Teacher:</label>
+		<input class="form-control"type="text" name="preferredTeacher" value="<?php echo $preferredTeacher;?>">
+    </div>
+	<div class="form-group">
+		<label>Preferred Language Spoken by Teacher</label>
+		<input class="form-control"type="text" name="preferredLanguage" value="<?php echo $preferredLanguage;?>">
+	</div>
+	<div class="form-group">
+		<label>Preferred Teacher Gender</label><br>
+		<input type="radio" name="preferredGender" value="None" <?php if($preferredGender == 'None'){echo("checked");}?>> No Preferences
+		<input type="radio" name="preferredGender" value="Male" <?php if($preferredGender == 'Male'){echo("checked");}?>> Male
+		<input type="radio" name="preferredGender" value="Female" <?php if($preferredGender == 'Female'){echo("checked");}?>> Female
+	</div>
+	</fieldset>
+	
+	
+	<!-- Parent/Guardian information only required for under 18s -->
+	<div class="col-md-6">
+	<legend>Under 18s</legend>
+	<div class="form-group">
+		<label>Parent/Guardian First Name</label>
+		<input class="form-control"type="text" name="guardianFirstName" value="<?php echo $guardianFirstName;?>"> 
+		<span class="error"> <?php echo $guardianFirstNameErr;?></span>
+    </div>
+	<div class="form-group">
+		<label>Parent/Guardian Last Name</label>
+		<input class="form-control"type="text" name="guardianLastName" value="<?php echo $guardianLastName;?>"> 
+		<span class="error"> <?php echo $guardianLastNameErr;?></span>
+    </div>
+	<div class="form-group">
+		<label>Parent/Guardian Preferred Phone Number</label>
+		<input class="form-control"type="text" name="guardianPhonenumber" value="<?php echo $guardianPhonenumber;?>">
+		<span class="error"> <?php echo $guardianPhonenumberErr;?></span>
+	</div>
+	<div class="form-group">
+		<label>Parent/Guardian Email Address</label>
+		<input class="form-control"type="text" name="guardianEmail" value="<?php echo $guardianEmail;?>"> 
+		<span class="error"> <?php echo $guardianEmailErr;?></span>
+	</div>
+	</div>
+	</div>
+	    <div class="box-footer" >
+	    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+		<a href="enrolments.php" class="btn btn-primary">Reset</a>
+	    </div>
+	    
+	
+	</form>
+	
+	
+	
+	</div>
