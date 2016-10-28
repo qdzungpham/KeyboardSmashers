@@ -1,0 +1,345 @@
+/*home page*/
+body {
+	background:url('../image/back.gif') no-repeat;
+    margin:0;
+    background-size:100%;
+}
+#header{
+	text-align: left;
+}
+#wrap{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+#wrapper{
+    text-align: center;
+    margin-top: -100px;
+    background-color: white;
+	padding-bottom: 122px;
+    min-height:100%;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+
+}
+#search{
+	position:relative;
+	display: inline;
+	background: white;
+	border-radius: 4px;
+	padding: 5px 5px 10px 5px;
+	margin:0;
+	margin-right: 20px;
+}
+#stext{
+	padding-top:5px;
+	padding-bottom: 5px;
+	border-radius: 4px;
+	border:none;
+}
+#sbutton{
+	background:url('../image/search.png') no-repeat;
+	padding-top:15px;
+	padding-bottom: 10px;
+    border:none;
+    width:30px;
+    height:30px;
+}
+#menu{
+	position:fixed;
+	margin-left:300px;
+	margin-top:-155px;
+	text-align:right;
+	border-radius: 4px;
+	background-color: black;
+	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+	padding:10px;
+	width:calc(100%/1.3);
+	z-index: 2;
+}
+.menu-title, .menu-title a{
+	text-decoration: none;
+	display: inline-block;
+  padding-left:15px;
+  padding-right: 15px;
+  color:white;
+
+}
+.menu-title:hover{
+    color:lightblue;
+}
+.menu-title a:hover{
+    color:lightblue;
+}
+.menu-content{
+		display: none;
+    position: absolute;
+    background-color: white;
+    color:black;
+    min-width: 110px;
+    margin-left:5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.menu-content a{
+	text-decoration: none;
+	color:black;
+	padding:5px;
+}
+.menu-content a:hover{
+    background-color: blue; 
+	}
+.menu-title:hover .menu-content{
+    display:block;
+
+}
+#content{
+	background-color: white;
+    width: auto;
+    min-height: 320px;
+    border-radius: 50% / 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    text-align:center;
+}
+.coursetype{
+	display: inline-block;
+	height:100px;
+	width:200px;
+	margin-left: 80px;
+	padding:10px;
+	margin-top: 5px;
+
+}
+.coursename{
+	margin-bottom: 25px;
+	margin-left: -100px;
+	font-size: 18px;
+}
+.courselink{
+	text-align: center;
+	font-size: 50px;
+	line-height:100px;
+	height:100px;
+	width: 100px;
+	border-radius: 50%;
+	border:2px dashed #606060;
+}
+.courselink:hover{
+	text-align: center;
+	margin-top:-25px;
+	margin-left:-25px;
+	font-size: 50px;
+	line-height:150px;
+	height:150px;
+	width: 150px;
+	border-radius: 50%;
+	border:2px;
+	border:2px dashed #606060;
+}
+.courselink:hover + .coursedescription{
+	margin-top:-5px;
+}
+.coursedescription{
+	margin-top: 20px;
+	width:200px;
+	height:50px;
+	margin-left: -50px;
+}
+/*end home page*/
+
+/*login page*/
+#login {
+	position: relative;;
+	display: block;
+	border:1px solid #242424;
+	text-align:center;
+	background-color: grey;
+	height:auto;
+	width:400px;
+	margin-left: calc(100%/3);
+	margin-top: calc(100%/10);
+	box-shadow: 5px 5px 5px black;
+}
+#logcontent{
+	min-height:340px;
+}
+
+.titlebar {
+	text-align: left;
+	font-size: 18px;
+	width:auto;
+	height:40px;
+	line-height: 40px;
+	background-color: white;
+	margin-bottom: 10px;
+}
+
+.loginform{
+	text-align: center;
+	width:300px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.textfield{
+	width:250px;
+	height:25px;
+	padding:2px;
+	border: 2px solid grey;
+	margin-bottom: 10px;
+}
+.button {
+	text-align: left;
+	border:2px solid white;
+        background-color:white;
+	font-size:20px;
+	
+
+}
+.button:hover  {
+	background: black;
+	border:2px solid lightblue;
+	color: white;
+}
+/*end login page*/
+
+/*Start About Us page*/
+.teacher{
+
+	text-align: center;
+
+	background-color: white;
+}
+.teacherd{
+	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#page-heading {
+	padding:20px;
+	padding-bottom: 50px;
+	font-family: Verdana, sans-serif;
+	font-size: 60px;
+	color:grey;
+	font-variant: small-caps;
+}
+
+.red-heading {
+	color: #ff6666;
+	padding: 20px;
+	font-family: Verdana, sans-serif;
+	font-size: 22px;
+	font-variant: small-caps;
+}
+
+.school-description {
+	padding: 10px;
+	margin-left: 20%;
+	margin-right: 20%;
+	font-family: Verdana, sans-serif;
+	font-size: 16px;
+	text-align: justify;
+}
+
+#staff-heading {
+	padding: 30px;
+	margin-top: 50px;
+	font-family: Verdana, sans-serif;
+	font-size: 40px;
+	font-variant: small-caps;
+}
+
+.tname {
+	font-family: Verdana, sans-serif;
+	font-size: 16px;
+	font-variant: small-caps;
+	font-weight: bold;
+	line-height: 150%;
+	text-align: center;
+}
+
+.teacher-description {
+	padding: 10px;
+	margin-left: 30%;
+	margin-right: 30%;
+	font-family: Verdana, sans-serif;
+	font-size: 15px;
+	text-align: justify;
+}
+
+.instrument {
+	font-family: Verdana, sans-serif;
+	font-size: 16px;
+	text-align: center;
+	padding-bottom: 7px;
+	font-variant: small-caps;
+}
+
+.timage {
+	text-align: center;
+}
+/*End About Us page*/
+
+/*career page*/
+.jobs{
+	margin-top: 20px;
+  display:inline-block;
+	text-align: center;
+	margin:10px;
+	position:relative;
+	width:calc(100%/4);
+	height:500px;
+	background-color: grey;
+}
+.jtitle{
+	margin:10px;
+	text-align: center;
+	background-color: white;
+	height:40px;
+	line-height:40px;
+}
+.caption{
+	text-align: left;
+	font-size: 25px;
+	color:lightblue;
+	padding:5px;
+}
+.jname, .jtime, .jdescription{
+	text-align: left;
+	color:white;
+	padding:10px;
+}
+/*end career page*/
+
+/*Enrolments page*/
+.form-wrapper {
+	text-align: left;
+	background-color: white;
+	/*Needs to be padding, not margin, in order to hide 
+	the unwanted part of the background image*/
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-bottom: 100px;
+	font-family: Verdana, sans-serif;
+	font-size: 15px;
+}
+.Address {
+  width: 300px;  
+}
+
+.addressMenu {
+	float: left;
+	text-align: right;
+}
+
+.addressInputs {
+	line-height: 1.2em;
+}
+
+.options {
+	font-size: 12px;
+	line-height: 3em;
+}
+
+/*end enrolments page*/

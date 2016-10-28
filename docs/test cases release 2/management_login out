@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Management_login" verbose="1" >
+
+  <test name="com.example.tests.Untitled" >
+    <classes>
+      <class name="com.example.tests.Untitled" />
+    </classes>
+  </test>
+
+  <test name="com.example.tests.StudentLoginOut" >
+    <classes>
+      <class name="com.example.tests.StudentLoginOut" />
+    </classes>
+  </test>
+
+  <test name="com.example.tests.TeacherLoginOut" >
+    <classes>
+      <class name="com.example.tests.TeacherLoginOut" />
+    </classes>
+  </test>
+
+  <test name="com.example.tests.ManagementLoginOut" >
+    <classes>
+      <class name="com.example.tests.ManagementLoginOut" />
+    </classes>
+  </test>
+
+</suite>
